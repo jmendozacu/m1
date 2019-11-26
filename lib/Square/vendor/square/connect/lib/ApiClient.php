@@ -138,13 +138,21 @@ class ApiClient
         $curl = curl_init();
 		/**
 		 * 2019-11-27 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
-		 * «Start Export Inventory»: «SquareConnect\ApiException: [HTTP/1.1 408 Request Timeout]
+		 * 1) «Start Export Inventory»: «SquareConnect\ApiException: [HTTP/1.1 408 Request Timeout]
 		 * stream timeout in lib/Square/vendor/square/connect/lib/ApiClient.php:236»:
 		 * https://github.com/repairzoom/m1/issues/3
-		 * The previous code:
+		 * 2) The previous code:
 		 *		if ($this->config->getCurlTimeout() != 0) {
 		 *			curl_setopt($curl, CURLOPT_TIMEOUT, $this->config->getCurlTimeout());
 		 *		}
+		 * 3)
+		 * CURLOPT_TIMEOUT
+		 * 		The maximum number of seconds to allow cURL functions to execute.
+		 * https://www.php.net/manual/en/function.curl-setopt.php
+		 * CURLOPT_CONNECTTIMEOUT
+		 * 		The number of seconds to wait while trying to connect. Use 0 to wait indefinitely.
+		 * https://www.php.net/manual/en/function.curl-setopt.php
+		 * 4) «PHP: Default cURL timeout value»: https://stackoverflow.com/a/10341128
 		 */
         curl_setopt($curl, CURLOPT_TIMEOUT, 60 * 60);
         curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 600);
