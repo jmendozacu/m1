@@ -993,4 +993,51 @@ final class Mage
     {
         self::$_isDownloader = $flag;
     }
+
+    static function log2($v, $f = 'mage2.pro') {
+		file_put_contents(BP . "/var/log/$f.log", print_r($v, true) . "\n", FILE_APPEND);
+	}
+
+    static function bt() {
+		/** @var array $bt */
+		$bt = array_slice(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS), 0);
+		/** @var array $compactBT */
+		$compactBT = [];
+		/** @var int $traceLength */
+		$traceLength = count($bt);
+		/**
+		 * 2015-07-23
+		 * 1) Удаляем часть файлового пути до корневой папки Magento.
+		 * 2) Заменяем разделитель папок на унифицированный.
+		 */
+		/** @var string $bp */
+		$bp = BP . DS;
+		/** @var bool $nonStandardDS */
+		$nonStandardDS = DS !== '/';
+		for ($traceIndex = 0; $traceIndex < $traceLength; $traceIndex++) {
+			/** @var array $currentState */
+			$currentState = @$bt[$traceIndex];
+			/** @var array(string => string) $nextState */
+			$nextState = @$bt[1 + $traceIndex];
+			/** @var string $file */
+			$file = str_replace($bp, '', @$currentState['file']);
+			if ($nonStandardDS) {
+				$file = str_replace(DS, '/', $file);
+			}
+			$compactBT[]= [
+				'File' => $file
+				,'Line' => @$currentState['line']
+				,'Caller' => !$nextState ? '' : self::cc_method($nextState)
+				,'Callee' => !$currentState ? '' : self::cc_method($currentState)
+			];
+		}
+		self::log2(print_r($compactBT, true), 'bt');
+	}
+	
+	static function cc_method($a1, $a2 = null) {return implode('::',
+		$a2 ? [get_class($a1), $a2] :
+			(!isset($a1['function']) ? $a1 :
+				[@$a1['class'], $a1['function']]
+			)
+	);}
 }

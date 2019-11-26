@@ -150,7 +150,8 @@ class Varien_Simplexml_Config
         } elseif ($path === null) {
             return $this->_xml;
         } else {
-            return $this->_xml->descend($path);
+            $r = $this->_xml->descend($path);
+            return $r;
         }
     }
 

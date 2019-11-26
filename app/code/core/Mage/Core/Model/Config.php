@@ -650,7 +650,7 @@ class Mage_Core_Model_Config extends Mage_Core_Model_Config_Base
             }
             $path = $scope . ($scopeCode ? '/' . $scopeCode : '' ) . (empty($path) ? '' : '/' . $path);
         }
-
+        $pathI = $path;
         /**
          * Check path cache loading
          */
@@ -664,7 +664,18 @@ class Mage_Core_Model_Config extends Mage_Core_Model_Config_Base
                 }
             }
         }
-        return  parent::getNode($path);
+        $r = parent::getNode($path);
+		/**
+		 * 2019-11-26 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+		 * https://www.upwork.com/messages/rooms/room_1d0d9c97786b191f81631dc7ba1b8d14/story_3a65e70765b5987e3a28e401641553c6
+		 */
+        if ($path && false === $r) {
+        	$pathA = is_array($path) ? $path : explode('/', $path);
+        	if ('stores' === $pathA[0]) {
+				$r = parent::getNode(array_slice($pathA, 1));
+			}
+		}
+        return $r;
     }
 
     /**
