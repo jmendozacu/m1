@@ -32,23 +32,51 @@ class Magecomp_Recaptcha_IndexController extends Mage_Core_Controller_Front_Acti
                         } catch (Exception $e) {
                             echo $e->getMessage();
                         }
-                    } else {
-                        echo Mage::getSingleton('core/session')->addError(' Please Configure Admin Email.');
-                        return $this->_redirectReferer();
+                    }
+                    else {
+						/**
+						 * 2019-11-27 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+						 * «Object of class Mage_Core_Model_Session could not be converted to string
+						 * in app/code/local/Magecomp/Recaptcha/controllers/IndexController.php on line 44»:
+						 * https://github.com/repairzoom/m1/issues/2
+						 */
+						return $this->error('Please Configure Admin Email.');
                     }
                 else:
-                    echo Mage::getSingleton('core/session')->addError('Please click on the reCAPTCHA box.');
-                    return $this->_redirectReferer();
+					/**
+					 * 2019-11-27 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+					 * «Object of class Mage_Core_Model_Session could not be converted to string
+					 * in app/code/local/Magecomp/Recaptcha/controllers/IndexController.php on line 44»:
+					 * https://github.com/repairzoom/m1/issues/2
+					 */
+					return $this->error();
                 endif;
             else:
-                echo Mage::getSingleton('core/session')->addError('Please click on the reCAPTCHA box.');
-                return $this->_redirectReferer();
+				/**
+				 * 2019-11-27 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+				 * «Object of class Mage_Core_Model_Session could not be converted to string
+				 * in app/code/local/Magecomp/Recaptcha/controllers/IndexController.php on line 44»:
+				 * https://github.com/repairzoom/m1/issues/2
+				 */
+                return $this->error();
             endif;
         }
         catch (Exception $e){
 	        Mage::log("Captcha Error :".$e->getMessage(),null,"recaptcha.log");
         }
 	}
-}
 
-?>
+	/**
+	 * 2019-11-27 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+	 * «Object of class Mage_Core_Model_Session could not be converted to string
+	 * in app/code/local/Magecomp/Recaptcha/controllers/IndexController.php on line 44»:
+	 * https://github.com/repairzoom/m1/issues/2
+	 * @param string $s [optional]
+	 * @return Mage_Core_Controller_Varien_Action
+	 */
+	private function error($s = 'Please click on the reCAPTCHA box.') {
+		$sess = Mage::getSingleton('core/session'); /** @var Mage_Core_Model_Session $sess */
+		$sess->addError($s);
+		return $this->_redirectReferer();
+	}
+}
