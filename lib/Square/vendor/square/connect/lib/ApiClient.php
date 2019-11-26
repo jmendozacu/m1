@@ -136,10 +136,19 @@ class ApiClient
         $url = $this->config->getHost() . $resourcePath;
 
         $curl = curl_init();
-        // set timeout, if needed
-        if ($this->config->getCurlTimeout() != 0) {
-            curl_setopt($curl, CURLOPT_TIMEOUT, $this->config->getCurlTimeout());
-        }
+		/**
+		 * 2019-11-27 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+		 * «Start Export Inventory»: «SquareConnect\ApiException: [HTTP/1.1 408 Request Timeout]
+		 * stream timeout in lib/Square/vendor/square/connect/lib/ApiClient.php:236»:
+		 * https://github.com/repairzoom/m1/issues/3
+		 * The previous code:
+		 *		if ($this->config->getCurlTimeout() != 0) {
+		 *			curl_setopt($curl, CURLOPT_TIMEOUT, $this->config->getCurlTimeout());
+		 *		}
+		 */
+        curl_setopt($curl, CURLOPT_TIMEOUT, 60 * 60);
+        curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, 600);
+
         // return the result on success, rather than just true
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
