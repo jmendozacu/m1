@@ -71,26 +71,6 @@ class Magestore_Onestepcheckout_Model_Observer extends Mage_Core_Controller_Vari
             $translate->setTranslateInline(true);
         }
     }
-    
-    public function controller_action_predispatch_adminhtml($observer)
-    {
-        $controller = $observer->getControllerAction();
-        if($controller->getRequest()->getControllerName() != 'system_config'
-            || $controller->getRequest()->getActionName() != 'edit')
-            return;
-        $section = $controller->getRequest()->getParam('section');
-        if($section != 'onestepcheckout')
-            return;
-        $magenotificationHelper = Mage::helper('magenotification');
-        if(!$magenotificationHelper->checkLicenseKey('Onestepcheckout')){
-            $message = $magenotificationHelper->getInvalidKeyNotice();
-            echo $message;die();
-        }elseif((int)$magenotificationHelper->getCookieLicenseType() == Magestore_Magenotification_Model_Keygen::TRIAL_VERSION){
-            Mage::getSingleton('adminhtml/session')->addNotice($magenotificationHelper->__('You are using a trial version of One Step Checkout extension. It will be expired on %s.',
-                                                         $magenotificationHelper->getCookieData('expired_time')
-                                            ));
-        }
-    }    
 
     public function orderPlaceAfter($observers)
     {

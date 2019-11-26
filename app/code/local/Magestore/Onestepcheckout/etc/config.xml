@@ -74,17 +74,6 @@
 				</onestepcheckout>
 			</updates>
 		</layout>
-		<events>
-			<controller_action_predispatch_adminhtml>
-				<observers>
-					<magestore_onestepcheckout_observer>
-						<type>singleton</type>
-						<class>onestepcheckout/observer</class>
-						<method>controller_action_predispatch_adminhtml</method>
-					</magestore_onestepcheckout_observer>
-				</observers>
-			</controller_action_predispatch_adminhtml>		
-		</events>
 		<blocks>
 			<adminhtml>
 				<rewrite>
