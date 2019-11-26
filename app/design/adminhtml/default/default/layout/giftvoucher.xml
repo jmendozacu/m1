@@ -110,20 +110,42 @@
         <reference name="head">
             <action method="addItem"><type>skin_js</type><name>js/magestore/giftvoucher.js</name><params/></action>
         </reference>
-        <reference name="items_grid">
-            <block type="giftvoucher/adminhtml_order_form" template="giftvoucher/form.phtml" name="giftvoucher.giftcard" />
-        </reference>
+<!-- 2019-11-27 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+«Not valid template file:adminhtml/base/default/template/giftvoucher/form.phtml»:
+https://github.com/repairzoom/m1/issues/5
+The previous code was:
+	<reference name='items_grid'>
+		<block 
+			name='giftvoucher.giftcard' 
+			template='giftvoucher/form.phtml' 
+			type='giftvoucher/adminhtml_order_form' 
+		/>
+	</reference>
+-->
     </adminhtml_sales_order_create_index>
-    <adminhtml_sales_order_create_load_block_data>
-        <reference name="items_grid">
-            <block type="giftvoucher/adminhtml_order_form" template="giftvoucher/form.phtml" name="giftvoucher.giftcard" />
-        </reference>
-    </adminhtml_sales_order_create_load_block_data>
-    <adminhtml_sales_order_create_load_block_items>
-        <reference name="items_grid">
-            <block type="giftvoucher/adminhtml_order_form" template="giftvoucher/form.phtml" name="giftvoucher.giftcard" />
-        </reference>
-    </adminhtml_sales_order_create_load_block_items>
+<!-- 2019-11-27 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+«Not valid template file:adminhtml/base/default/template/giftvoucher/form.phtml»:
+https://github.com/repairzoom/m1/issues/5
+The previous code was:
+	<adminhtml_sales_order_create_load_block_data>
+		<reference name='items_grid'>
+			<block
+				name='giftvoucher.giftcard'
+				template='giftvoucher/form.phtml'
+				type='giftvoucher/adminhtml_order_form'
+			/>
+		</reference>
+	</adminhtml_sales_order_create_load_block_data>
+	<adminhtml_sales_order_create_load_block_items>
+		<reference name='items_grid'>
+			<block
+				name='giftvoucher.giftcard'
+				template='giftvoucher/form.phtml'
+				type='giftvoucher/adminhtml_order_form'
+			/>
+		</reference>
+	</adminhtml_sales_order_create_load_block_items>		
+-->
 <!-- insert tabs info credit to edit customer -->
     <adminhtml_customer_edit>
         <reference name="customer_edit_tabs">
