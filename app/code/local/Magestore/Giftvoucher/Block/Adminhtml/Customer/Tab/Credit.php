@@ -20,10 +20,21 @@ class Magestore_Giftvoucher_Block_Adminhtml_Customer_Tab_Credit extends Mage_Adm
             'name' => 'change_balance',
             'note' => Mage::helper('giftvoucher')->__('Add or subtract customer\'s balance. For ex: 99 or -99.'),
         ));
-        
-        $form->addFieldset('balance_history_fieldset', array('legend' => Mage::helper('giftvoucher')->__('Balance History')))->setRenderer($this->getLayout()->createBlock('adminhtml/widget_form_renderer_fieldset')->setTemplate('giftvoucher/balancehistory.phtml'));
-        
-        
+		/**
+		 * 2019-11-27 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+		 * «Not valid template file:adminhtml/base/default/template/giftvoucher/balancehistory.phtml»:
+		 * https://github.com/repairzoom/m1/issues/4
+		 * The previous code was:
+		 *	$form
+		 *		->addFieldset(
+		 *			'balance_history_fieldset', ['legend' => Mage::helper('giftvoucher')->__('Balance History')]
+		 *		)
+		 *		->setRenderer(
+		 *			$this->getLayout()->createBlock('adminhtml/widget_form_renderer_fieldset')
+		 *				->setTemplate('giftvoucher/balancehistory.phtml')
+		 *		)
+		 *	;
+		 */
         $this->setForm($form);
         return parent::_prepareForm();
     }
