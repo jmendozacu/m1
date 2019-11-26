@@ -1,6 +1,5 @@
-#--------------------------#
-# Magento Default Files    #
-#--------------------------#
+!/.editorconfig
+!/.gitignore
 
 /PATCH_*.sh
 
