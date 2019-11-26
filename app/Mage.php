@@ -994,10 +994,20 @@ final class Mage
         self::$_isDownloader = $flag;
     }
 
+	/**
+	 * 2019-11-27 Dmitry Fedyukhttps://www.upwork.com/fl/mage2pro
+	 * @param mixed $v
+	 * @param string $f [optional]
+	 */
     static function log2($v, $f = 'mage2.pro') {
-		file_put_contents(BP . "/var/log/$f.log", print_r($v, true) . "\n", FILE_APPEND);
+    	$dir = BP . '/var/log'; /** @var string $dir */
+    	if (!is_dir($dir)) {
+			mkdir($dir, 0777, true);
+		}
+		file_put_contents("$dir/$f.log", print_r($v, true) . "\n", FILE_APPEND);
 	}
 
+	/** 2019-11-27 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro */
     static function bt() {
 		/** @var array $bt */
 		$bt = array_slice(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS), 0);
@@ -1033,8 +1043,15 @@ final class Mage
 		}
 		self::log2(print_r($compactBT, true), 'bt');
 	}
-	
-	static function cc_method($a1, $a2 = null) {return implode('::',
+
+	/**
+	 * 2019-11-27 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+	 * @used-by bt()
+	 * @param mixed $a1
+	 * @param mixed $a2 [optional]
+	 * @return string
+	 */
+	private static function cc_method($a1, $a2 = null) {return implode('::',
 		$a2 ? [get_class($a1), $a2] :
 			(!isset($a1['function']) ? $a1 :
 				[@$a1['class'], $a1['function']]
