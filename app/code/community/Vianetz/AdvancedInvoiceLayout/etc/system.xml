@@ -1,0 +1,923 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <advancedinvoicelayout translate="label" module="advancedinvoicelayout">
+            <label>Advanced Invoice Layout</label>
+            <tab>vianetz</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>200</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label" module="advancedinvoicelayout">
+                    <label>Common Layout</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <note translate="label">
+                            <label></label>
+                            <frontend_type>note</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[
+                        <b>AdvancedInvoiceLayout Version 2.5.3</b><br />by <a href="http://www.vianetz.com" target="_blank">vianetz | Magento Enterprise Web Development</a>
+             ]]></comment>
+                        </note>
+
+                        <licenses translate="label">
+                            <label></label>
+                            <frontend_model>Vianetz_AdvancedInvoiceLayout_Block_Adminhtml_Config</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </licenses>
+
+                        <licenseskey translate="label">
+                            <label>License Key</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Get license keys in your <a href="http://www.vianetz.com/shop/en/licensecheck/customer/licenses/" target="blank">vianetz account.</a>]]></comment>
+                        </licenseskey>
+
+                        <theme translate="label">
+                            <label><![CDATA[<b>Theme</b>]]></label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>advancedinvoicelayout/system_config_source_theme</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Select theme to choose for PDF layouts.<br /><b>You want some more themes?</b> Check out how to build your own on our <a href="http://www.vianetz.com/en/magento-faq/how-can-i-customize-the-magento-pdf-invoice-layout.html/" target="_blank">FAQ page</a>.]]></comment>
+                        </theme>
+                        <pdf_template_file_first_page translate="label comment">
+                            <label>PDF Template File for First Page</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>advancedinvoicelayout/system_config_backend_pdf</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">invoices/template</upload_dir>
+                            <base_url type="media" scope_info="1">invoices/template</base_url>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>This PDF file is used as a "background" PDF for the first page. The PDF file must be unilateral.</comment>
+                        </pdf_template_file_first_page>
+                        <pdf_template_file translate="label comment">
+                            <label>PDF Template File for Following Pages</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>advancedinvoicelayout/system_config_backend_pdf</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">invoices/template</upload_dir>
+                            <base_url type="media" scope_info="1">invoices/template</base_url>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>This PDF file is used as a "background" PDF all pages except the first page. The PDF file must be unilateral.</comment>
+                        </pdf_template_file>
+                        <pdf_attachment_file translate="label comment">
+                            <label>PDF Attachment File</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>advancedinvoicelayout/system_config_backend_pdf</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">invoices/template</upload_dir>
+                            <base_url type="media" scope_info="1">invoices/template</base_url>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>This PDF file will be attached at the end of the PDF documents. It can be used e.g. for remittance slip, AGB or revocation documents, etc.</comment>
+                        </pdf_attachment_file>
+                        <show_taxes translate="label">
+                            <label>Show Taxes</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[This setting can e.g. be disabled for the so-called "Kleinunternehmer" in Germany.]]></comment>
+                        </show_taxes>
+                        <tax_display_type translate="label">
+                            <label>Tax Display Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>tax/system_config_source_tax_display_type</source_model>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </tax_display_type>
+                        <show_taxrate_name translate="label">
+                            <label>Show Tax Rate Name</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>55</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Tax rate name is taken from <i>Sales / Tax / Manage Tax Zones &amp; Rates</i>.]]></comment>
+                        </show_taxrate_name>
+                        <show_order_comments translate="label">
+                            <label>Show Order Comments</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[If activated the order comments that are marked as visible to customer are shown on the PDF document.]]></comment>
+                        </show_order_comments>
+                        <show_full_payment_info_block translate="label">
+                            <label>Show Full Payment Info Block</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>95</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[If enabled the complete information in the payment block will be shown that is delivered by the used payment extension. If disabled only the title of used payment method will be shown.]]></comment>
+                        </show_full_payment_info_block>
+                        <font_family translate="label">
+                            <label>Font Family</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>advancedinvoicelayout/system_config_source_pdffont</source_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Select font family for PDF documents. Please note that not all fonts do support eg. Cyrillic fonts.<br />For more information on how to add your own font please see <a href="https://www.vianetz.com/en/magento-faq/how-can-i-change-the-font-family-in-the-magento-pdf-invoice.html/" target="_blank">our FAQ</a>.]]></comment>
+                        </font_family>
+                        <font_size translate="label">
+                            <label>Font Size</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>115</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Set font size in pixels for PDF documents.<br />Default: 12]]></comment>
+                        </font_size>
+
+                        <enable_debug_mode translate="label">
+                            <label>Enable Debug Mode</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment><![CDATA[If Debug Mode is enabled the temporary HTML document is saved in <em>var/tmp/debug_invoice.html</em> so that it is easier to debug.<br />We recommend to disable this setting in production environment.]]></comment>
+                        </enable_debug_mode>
+                    </fields>
+                </general>
+
+                <page_margins>
+                    <label>Page Margins</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <show_header_on_every_page translate="label">
+                            <label>Show Header on every Page</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[If activated header (including logo etc.) will be shown on every page, otherwise only on the first page of the document.]]></comment>
+                        </show_header_on_every_page>
+                        <top_margin_first_page translate="label">
+                            <label>Top Margin (First Page) in Pixels</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><show_header_on_every_page>0</show_header_on_every_page></depends>
+                            <comment><![CDATA[The top margin for the first page in pdf documents.<br />Default: 180]]></comment>
+                        </top_margin_first_page>
+                        <top_margin translate="label">
+                            <label>Top Margin in Pixels</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[The top margin in pdf documents.<br />Default: 180]]></comment>
+                        </top_margin>
+                        <bottom_margin translate="label">
+                            <label>Bottom Margin in Pixels</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[The bottom margin for the pdf documents.<br />Default: 100]]></comment>
+                        </bottom_margin>
+                        <left_margin translate="label">
+                            <label>Left Margin in Pixels</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[The left margin for the pdf documents.<br />Default: 50]]></comment>
+                        </left_margin>
+                        <right_margin translate="label">
+                            <label>Right Margin in Pixels</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[The right margin for the pdf documents.<br />Default: 50]]></comment>
+                        </right_margin>
+                    </fields>
+                </page_margins>
+
+                <layout_header>
+                    <label>Header Layout</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <note translate="label">
+                            <label></label>
+                            <frontend_type>note</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[
+                        <ul class="messages"><li class="notice-msg"><ul><li>The configuration of the customer address format can be found at <br /><i>System &gt; Configuration &gt; Customer Configuration</i>.</li></ul></li></ul>
+                        <ul class="messages"><li class="notice-msg"><ul><li>The configuration of shop logo can be found at <br /><i>System &gt; Configuration &gt; Sales</i>.</li></ul></li></ul>
+             ]]></comment>
+                        </note>
+                        <sender_address translate="label">
+                            <label>Sender Address</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sender_address>
+                        <show_customer_email translate="label">
+                            <label>Show Customer Email</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>105</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_customer_email>
+                        <show_taxvat translate="label">
+                            <label>Show Tax / VAT number</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>106</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </show_taxvat>
+                    </fields>
+                </layout_header>
+
+                <layout_footer>
+                    <label>Footer Layout</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>3</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <footertext_1column translate="label">
+                            <label>Footer Text, 1. Column</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Variables like in email templates are allowed here, e.g. you can set specific footer for shipments with <i>{{depend is_shipment}}Only for shipments.{{/depend}}</i><br />More information on <a target="_blank" href="http://www.vianetz.com/en/magento-faq/what-kind-of-variables-are-available-in-advancedinvoicelayout-configuration.html/">using variables</a> in this module.]]></comment>
+                        </footertext_1column>
+                        <footertext_2column translate="label">
+                            <label>Footer Text, 2. Column</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Variables like in email templates are allowed here, e.g. you can set specific footer for shipments with <i>{{depend is_shipment}}Only for shipments.{{/depend}}</i><br />More information on <a target="_blank" href="http://www.vianetz.com/en/magento-faq/what-kind-of-variables-are-available-in-advancedinvoicelayout-configuration.html/">using variables</a> in this module.]]></comment>
+                        </footertext_2column>
+                        <footertext_3column translate="label">
+                            <label>Footer Text, 3. Column</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Variables like in email templates are allowed here, e.g. you can set specific footer for shipments with <i>{{depend is_shipment}}Only for shipments.{{/depend}}</i><br />More information on <a target="_blank" href="http://www.vianetz.com/en/magento-faq/what-kind-of-variables-are-available-in-advancedinvoicelayout-configuration.html/">using variables</a> in this module.]]></comment>
+                        </footertext_3column>
+                    </fields>
+                </layout_footer>
+
+                <invoice translate="label" module="advancedinvoicelayout">
+                    <label>Invoice</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable translate="label">
+                            <label>Use Advanced Invoice Layout for Invoices</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[This setting defines whether the <em>Advanced Invoice Layout</em> extension is used for customizing the Magento invoice layout or not. If this is set to "No" the regular Magento layout will be used.]]></comment>
+                        </enable>
+                        <file_name translate="label">
+                            <label>File Name Prefix</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Prefix will be added to file name, e.g. PREFIX_10000001.pdf.</comment>
+                            <depends><enable>1</enable></depends>
+                        </file_name>
+                        <enable_save_to_file>
+                           <label>Save PDF invoices to file system</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[If this is set to yes PDF documents will be saved to filesystem with the configuration below. Please check that the files are not publicly accessible!]]></comment>
+                            <depends><enable>1</enable></depends>
+                        </enable_save_to_file>
+                        <storage_folder translate="label">
+                            <label>File Path Storage</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Invoices will be saved to that path relative to the media/ folder.</comment>
+                            <depends>
+                                <enable>1</enable>
+                                <enable_save_to_file>1</enable_save_to_file>
+                            </depends>
+                        </storage_folder>
+                        <attach_to_email translate="label">
+                            <label>Attach PDF to Email</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[The PDF document will be attached to the default Magento invoice transactional email that can be configured in <i>System->Configuration->Sales Email->Invoice</i>.]]></comment>
+                            <depends><enable>1</enable></depends>
+                        </attach_to_email>
+                        <show_crosssell_products translate="label">
+                            <label>Show Cross-sell Products</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[What are Cross-sell Products? Please find an explanation in our <a href="http://www.vianetz.com/en/faq" target="_blank">FAQ</a>.]]></comment>
+                            <depends><enable>1</enable></depends>
+                        </show_crosssell_products>
+                        <show_giftmsg translate="label">
+                            <label>Show Gift Message</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enable>1</enable></depends>
+                        </show_giftmsg>
+                        <hide_non_primary_address translate="label">
+                            <label>Hide Shipping Address if identical</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enable>1</enable></depends>
+                        </hide_non_primary_address>
+                        <show_product_shortdescription translate="label">
+                            <label>Show Product Short Description</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enable>1</enable></depends>
+                        </show_product_shortdescription>
+                        <show_product_image translate="label">
+                            <label>Show Product Image</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enable>1</enable></depends>
+                        </show_product_image>
+                        <show_customer_comments translate="label">
+                            <label>Show Invoice Comments</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>14</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enable>1</enable></depends>
+                        </show_customer_comments>
+                        <show_additional_item_attributes translate="label">
+                            <label>Show additional attributes</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>advancedinvoicelayout/system_config_source_product_attribute</source_model>
+                            <sort_order>14</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Select custom attributes that should be displayed on the invoice. Hold the "Strg" key to select multiple attributes. (Only user defined attributes of types text, select, multiselect and date can be selected here.)</comment>
+                            <depends><enable>1</enable></depends>
+                        </show_additional_item_attributes>
+                        <salutation_text translate="label">
+                            <label>Salutation Text</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[If left empty, the default text will be taken.<br />HTML code and variables like in email templates are allowed here, e.g. {{var firstname}} {{var lastname}}.<br />More information on <a target="_blank" href="http://www.vianetz.com/en/faq/index/show/faq/22/">using variables</a> in this module.]]></comment>
+                            <depends><enable>1</enable></depends>
+                        </salutation_text>
+                        <freetext translate="label">
+                            <label>Free Text</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>16</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[HTML code and variables like in email templates are allowed here.<br />More information on <a target="_blank" href="http://www.vianetz.com/en/faq/index/show/faq/22/">using variables</a> in this module.]]></comment>
+                            <depends><enable>1</enable></depends>
+                        </freetext>
+                        <qrcode translate="label">
+                            <label>QR Code Contents</label>
+                            <frontend_type>textarea</frontend_type>
+                            <comment><![CDATA[(3rd-Party Module Required: <a href="http://www.magentocommerce.com/magento-connect/Eisbehr/extension/5233/qr_mage" target="_blank">QR Mage</a>)<br />You can use the following placeholders: {{order_id}}, {{increment_id}}, {{customer_id}}, {{date}}, {{billing_address}}, {{shipping_address}}]]></comment>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enable>1</enable></depends>
+                        </qrcode>
+                        <show_coupon_code translate="label">
+                            <label>Show Coupon Code</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <comment><![CDATA[If set to true the coupon code will be printed on invoice (if any).]]></comment>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enable>1</enable></depends>
+                        </show_coupon_code>
+                        <show_checkout_attributes translate="label">
+                            <label>Show Checkout Attributes</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enable>1</enable></depends>
+                            <comment>Requires module AITOC Checkout Fields Manager.</comment>
+                        </show_checkout_attributes>
+                        <show_tax_table>
+                           <label>Show tax table</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[If activated a table with detailed tax information by tax rate is shown on the invoice.]]></comment>
+                            <depends><enable>1</enable></depends>
+                        </show_tax_table>
+                        <note translate="label">
+                            <label></label>
+                            <frontend_type>note</frontend_type>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[
+                        <a href="http://www.signaturportal.de/register.php?vpcode=vianetz01" target="_blank"><img src="https://www.signaturportal.de/themes/signaturportal_neu/images/logo.gif" /></a>
+                        ]]></comment>
+                            <depends><enable>1</enable></depends>
+                        </note>
+                        <sign_enabled translate="label">
+                            <label>Enable Invoice Signature</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>228</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enable>1</enable></depends>
+                        </sign_enabled>
+                        <sign_username translate="label">
+                            <label>Username</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>230</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><sign_enabled>1</sign_enabled></depends>
+                        </sign_username>
+                        <sign_password translate="label">
+                            <label>Password</label>
+                            <frontend_type>obscure</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_encrypted</backend_model>
+                            <sort_order>233</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><sign_enabled>1</sign_enabled></depends>
+                        </sign_password>
+                        <sign_accountno translate="label">
+                            <label>Account No.</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>236</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><sign_enabled>1</sign_enabled></depends>
+                        </sign_accountno>
+                        <sign_email_attachments translate="label">
+                            <label>Enable Invoice Signature for PDF Email Attachments</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>250</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><sign_enabled>1</sign_enabled></depends>
+                            <comment><![CDATA[If enabled, invoice documents that are automatically attached to emails will also be signed. Otherwise the PDF signing does only happen when someone clicks on the button "Sign Invoice" on the invoice in the backend.]]></comment>
+                        </sign_email_attachments>
+                    </fields>
+                </invoice>
+                <shipment translate="label" module="advancedinvoicelayout">
+                    <label>Shipment</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>15</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable translate="label">
+                            <label>Use Advanced Invoice Layout for Shipments</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[This setting defines whether the <em>Advanced Invoice Layout</em> extension is used for customizing the Magento shipment layout or not. If this is set to "No" the regular Magento layout will be used.]]></comment>
+                        </enable>
+                        <file_name translate="label">
+                            <label>File Name Prefix</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Prefix will be added to file name, e.g. PREFIX_10000001.pdf.</comment>
+                            <depends><enable>1</enable></depends>
+                        </file_name>
+                        <enable_save_to_file>
+                           <label>Save PDF shipments to file system</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[If this is set to yes PDF documents will be saved to filesystem with the configuration below. Please check that the files are not publicly accessible!]]></comment>
+                            <depends><enable>1</enable></depends>
+                        </enable_save_to_file>
+                        <storage_folder translate="label">
+                            <label>File Path Storage</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Shipments will be saved to that path relative to the media/ folder.</comment>
+                            <depends>
+                                <enable>1</enable>
+                                <enable_save_to_file>1</enable_save_to_file>
+                            </depends>
+                        </storage_folder>
+                        <attach_to_email translate="label">
+                            <label>Attach PDF to Email</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enable>1</enable></depends>
+                        </attach_to_email>
+                        <show_giftmsg translate="label">
+                            <label>Show Gift Message</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enable>1</enable></depends>
+                        </show_giftmsg>
+                        <hide_non_primary_address translate="label">
+                            <label>Hide Billing Address if identical</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enable>1</enable></depends>
+                        </hide_non_primary_address>
+                        <show_product_shortdescription translate="label">
+                            <label>Show Product Short Description</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enable>1</enable></depends>
+                        </show_product_shortdescription>
+                        <show_product_image translate="label">
+                            <label>Show Product Image</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enable>1</enable></depends>
+                        </show_product_image>
+                        <show_customer_comments translate="label">
+                            <label>Show Shipment Comments</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enable>1</enable></depends>
+                        </show_customer_comments>
+                        <salutation_text translate="label">
+                            <label>Salutation Text</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[If left empty, the default text will be taken.<br />HTML code and variables like in email templates are allowed here, e.g. {{firstname}} {{lastname}}.<br />More information on <a target="_blank" href="http://www.vianetz.com/en/faq/index/show/faq/22/">using variables</a> in this module.]]></comment>
+                            <depends><enable>1</enable></depends>
+                        </salutation_text>
+                        <freetext translate="label">
+                            <label>Free Text</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[If left empty, the default text will be taken.<br />HTML code and variables like in email templates are allowed here, e.g. {{firstname}} {{lastname}}.<br />More information on <a target="_blank" href="http://www.vianetz.com/en/faq/index/show/faq/22/">using variables</a> in this module.]]></comment>
+                            <depends><enable>1</enable></depends>
+                        </freetext>
+                        <qrcode translate="label">
+                            <label>QR Code Contents</label>
+                            <frontend_type>textarea</frontend_type>
+                            <comment><![CDATA[(3rd-Party Module Required: <a href="http://www.magentocommerce.com/magento-connect/Eisbehr/extension/5233/qr_mage" target="_blank">QR Mage</a>)<br />You can use the following placeholders: {{order_id}}, {{increment_id}}, {{customer_id}}, {{date}}, {{billing_address}}, {{shipping_address}}]]></comment>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enable>1</enable></depends>
+                        </qrcode>
+                    </fields>
+                </shipment>
+
+                <creditmemo translate="label" module="advancedinvoicelayout">
+                    <label>Creditmemo</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enable translate="label">
+                            <label>Use Advanced Invoice Layout for Creditmemos</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[This setting defines whether the <em>Advanced Invoice Layout</em> extension is used for customizing the Magento creditmemo layout or not. If this is set to "No" the regular Magento layout will be used.]]></comment>
+                        </enable>
+                        <show_all_amounts_negative translate="label">
+                            <label>Show All Amounts With Negative Sign</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enable>1</enable>
+                            </depends>
+                            <comment><![CDATA[If enabled, all amounts will get a negative sign in front (e.g. this is a German law regulation.]]></comment>
+                        </show_all_amounts_negative>
+                        <file_name translate="label">
+                            <label>File Name Prefix</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Prefix will be added to file name, e.g. PREFIX_10000001.pdf.</comment>
+                            <depends><enable>1</enable></depends>
+                        </file_name>
+                        <enable_save_to_file>
+                           <label>Save PDF creditmemos to file system</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[If this is set to yes PDF documents will be saved to filesystem with the configuration below. Please check that the files are not publicly accessible!]]></comment>
+                            <depends><enable>1</enable></depends>
+                        </enable_save_to_file>
+                        <storage_folder translate="label">
+                            <label>File Path Storage</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Creditmemos will be saved to that path relative to the media/ folder.</comment>
+                            <depends>
+                                <enable>1</enable>
+                                <enable_save_to_file>1</enable_save_to_file>
+                            </depends>
+                        </storage_folder>
+                        <attach_to_email translate="label">
+                            <label>Attach PDF to Email</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enable>1</enable></depends>
+                        </attach_to_email>
+                        <hide_non_primary_address translate="label">
+                            <label>Hide Shipping Address if identical</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enable>1</enable></depends>
+                        </hide_non_primary_address>
+                        <show_product_shortdescription translate="label">
+                            <label>Show Product Short Description</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enable>1</enable></depends>
+                        </show_product_shortdescription>
+                        <show_product_image translate="label">
+                            <label>Show Product Image</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enable>1</enable></depends>
+                        </show_product_image>
+                        <show_customer_comments translate="label">
+                            <label>Show Creditmemo Comments</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>9</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enable>1</enable></depends>
+                        </show_customer_comments>
+                        <salutation_text translate="label">
+                            <label>Salutation Text</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[If left empty, the default text will be taken.<br />HTML code and variables like in email templates are allowed here, e.g. {{firstname}} {{lastname}}.<br />More information on <a target="_blank" href="http://www.vianetz.com/en/faq/index/show/faq/22/">using variables</a> in this module.]]></comment>
+                            <depends><enable>1</enable></depends>
+                        </salutation_text>
+                        <freetext translate="label">
+                            <label>Free Text</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[If left empty, the default text will be taken.<br />HTML code and variables like in email templates are allowed here, e.g. {{firstname}} {{lastname}}.<br />More information on <a target="_blank" href="http://www.vianetz.com/en/faq/index/show/faq/22/">using variables</a> in this module.]]></comment>
+                            <depends><enable>1</enable></depends>
+                        </freetext>
+                        <qrcode translate="label">
+                            <label>QR Code Contents</label>
+                            <frontend_type>textarea</frontend_type>
+                            <comment><![CDATA[(3rd-Party Module Required: <a href="http://www.magentocommerce.com/magento-connect/Eisbehr/extension/5233/qr_mage" target="_blank">QR Mage</a>)<br />You can use the following placeholders: {{order_id}}, {{increment_id}}, {{customer_id}}, {{date}}, {{billing_address}}, {{shipping_address}}]]></comment>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><enable>1</enable></depends>
+                        </qrcode>
+                    </fields>
+                </creditmemo>
+
+                <pdf_options>
+                    <label>PDF Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <author translate="label">
+                            <label>Author</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                        </author>
+                    </fields>
+                </pdf_options>
+            </groups>
+        </advancedinvoicelayout>
+
+        <customer>
+            <groups>
+                <address_templates>
+                    <fields>
+                        <advancedinvoicelayout_html>
+                            <label>Advanced Invoice Layout PDFs</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[This configuration is used by the <a href="http://www.vianetz.com/advancedinvoicelayout" target="_blank">Advanced Invoice Layout</a> extension to configure the address format of the billing and shipping addresses in the PDF documents.<br />HTML source code is allowed.]]></comment>
+                        </advancedinvoicelayout_html>
+                    </fields>
+                </address_templates>
+            </groups>
+        </customer>
+    </sections>
+</config>

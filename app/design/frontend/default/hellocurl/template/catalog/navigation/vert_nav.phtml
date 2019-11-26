@@ -1,0 +1,19 @@
+
+
+<div class="block left-nav">
+		<div class="block-title">
+			<span><?php echo $this->__('Shop Category') ?></span> 
+		</div>
+		<div class="block-content">
+			
+		<ul id="left-nav"> 
+			<?php foreach ($this->getStoreCategories() as $_category): ?>
+	
+			<?php echo $this->drawItem($_category) ?>
+			<?php endforeach ?>
+		</ul>
+
+
+	</div>
+</div>
+

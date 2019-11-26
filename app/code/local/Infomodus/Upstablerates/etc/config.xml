@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<config>
+	<default>
+		<carriers>
+			<upstablerates>
+				<active>0</active>
+				<sallowspecific>0</sallowspecific>
+				<model>upstablerates_shipping/carrier_upstablerates</model>
+				<name>Delivery Rates Name</name>
+				<title>Delivery Rates Title</title>
+				<specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this shipping method, please contact us.</specificerrmsg>
+				<handling_type>F</handling_type>
+			</upstablerates>
+		</carriers>
+	</default>
+	
+	<modules>
+		<Infomodus_Upstablerates>
+			<version>0.1.1</version>
+			<depends>
+				<Mage_Shipping />
+			</depends>
+		</Infomodus_Upstablerates>
+	</modules>
+ 
+	<global>
+		<models>
+			<Upstablerates>
+				<class>Infomodus_Upstablerates</class>
+			</Upstablerates>
+
+			<upstablerates_shipping>
+				<class>Infomodus_Upstablerates_Model</class>
+				<resourceModel>upstablerates_mysql4</resourceModel>
+			</upstablerates_shipping>
+            <upstablerates_mysql4>
+                <class>Infomodus_Upstablerates_Model_Mysql4</class>
+                <entities>
+                    <upstablerates>
+                        <table>shipping_upstablerates</table>
+                    </upstablerates>
+                </entities>
+            </upstablerates_mysql4>
+            <sales>
+                <rewrite>
+                    <order>Infomodus_Upstablerates_Model_Sales_Order</order>
+                </rewrite>
+            </sales>
+		</models>
+
+        <resources>
+            <upstablerates_setup>
+                <setup>
+                    <module>Infomodus_Upstablerates</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </upstablerates_setup>
+            <upstablerates_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </upstablerates_write>
+
+            <upstablerates_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </upstablerates_read>
+
+        </resources>
+	</global>
+		
+    <admin>
+        <routers>
+            <upstablerates>
+                <use>admin</use>
+                <args>
+                    <module>Infomodus_Adminhtml</module>
+                    <frontName>upstablerates</frontName>
+                </args>
+            </upstablerates>
+        </routers>
+    </admin> 	
+</config>

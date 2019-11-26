@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <AD_CashPayments>
+            <version>1.0.0</version>
+        </AD_CashPayments>
+    </modules>
+
+    <global>
+        <models>
+            <cashpayments>
+                <class>AD_CashPayments_Model</class>
+            </cashpayments>
+        </models>
+    </global>
+
+    <default>
+        <payment>
+            <cashpayments>
+                <active>0</active>
+                <backend_only>1</backend_only>
+                <title>Cash</title>
+                <model>cashpayments/paymentMethod</model>
+                <order_status>processing</order_status>
+            </cashpayments>
+        </payment>
+    </default>
+</config>

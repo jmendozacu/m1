@@ -1,0 +1,8 @@
+<?xml version = "1.0"?>
+<layout>
+    <adminhtml_request_index>
+        <reference name="content">
+            <block type="godogi_request/adminhtml_request" name="request_admin" />
+        </reference>
+    </adminhtml_request_index>
+</layout>

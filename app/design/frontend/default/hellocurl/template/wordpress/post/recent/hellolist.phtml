@@ -1,0 +1,18 @@
+<?php
+/*
+ *
+ <?php echo "<pre>"; var_dump($post); ?>
+**/
+?>
+<?php $posts = $this->getPosts() ?>
+<?php if (count($posts) > 0): ?>
+	<ul>
+		<?php foreach($posts as $post): ?>
+			<li>
+				<h2 class="post"><a href="<?php echo $post->getPermalink() ?>"><?php echo $post->getPostTitle() ?></a></h2>
+				<h6>Posted on <?php echo $post->getPostdate()?> by <?php echo $post->getPostAuthor()?></h6>
+				<p><?php echo $post->getPostExcerpt()?></p>
+			</li>
+		<?php endforeach; ?>
+	</ul>
+<?php endif; ?>

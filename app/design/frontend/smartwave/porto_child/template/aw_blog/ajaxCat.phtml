@@ -1,0 +1,68 @@
+<?php $posts = $this->getAjaxCatPosts();
+$i = 1;
+$last = (int) $last;
+$j=0;
+foreach ($posts as $post):
+    /*
+    echo $i.':';
+    echo $last.'<br>';
+    */
+    if($i == $last+1 || $i == $last+2 || $i == $last+3 || $i == $last+4){
+        $j++;
+        if($j==1 || $j==3){
+            ?>
+                <div class="row">
+            <?php
+        }
+        ?>
+            <div class="postWrapper col-sm-12 col-md-6">
+                <div class="postBanner">
+                    <div class="item" style="padding:0;">
+                        <a class="single-image" href="/ipad-repair.html">
+                            <?php echo $post->getShortContent(); ?>
+                        </a>
+                    </div>
+                </div>
+                <?php
+                    $orig_data = $post->getData('created_time');
+                    $oldLocale = setlocale(LC_COLLATE, "0");
+                    setlocale(LC_ALL, Mage::app()->getLocale()->getLocaleCode().'.UTF-8');
+                    $post_day = strftime("%d", strtotime($orig_data) + Mage::getSingleton('core/date')->getGmtOffset());
+                    $post_month = strftime("%b", strtotime($orig_data) + Mage::getSingleton('core/date')->getGmtOffset());
+                    setlocale(LC_ALL, $oldLocale);
+                ?>
+                <div class="postTitle">
+                    <h2><a href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle(); ?></a></h2>
+                </div>
+                <?php $postCats = $post->getCats(); 
+                if(!empty($postCats)): 
+                    foreach ($postCats as $data): 
+                        $className = $data['title']; 
+                        $className = str_replace(" ", "", $className);
+                    endforeach; 
+                endif; ?>
+                <div class="postDetails <?php echo $className;?>">
+                    <?php echo $post->getReadMore(); ?>
+                    <?php $postCats = $post->getCats(); ?>
+                    <?php if (!empty($postCats)): ?>
+                            <?php foreach ($postCats as $data): ?>
+                                <a class="cat" href="<?php echo $data['url']; ?>"><?php echo $data['title']; ?></a>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </div>
+                <div class="postContent"><?php echo $post->getPostContent(); ?></div>
+                <?php echo $this->getBookmarkHtml($post) ?>
+            </div>
+        <?php
+        if($j==2 || $j==4){
+            ?>
+                </div>
+            <?php
+        }
+    }
+    $i++;
+endforeach;
+?>
+<script type="text/javascript">
+    jQuery('#number_returned').val(<?php echo $j; ?>);
+</script>

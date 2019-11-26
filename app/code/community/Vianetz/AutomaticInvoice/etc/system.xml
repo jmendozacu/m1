@@ -1,0 +1,205 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <automaticinvoice translate="label" module="automaticinvoice">
+            <label>Automatic Invoice</label>
+            <tab>vianetz</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>200</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label" module="sales">
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <note translate="label">
+                            <label></label>
+                            <frontend_type>note</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[
+                        <b>AutomaticInvoice Version 1.4.4</b><br />by <a href="http://www.vianetz.com" target="_blank">vianetz | Magento Enterprise Web Development</a>
+                        ]]></comment>
+                        </note>
+
+                        <licenses translate="label">
+                            <label></label>
+                            <frontend_model>Vianetz_AutomaticInvoice_Block_Adminhtml_Config</frontend_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </licenses>
+
+                        <licenseskey translate="label">
+                            <label>License Key</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[Get license keys in your <a href="http://www.vianetz.com/shop/en/licensecheck/customer/licenses/" target="blank">VIANETZ shop account.</a>]]></comment>
+                        </licenseskey>
+
+                        <product_types translate="label">
+                            <label>Activated for Product Types</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>automaticinvoice/system_config_source_producttypes</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                            <comment><![CDATA[Hold Strg/Ctrl to select multiple product types.]]></comment>
+                        </product_types>
+                        <log_enabled translate="label">
+                            <label>Enable Logging</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <comment><![CDATA[If logging is enabled a log file will be written in <i>var/log/vianetz_automaticinvoice.log</i> with some debugging information.<br /><strong>Note:</strong> Logging should be disabled in production environments.]]></comment>
+                        </log_enabled>
+                    </fields>
+                </general>
+                <invoice translate="label" module="sales">
+                    <label>Invoice</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>5</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <trigger_payment_methods_order_status_email translate="label">
+                            <label>Trigger on Payment Methods and Order Status</label>
+                            <frontend_model>automaticinvoice/adminhtml_config_paymentmethodsorderstatus</frontend_model>
+                            <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[If order has the selected combination of order status and payment method the selected actions are executed: <br />
+                            <strong>Generate Invoice:</strong> If activated an invoice document will be generated as soon as the order is in the appropriate status.<br />
+                            <strong>Trigger Email:</strong> If activated the invoice transactional email will be send.]]></comment>
+                        </trigger_payment_methods_order_status_email>
+                        <new_order_status translate="label">
+                            <label>New Order Status</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_order_status</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </new_order_status>
+                        <filter_grand_total_equals_zero translate="label">
+                            <label>Only create if Grand Total = 0</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </filter_grand_total_equals_zero>
+                        <comment translate="label">
+                            <label>Use Order Comment as Invoice Comment</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>8</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </comment>
+                        <capture_case translate="label">
+                            <label>Capture Case</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>automaticinvoice/system_config_source_order_invoice_capturecase</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[If set to "Capture Online" the invoice will be sent to your payment provider. Otherwise if you choose "Capture Offline" it will be a regular Magento offline invoice or in case "Not Capture" it will be marked as <i>Pending</i>.]]></comment>
+                        </capture_case>
+                        <limit_to_in_stock_items translate="label">
+                            <label>Invoice only items that are in stock</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[If enabled only items that are currently in stock will be invoiced otherwise all items will be invoiced. This setting is e.g. useful if you use the option <em>Allow Backorders</em> for product inventory but only want to invoice the <strong>currently</strong> in stock items.]]></comment>
+                        </limit_to_in_stock_items>
+                        <savepdf translate="label">
+                            <label>Save Invoice PDF</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>The invoice PDF document will be stored in media/invoices folder of your Magento installation.</comment>
+                        </savepdf>
+                    </fields>
+                </invoice>
+                <shipment translate="label" module="sales">
+                    <label>Shipment</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <trigger_payment_methods_order_status_email translate="label">
+                            <label>Trigger on Payment Methods and Order Status</label>
+                            <frontend_model>automaticinvoice/adminhtml_config_paymentmethodsorderstatus</frontend_model>
+                            <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment><![CDATA[If order has the selected combination of order status and payment method the selected actions are executed: <br />
+                            <strong>Generate Shipment:</strong> If activated a shipment document will be generated as soon as the order is in the appropriate status.<br />
+                            <strong>Trigger Email:</strong> If activated the shipment transactional email will be send.]]></comment>
+                        </trigger_payment_methods_order_status_email>
+                        <new_order_status translate="label">
+                            <label>New Order Status</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_order_status</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </new_order_status>
+                        <filter_grand_total_equals_zero translate="label">
+                            <label>Only create if Grand Total = 0</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </filter_grand_total_equals_zero>
+                        <savepdf translate="label">
+                            <label>Save Shipment PDF</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>The shipment PDF document will be stored in media/shipments folder of your Magento installation.</comment>
+                        </savepdf>
+                    </fields>
+                </shipment>
+            </groups>
+        </automaticinvoice>
+    </sections>
+</config>

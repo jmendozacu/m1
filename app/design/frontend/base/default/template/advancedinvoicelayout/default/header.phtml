@@ -1,0 +1,64 @@
+<?php
+/**
+ * AdvancedInvoiceLayout Pdf invoice header template
+ *
+ * @section LICENSE
+ * This file is created by vianetz <info@vianetz.com>.
+ * The Magento module is distributed under a commercial license.
+ * Any redistribution, copy or direct modification is explicitly not allowed.
+ *
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@vianetz.com so we can send you a copy immediately.
+ *
+ * @category    Vianetz
+ * @package     Vianetz\AdvancedInvoiceLayout
+ * @author      Christoph Massmann, <C.Massmann@vianetz.com>
+ * @link        http://www.vianetz.com
+* @copyright   Copyright (c) 2006-18 vianetz - C. Massmann (http://www.vianetz.com)
+ * @license     http://www.vianetz.com/license Commercial Software License
+ */
+
+/**
+ * @var $this Vianetz_AdvancedInvoiceLayout_Block_Pdf_Header
+ */
+?>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<style type="text/css">
+    <?php if ($this->isShowHeaderOnEveryPage() === true): ?>
+    @import url('<?php echo $this->getHeaderCssFile(); ?>');
+    <?php endif; ?>
+
+    @import url('<?php echo $this->getThemeCssFile(); ?>');
+    @import url('<?php echo $this->getCustomCssFile(); ?>');
+
+    @page {
+        margin: <?php echo $this->getTopMargin(); ?>px <?php echo $this->getRightMargin(); ?>px <?php echo $this->getBottomMargin(); ?>px <?php echo $this->getLeftMargin(); ?>px;
+    }
+
+    <?php if ($this->isShowHeaderOnEveryPage() === false): ?>
+    @page :first {
+        margin: <?php echo $this->getTopMargin(true); ?>px <?php echo $this->getRightMargin(); ?>px <?php echo $this->getBottomMargin(); ?>px <?php echo $this->getLeftMargin(); ?>px;
+    }
+    <?php endif; ?>
+
+    body {
+        font-family: "<?php echo $this->getFontFamily(); ?>";
+        font-size: <?php echo $this->getFontSize(); ?>;
+    }
+
+    <?php if ($this->isShowHeaderOnEveryPage() === true): ?>
+    #header {
+        top: -<?php echo $this->getTopMargin(); ?>px;
+    }
+    <?php endif; ?>
+    #footer {
+        bottom: -<?php echo $this->getBottomMargin(); ?>px;
+    }
+</style>
+
+<div id="header">
+    <div id="storeLogo">
+        <img src="<?php echo $this->getLogoPath(); ?>" />
+    </div>
+</div>

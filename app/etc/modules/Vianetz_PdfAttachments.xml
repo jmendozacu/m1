@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Vianetz_PdfAttachments>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Core />
+                <Mage_Sales />
+            </depends>
+        </Vianetz_PdfAttachments>
+    </modules>
+</config> 

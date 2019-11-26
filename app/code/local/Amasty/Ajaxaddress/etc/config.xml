@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Amasty_Ajaxaddress>
+            <version>1.0.2</version>
+        </Amasty_Ajaxaddress>
+    </modules>
+    
+    
+    <admin>
+        <routers>
+            <amajaxaddress>
+                <use>admin</use>
+                <args>
+                    <module>Amasty_Ajaxaddress</module>
+                    <frontName>amajaxaddress</frontName>
+                </args>
+            </amajaxaddress>
+        </routers>
+    </admin>
+    
+    
+    <frontend>
+        <translate>
+            <modules>
+                <Amasty_Ajaxaddress>
+                    <files>
+                        <default>Amasty_Ajaxaddress.csv</default>
+                    </files>
+                </Amasty_Ajaxaddress>
+            </modules>
+        </translate>
+    </frontend>
+    
+    
+    <adminhtml>
+        <translate>
+            <modules>
+                <Amasty_Ajaxaddress>
+                    <files>
+                        <default>Amasty_Ajaxaddress.csv</default>
+                    </files>
+                </Amasty_Ajaxaddress>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <amadvert module="Amasty_Ajaxaddress">
+                    <file>amajaxaddress.xml</file>
+                </amadvert>
+            </updates>
+        </layout>
+    </adminhtml>
+    
+    
+    
+    <global>
+        <models>
+            <amajaxaddress>
+                <class>Amasty_Ajaxaddress_Model</class>
+                <resourceModel>amajaxaddress_mysql4</resourceModel>
+            </amajaxaddress>
+        </models>
+        
+		<resources>
+             <amajaxaddress_setup>
+                <setup>
+                    <module>Amasty_Ajaxaddress</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </amajaxaddress_setup>
+		    <amajaxaddress_write>
+		        <connection><use>core_write</use></connection>
+		    </amajaxaddress_write>
+		    <amajaxaddress_read>
+		        <connection><use>core_read</use></connection>
+		    </amajaxaddress_read>
+		</resources>
+        
+        <blocks>
+            <amajaxaddress>
+                <class>Amasty_Ajaxaddress_Block</class>
+            </amajaxaddress>
+            
+            <customer>
+                <rewrite>
+                    <address_renderer_default>Amasty_Ajaxaddress_Block_Customer_Address_Renderer_Default</address_renderer_default>
+                </rewrite>
+            </customer>
+            <adminhtml>
+                <rewrite>
+                    <sales_order_view_info>Amasty_Ajaxaddress_Block_Adminhtml_Sales_Order_View_Info</sales_order_view_info>
+                </rewrite>
+            </adminhtml>
+        </blocks>
+        
+        <helpers>
+            <amajaxaddress>
+                <class>Amasty_Ajaxaddress_Helper</class>
+            </amajaxaddress>
+        </helpers>
+    </global>
+    
+</config>

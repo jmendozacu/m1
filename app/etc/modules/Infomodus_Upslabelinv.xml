@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Infomodus_Upslabelinv>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Infomodus_Upslabelinv>
+    </modules>
+</config> 

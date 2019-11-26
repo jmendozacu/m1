@@ -1,0 +1,15 @@
+<?php if ('edit' == $this->getMode()): ?>
+<div style="padding-top: 10px;">
+    <button class="scalable" type="button" id="amajaxaddress_edit_<?php echo $this->getAddress()->getAddressType(); ?>" onclick="javascript: ameditAddress('<?php echo $this->getEditUrl(); ?>', '<?php echo $this->getAddress()->getAddressType(); ?>');">
+        <span><?php echo $this->__('Edit Address'); ?></span>
+    </button>
+</div>
+<?php endif; ?>
+
+<?php if ('save' == $this->getMode()): ?>
+<div style="padding-top: 10px;">
+    <button class="scalable" type="button" id="amajaxaddress_edit_<?php echo $this->getAddress()->getAddressType(); ?>" onclick="javascript: amsaveAddress('<?php echo $this->getSaveUrl(); ?>', '<?php echo $this->getAddress()->getAddressType(); ?>');">
+        <span><?php echo $this->__('Save Address'); ?></span>
+    </button>
+</div>
+<?php endif; ?>

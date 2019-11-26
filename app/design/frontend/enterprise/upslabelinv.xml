@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <upslabelinv_index_labelinfo>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/2columns-left.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="core/template" name="upslabelinv_index_labelinfo"
+                   template="upslabelinv/index/labelinfo.phtml"></block>
+        </reference>
+        <reference name="left">
+            <block type="customer/account_navigation" name="customer_account_navigation" before="-"
+                   template="customer/account/navigation.phtml">
+                <action method="addLink" translate="label" module="customer">
+                    <name>account</name>
+                    <path>customer/account/</path>
+                    <label>Account Dashboard</label>
+                </action>
+                <action method="addLink" translate="label" module="customer">
+                    <name>account_edit</name>
+                    <path>customer/account/edit/</path>
+                    <label>Account Information</label>
+                </action>
+                <action method="addLink" translate="label" module="customer">
+                    <name>address_book</name>
+                    <path>customer/address/</path>
+                    <label>Address Book</label>
+                </action>
+            </block>
+            <block type="checkout/cart_sidebar" name="cart_sidebar" template="checkout/cart/sidebar.phtml">
+                <action method="addItemRender">
+                    <type>simple</type>
+                    <block>checkout/cart_item_renderer</block>
+                    <template>checkout/cart/sidebar/default.phtml</template>
+                </action>
+                <action method="addItemRender">
+                    <type>grouped</type>
+                    <block>checkout/cart_item_renderer_grouped</block>
+                    <template>checkout/cart/sidebar/default.phtml</template>
+                </action>
+                <action method="addItemRender">
+                    <type>configurable</type>
+                    <block>checkout/cart_item_renderer_configurable</block>
+                    <template>checkout/cart/sidebar/default.phtml</template>
+                </action>
+            </block>
+            <remove name="tags_popular"/>
+
+        </reference>
+    </upslabelinv_index_labelinfo>
+    <checkout_onepage_success translate="label">
+        <reference name="content">
+            <block type="checkout/onepage_success" name="upslabelinv_index_index"
+                   template="upslabelinv/checkout/success.phtml"/>
+        </reference>
+    </checkout_onepage_success>
+    <checkout_onepage_shippingmethod>
+        <!-- Mage_Checkout -->
+        <remove name="right"/>
+        <remove name="left"/>
+
+        <block type="checkout/onepage_shipping_method_available" name="root" output="toHtml"
+               template="upslabelinv/checkout/onepage/shipping_method/available.phtml"/>
+    </checkout_onepage_shippingmethod>
+    <gomage_checkout_onepage_methods>
+    <!-- Mage_Checkout -->
+    <remove name="right"/>
+    <remove name="left"/>
+
+    <block type="checkout/onepage_shipping_method_available" name="root" output="toHtml"
+           template="upslabelinv/checkout/onepage/shipping_method/available.phtml"/>
+    </gomage_checkout_onepage_methods>
+    <checkout_onepage_index>
+    <block type="checkout/onepage_shipping_method_available" name="root" output="toHtml"
+           template="upslabelinv/checkout/onepage/shipping_method/available.phtml"/>
+    </checkout_onepage_index>
+</layout>

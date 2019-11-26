@@ -1,0 +1,134 @@
+"# of days before orders get archived","# of days before orders get archived"
+"About Your Order","About Your Order"
+Action,Action
+Actions,Actions
+Actual,Actual
+"Admin Order Grid","Admin Order Grid"
+Archive,Archive
+"Archive if","Archive if"
+"Are you sure? The columns will be reset to the default values","Are you sure? The columns will be reset to the default values"
+"Back to My Orders","Back to My Orders"
+"Billing Postcode","Billing Postcode"
+"Billing Telephone","Billing Telephone"
+"Bill to City","Bill to City"
+"Bill to Company","Bill to Company"
+"Bill to Country","Bill to Country"
+"Bill to Name","Bill to Name"
+"Bill to State","Bill to State"
+"Bill to Street","Bill to Street"
+"Bought From","Bought From"
+Canceled,Canceled
+"Coupon Code","Coupon Code"
+"Customer Email","Customer Email"
+"Customer Group","Customer Group"
+"Customer's Orders Tab","Customer's Orders Tab"
+Delete,Delete
+"Delete Completely","Delete Completely"
+"Discount (Base)","Discount (Base)"
+"Discount (Purchased)","Discount (Purchased)"
+Edited,Edited
+Enable,Enable
+"Enable ""Delete orders"" option","Enable ""Delete orders"" option"
+"Enable ""Delete orders completely"" option","Enable ""Delete orders completely"" option"
+"Enable Archive Orders Option","Enable Archive Orders Option"
+"Enable Invoice Orders Mass Action","Enable Invoice Orders Mass Action"
+"Enable Ship Orders Mass Action","Enable Ship Orders Mass Action"
+"Excl. Tax","Excl. Tax"
+"Extended Orders","Extended Orders"
+Frequency,Frequency
+From:,From:
+"G.T. (Base)","G.T. (Base)"
+"G.T. (Purchased)","G.T. (Purchased)"
+"Gift Message","Gift Message"
+"Gift Message for This Order","Gift Message for This Order"
+"Grid Columns","Grid Columns"
+"Grid Columns (Customer View)","Grid Columns (Customer View)"
+"Grid Columns Sort Order","Grid Columns Sort Order"
+"Grid Columns Sort Order (Customer View)","Grid Columns Sort Order (Customer View)"
+"Grid Type","Grid Type"
+Group,Group
+"Hide Deleted Orders for Customers","Hide Deleted Orders for Customers"
+"Incl. Tax","Incl. Tax"
+"Internal Credit (Base)","Internal Credit (Base)"
+"Internal Credit (Purchased)","Internal Credit (Purchased)"
+Invoice,Invoice
+"Invoice(s)","Invoice(s)"
+Invoice+Ship,Invoice+Ship
+Invoiced,Invoiced
+"Items Ordered","Items Ordered"
+"Last sync","Last sync"
+Less..,Less..
+"Manage Columns","Manage Columns"
+"Manage Grid Columns","Manage Grid Columns"
+"MageWorx > Order Management","MageWorx > Order Management"
+"MageWorx Extended Orders Grid","MageWorx Extended Orders Grid"
+More..,More..
+No,No
+"Number of Comments in Grid","Number of Comments in Grid"
+"Order #","Order #"
+"Order Comment(s)","Order Comment(s)"
+"Order has been completely deleted.","Order has been completely deleted."
+"Order Management","Order Management"
+"Order Total","Order Total"
+Ordered,Ordered
+"Orders Grid","Orders Grid"
+"Partially","Partially"
+"Payment Method","Payment Method"
+"Product Name(s)","Product Name(s)"
+"Product Option(s)","Product Option(s)"
+"Purchase On","Purchase On"
+"Purchased From (Store)","Purchased From (Store)"
+"Purchased On","Purchased On"
+Qnty,Qnty
+Refunded,Refunded
+"Reset Columns","Reset Columns"
+SKU(s),SKU(s)
+"Selected orders were archived.","Selected orders were archived."
+"Selected orders were completely deleted.","Selected orders were completely deleted."
+"Selected orders were deleted.","Selected orders were deleted."
+"Selected orders were invoiced.","Selected orders were invoiced."
+"Selected orders were invoiced and printed.","Selected orders were invoiced and printed."
+"Selected orders were invoiced and shipped.","Selected orders were invoiced and shipped."
+"Selected orders were restored.","Selected orders were restored."
+"Selected orders were shipped.","Selected orders were shipped."
+"Send Invoice Email","Send Invoice Email"
+"Send Shipment Email","Send Shipment Email"
+Ship,Ship
+Shipped,Shipped
+"Shipped to Name","Shipped to Name"
+"Shipping Amount (Base)","Shipping Amount (Base)"
+"Shipping Amount (Purchased)","Shipping Amount (Purchased)"
+"Shipping Method","Shipping Method"
+"Shipping Postcode","Shipping Postcode"
+"Shipping Telephone","Shipping Telephone"
+"Ship to City","Ship to City"
+"Ship to Company","Ship to Company"
+"Ship to Country","Ship to Country"
+"Ship to Name","Ship to Name"
+"Ship to State","Ship to State"
+"Ship to Street","Ship to Street"
+"Show Thumbnails","Show Thumbnails"
+"Start Time","Start Time"
+Status,Status
+"Subtotal (Base)","Subtotal (Base)"
+"Subtotal (Purchased)","Subtotal (Purchased)"
+"Synchronize","Synchronize"
+"Tax Amount (Base)","Tax Amount (Base)"
+"Tax Amount (Purchased)","Tax Amount (Purchased)"
+"The settings were reset successfully","The settings were reset successfully"
+"The settings were saved successfully","The settings were saved successfully"
+"The synchronization was done successfully","The synchronization was done successfully"
+"There are no printable documents related to selected orders.","There are no printable documents related to selected orders."
+"Thumbnail Height","Thumbnail Height"
+To:,To:
+Total,Total
+"Total Refunded (Base)","Total Refunded (Base)"
+"Total Refunded (Purchased)","Total Refunded (Purchased)"
+"Total incl. tax","Total incl. tax"
+"Tracking Number","Tracking Number"
+"Track your order","Track your order"
+"Unable to save Cron expression","Unable to save Cron expression"
+"Use Default","Use Default"
+"Use Website","Use Website"
+Weight,Weight
+Yes,Yes

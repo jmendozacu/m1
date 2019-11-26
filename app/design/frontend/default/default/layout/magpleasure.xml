@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <magpleasure_common_js>
+        <reference name="head">
+            <action method="addJs"><script>magpleasure/common.js</script></action>
+        </reference>
+    </magpleasure_common_js>
+    <magpleasure_widget_dialog>
+        <update handle="magpleasure_common_js" />
+        <reference name="head">
+            <action method="addJs"><script>magpleasure/widget/dialog.js</script></action>
+            <action method="addCss"><script>magpleasure/css/widget/dialog.css</script></action>
+            <block type="magpleasure/widget_dialog_wrapper" name="magpleasure.widget.dialog" as="magpleasure_widget_dialog" />
+        </reference>
+    </magpleasure_widget_dialog>
+</layout>

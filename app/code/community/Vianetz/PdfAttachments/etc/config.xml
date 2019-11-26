@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Vianetz_PdfAttachments>
+            <version>1.0.1</version>
+        </Vianetz_PdfAttachments>
+    </modules>
+
+    <global>
+        <models>
+            <pdfattachments>
+                <class>Vianetz_PdfAttachments_Model</class>
+            </pdfattachments>
+            <core>
+                <rewrite>
+                    <!-- Note: If you do not want to use the email attachment feature this rewrite can be removed -->
+                    <email_template_mailer>Vianetz_PdfAttachments_Model_Email_Template_Mailer</email_template_mailer>
+                </rewrite>
+            </core>
+        </models>
+
+        <helpers>
+            <pdfattachments>
+                <class>Vianetz_PdfAttachments_Helper</class>
+            </pdfattachments>
+        </helpers>
+    </global>
+</config>

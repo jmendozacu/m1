@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Godogi_Fssuggest>
+            <version>1.0.0</version>
+        </Godogi_Fssuggest>
+    </modules>
+    <frontend>
+        <layout>
+            <updates>
+                <godogi_Fssuggest>
+                    <file>godogi/fssuggest.xml</file>
+                </godogi_Fssuggest>
+            </updates>
+        </layout>
+    </frontend>
+</config>

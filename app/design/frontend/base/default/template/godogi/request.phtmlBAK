@@ -1,0 +1,85 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+<div class="main-login main-center">
+	<form id="request_academic_account" method="post" action="/requestAcademicAccount/index/register/">
+		<div class="form-group">
+			<label for="firstname" class="cols-sm-2 control-label">First Name <span class="required">*</span></label>
+			<div class="cols-sm-10">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+					<input type="text" class="form-control required-entry" name="firstname" id="firstname"  placeholder="Enter your First Name"/>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="lastname" class="cols-sm-2 control-label">Last Name <span class="required">*</span></label>
+			<div class="cols-sm-10">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+					<input type="text" class="form-control required-entry" name="lastname" id="lastname"  placeholder="Enter your Last Name"/>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="email" class="cols-sm-2 control-label">Email <span class="required">*</span></label>
+			<div class="cols-sm-10">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+					<input type="text" class="form-control required-entry validate-email" name="email" id="email"  placeholder="Enter your Email"/>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="phone" class="cols-sm-2 control-label">Phone <span class="required">*</span></label>
+			<div class="cols-sm-10">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+					<input type="text" class="form-control required-entry validate-phoneLax" name="phone" id="phone"  placeholder="Enter your Phone"/>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="school" class="cols-sm-2 control-label">School or School District <span class="required">*</span></label>
+			<div class="cols-sm-10">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-bookmark"></i></span>
+					<input type="text" class="form-control required-entry" name="school" id="school"  placeholder="Enter your School or School District"/>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="position" class="cols-sm-2 control-label">Position <span class="required">*</span></label>
+			<div class="cols-sm-10">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-bookmark"></i></span>
+					<input type="text" class="form-control required-entry" name="position" id="position"  placeholder="Enter your Position"/>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="interest" class="cols-sm-2 control-label">Product Interest</label>
+			<div class="cols-sm-10">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="fa fa-bookmark"></i></span>
+					<select class="selectpicker form-control" name="interest" id="interest">
+					  	<option value="0">Please select one</option>
+					  	<option value="1">iPad Repair</option>
+					  	<option value="2">iPhone Repair</option>
+					  	<option value="3">Mac Repair</option>
+					  	<option value="4">Other</option>
+					  	<option value="5">Multiple</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="form-group ">
+			<input type="submit" id="button" class="btn btn-primary btn-lg btn-block login-button" value="Submit">
+		</div>
+	</form>
+</div>
+<script type="text/javascript">
+    //< ![CDATA[
+        var customForm = new VarienForm('request_academic_account');
+    //]]>
+</script>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Magpleasure_Assignorder>
+            <active>true</active>
+            <codePool>local</codePool>
+        <edition>CE</edition><license>YTozOntzOjM6ImNpZCI7czo0OiIxMzY4IjtzOjM6ImVpZCI7czoxOiIxIjtzOjM6InBpZCI7czoyOiIyNyI7fQ,,</license></Magpleasure_Assignorder>
+    </modules>
+</config>

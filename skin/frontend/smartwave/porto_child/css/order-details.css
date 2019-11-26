@@ -1,0 +1,71 @@
+.order-details-wrapper {
+    text-align: right;
+    padding-top: 10px;
+    padding-bottom: 40px;
+}
+.order-details-button {
+    font-size: 13px;
+    line-height: 24px;
+    text-align: center;
+    color: #fff;
+    width: auto;
+    height: 24px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    background-color: #000;
+    -webkit-box-shadow: 1px 1px 1px rgba(35, 32, 32, .1), inset 1px 1px 1px rgba(255, 255, 255, 0.5);
+    -moz-box-shadow: 1px 1px 1px rgba(35, 32, 32, .1), inset 1px 1px 1px rgba(255, 255, 255, 0.5);
+    box-shadow: 1px 1px 1px rgba(35, 32, 32, .1), inset 1px 1px 1px rgba(255, 255, 255, 0.5);
+    border: solid 1px #6ead16;
+    background-image: -webkit-linear-gradient(bottom, #75a827, #9dce41);
+    background-image: -moz-linear-gradient(bottom, #75a827, #9dce41);
+    background-image: -o-linear-gradient(bottom, #75a827, #9dce41);
+    background-image: linear-gradient(to top, #75a827, #9dce41);
+    display: inline-block;
+    margin: 5px auto;
+    margin-left: 15px;
+    padding: 0 10px;
+    cursor: pointer;
+}
+#orderdetails_popup_window_row1 {
+    background: #6ebf3b;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.top.table_window {
+    border-bottom: none;
+}
+.dialog_nw, .dialog_ne, .dialog_n {
+    background: transparent;
+}
+.dialog {
+    border: none
+}
+.dialog_content {
+    background: white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.dialog_close {
+    width: 18px;
+    position: absolute;
+    top: 8px;
+    right: 20px;
+    left: initial;
+    background: url(/skin/frontend/smartwave/porto_child/images/orderdetails/pop-up-close.png);
+    height: 18px;
+}
+.dialog_title {
+    text-align: left;
+    padding-left: 20px;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 22px;
+    width: 80%;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+.dialog_w, .dialog_e {
+    width: 0;
+}

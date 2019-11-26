@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <browser_js_fix>
+        <reference name="head">
+            <action method="addItem">
+                <type>js</type>
+                <name>magpleasure/adminhtml/browser-fix.js</name>
+            </action>
+        </reference>
+    </browser_js_fix>
+
+    <apply_common_js>
+        <update handle="magpleasure_common_js"/>
+    </apply_common_js>
+
+    <magpleasure_common_js>
+        <reference name="head">
+            <action method="addJs"><script>magpleasure/common.js</script></action>
+        </reference>
+    </magpleasure_common_js>
+
+    <magpleasure_adminhtml_common_js>
+        <reference name="head">
+            <action method="addJs"><script>magpleasure/adminhtml/common.js</script></action>
+        </reference>
+    </magpleasure_adminhtml_common_js>
+
+    <apply_jquery>
+        <update handle="browser_js_fix"/>
+        <reference name="head">
+            <action method="addJs"><script>magpleasure/libs/jquery/jquery-1.8.2.min.js</script></action>
+        </reference>
+    </apply_jquery>
+
+    <apply_jquery_ui>
+        <reference name="head">
+            <action method="addJs"><script>magpleasure/libs/jquery/ui/jquery-ui-1.9.1.custom.min.js</script></action>
+            <action method="addItem"><type>js_css</type><script>magpleasure/libs/jquery/ui/css/jquery-ui-1.9.1.custom.css</script></action>
+        </reference>
+    </apply_jquery_ui>
+
+    <apply_lightbox>
+        <reference name="head">
+            <action method="addCss"><script>magpleasure/css/thumbnail.css</script></action>
+            <action method="addItem"><type>js_css</type><script>magpleasure/libs/lightbox/css/lightbox.css</script></action>
+            <action method="addJs"><script>magpleasure/libs/lightbox/js/lightbox.js</script></action>
+        </reference>
+        <reference name="before_body_end">
+            <block type="adminhtml/template" name="magpleasure.product.thumbnail.wrapper" as="magpleasure_product_thumbnail_wrapper" template="magpleasure/grid/column/renderer/product/thumbnail/wrapper.phtml" />
+        </reference>
+    </apply_lightbox>
+
+    <apply_dropdown>
+        <update handle="apply_jquery"/>
+        <update handle="apply_jquery_ui"/>
+        <reference name="head">
+            <action method="addJs"><script>magpleasure/libs/jquery/ui/jquery.ui.combobox.js</script></action>
+        </reference>
+    </apply_dropdown>
+
+    <apply_ajax_dropdown>
+        <update handle="apply_jquery"/>
+        <update handle="apply_jquery_ui"/>
+        <reference name="head">
+            <action method="addJs"><script>magpleasure/libs/jquery/ui/jquery.ui.ajaxcombobox.js</script></action>
+        </reference>
+    </apply_ajax_dropdown>
+
+    <apply_ajax_form>
+        <update handle="apply_common_js"/>
+        <update handle="apply_jquery"/>
+        <update handle="apply_jquery_ui"/>
+        <reference name="head">
+            <action method="addJs"><script>magpleasure/adminhtml/widget/ajax/form.js</script></action>
+        </reference>
+    </apply_ajax_form>
+
+
+
+</layout>

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <upslabelinv_adminhtml_upslabelinv_index>
+        <reference name="content">
+            <block type="upslabelinv/adminhtml_upslabelinv" name="upslabelinv" />
+        </reference>
+    </upslabelinv_adminhtml_upslabelinv_index>
+    <adminhtml_sales_order_view>
+        <reference name="left">
+            <reference type="adminhtml/sales_order_view_tabs" name="sales_order_tabs">
+                <reference type="adminhtml/sales_order_view_tab_info" name="order_tab_info">
+                    <action method="setTemplate"><template>upslabelinv/sales/order/view/tab/info.phtml</template></action>
+                </reference>
+            </reference>
+        </reference>
+    </adminhtml_sales_order_view>
+</layout>

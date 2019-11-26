@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Rnicklin_Fancybox>
+            <version>1.0.0</version>
+        </Rnicklin_Fancybox>
+    </modules>
+    <frontend>
+        <layout>
+			<updates>
+				<fancybox>
+					<file>rnicklin_fancybox.xml</file>
+				</fancybox>
+			</updates>
+		</layout>
+    </frontend>
+</config>

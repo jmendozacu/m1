@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <vianetz translate="label">
+            <label>vianetz Extensions</label>
+            <sort_order>200</sort_order>
+        </vianetz>
+    </tabs>
+</config>

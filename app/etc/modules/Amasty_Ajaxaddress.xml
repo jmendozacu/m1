@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Amasty_Ajaxaddress>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <GoMage_Checkout />
+            </depends>
+        </Amasty_Ajaxaddress>
+    </modules>
+</config>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<layout>
+    <xmail_adminhtml_xmail_index>
+        <update handle="xmail_xmail_index"/>
+        <reference name="content">
+            <block type="adminhtml/template" name="smxmail" template="sm/xmail.phtml"/>
+        </reference>
+    </xmail_adminhtml_xmail_index>
+</layout>

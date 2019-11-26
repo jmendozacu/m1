@@ -1,0 +1,301 @@
+<?php
+    $store = Mage::app()->getStore();
+    $code  = $store->getCode();
+    $footer = Mage::getStoreConfig('porto_settings/footer',$code);
+    $footer_class = ($footer['fixed_position_footer_enabled'])?" fixed-position":"";
+?>
+<div class="footer-container <?php echo $footer_class; ?>">
+    <div class="footer">
+    <?php
+        if( $footer['footer_top_enabled'] ){
+    ?>
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                    <?php
+                        $area = 'footer_top_block';
+                        $type = $footer[$area];
+                        if( $type== 'twitter' ){
+                            echo $this->getChildHtml('tweets');
+                        }
+                        if( $type == 'custom' ){
+                            echo $this->getLayout()->createBlock('cms/block')->setBlockId($footer['footer_top_custom'])->toHtml();
+                        }
+                    ?>
+                    </div>
+                    <div class="col-sm-6">
+                        <?php 
+                            echo $this->getChildHtml('footer.newsletter');
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php
+        }
+        if( $footer['footer_middle_enabled'] ){
+    ?>
+        <div class="footer-middle">
+            <div class="container">
+            <?php
+                if( $footer['footer_ribbon_enabled'] ){
+            ?>
+                <div class="footer-ribbon">
+                    <span><?php echo $footer['footer_ribbon_text'] ?></span>
+                </div>
+            <?php
+                }
+            ?>
+
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-12">
+                    <div class="block about-repairzoom">
+                        <a href="/">
+                            <img src="/skin/frontend/smartwave/porto_child/images/logo_footer.png" alt="iPhone repair, iPad repair, iPod repair">
+                        </a>
+                        <div class="vcard">
+                            <span class="fn org">RepairZoom</span> Located at
+                            <div class="adr">
+                                <span class="street-address">16 Technology Drive, Suite 167</span>
+                                <br><span class="locality">Irvine</span>, <span class="region">CA 92618 (Orange County, USA)</span>
+                                <br>
+                                <br><span>Toll Free:  (877) 274-5964</span>
+                                <br><span>Local:  (949) 743-1600 </span>
+                            </div>
+                            <span class="geo">
+                                <span class="latitude">
+                                   <span class="value-title" title="33.649436"></span>
+                            </span>
+                            <span class="longitude">
+                                   <span class="value-title" title="-117.735441"></span>
+                            </span>
+                            </span>
+                            <a href="/" class="url">www.repairzoom.com</a>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-12">
+                    <div class="col-sm-12 footer_text">RepairZoom | USA | iPhone Repair, Mac Repair, &amp; iPad Repair</div>
+                    <div class="col col-md-2 col-sm-6">
+                        <div class="block">
+                            <div class="block-content">
+                                <ul class="links">
+                                    <li><a href="/"><i class="icon-right-dir"></i> Home</a></li>
+                                    <li><a href="/about-us"><i class="icon-right-dir"></i> About Us</a></li>
+                                    <li><a href="/contacts"><i class="icon-right-dir"></i> Contact Us</a></li>
+                                    <li><a href="/privacy"><i class="icon-right-dir"></i> Privacy Policy</a></li>
+                                    <li><a href="/customer-satisfaction-guarantee"><i class="icon-right-dir"></i> Warranty Info</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-md-3 col-sm-6">
+                        <div class="block">
+                            <div class="block-content">
+                                <ul class="links">
+                                    <li><a href="/policies"><i class="icon-right-dir"></i> Terms and Conditions</a></li>
+                                    <li><a href="/repairzoom-shipping-options"><i class="icon-right-dir"></i> Shipping Information</a></li>
+                                    <li><a href="/faqs"><i class="icon-right-dir"></i> FAQ - Customer Help</a></li>
+                                    <li><a href="/ipad-repair/corporate-ipad-repair-accounts.html"><i class="icon-right-dir"></i> Corporate Accounts</a></li>
+                                    <li><a href="/ipad-repair/school-ipad-repair-college-university-education-accounts.html"><i class="icon-right-dir"></i> Academic Accounts</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-md-3 col-sm-6">
+                        <div class="block">
+                            <div class="block-content">
+                                <ul class="links">
+                                    <li><a href="/ipod-touch-repair.html"><i class="icon-right-dir"></i> iPod Touch Repair</a></li>
+                                    <li><a href="/ipad-repair.html"><i class="icon-right-dir"></i> iPad Repair</a></li>
+                                    <li><a href="/iphone-repair.html"><i class="icon-right-dir"></i> iPhone Repair</a></li>
+                                    <li><a href="/blog"><i class="icon-right-dir"></i> Blog</a></li>
+                                    <li><a href="/testimonials"><i class="icon-right-dir"></i> Testimonials</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-md-4  col-sm-6">
+                        <div class="block">
+                            <div class="block-content">
+                                <ul class="links">
+                                    <li><a href="/coupons-and-promotions.html"><i class="icon-right-dir"></i> Coupons - Promotions</a></li>
+                                    <li><a href="/irvine-locals-page"><i class="icon-right-dir"></i> Irvine iPhone Repair</a></li>
+                                    <li><a href="/driving-directions"><i class="icon-right-dir"></i> Driving Directions Irvine</a></li>
+                                    <li><a href="/mac-repair-macbook-pro-repair-apple-computer-repairs.html"><i class="icon-right-dir"></i> Mac Repairs</a></li>
+                                    <li><a href="/driving-directions"><i class="icon-right-dir"></i> iPhone Repair Orange County</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <!--
+                <div class="row">
+                -->
+                <?php
+                /*
+                    for( $i = 1; $i <= 4; $i++ ){
+                        if($i == 2){
+                            echo '<div class="col-sm-9"><div class="col-sm-12 footer_text">RepairZoom | USA | iPhone Repair, Mac Repair, &amp; iPad Repair</div>';
+                        }
+                        $area = 'footer_middle_column_'.$i;
+                        $type = $footer[$area];
+                        if( $type ){
+                            echo '<div class="col-sm-'.$footer[$area.'_size'].'">';
+                        }
+                        if( $type == 'custom' ){
+                            echo $this->getLayout()->createBlock('cms/block')->setBlockId($footer[$area.'_custom'])->toHtml();
+                        }
+                        if( $type == 'newsletter' ){
+                            echo $this->getChildHtml('footer.newsletter');
+                        }
+                        if( $type== 'facebook' ){
+                            echo $this->getChildHtml('facebook_fans');
+                        }
+                        if( $type== 'flickr' ){
+                            echo $this->getChildHtml('flickr');
+                        }
+                        if( $type== 'twitter' ){
+                            echo Mage::getSingleton("core/layout")->getBlock("tweets")->setTemplate("socialfeeds/footer_middle_twitterfeed.phtml")->toHtml();
+                        }
+                        if( $type ){
+                            echo '</div>';
+                        }
+                */
+                ?>
+                <?php
+                /*
+                    }
+                    ?>
+                        <div class="col-sm-4">
+                            <?php
+                            echo $this->getLayout()->createBlock('cms/block')->setBlockId('porto_footer_2nd_row_shop_4th')->toHtml();
+                            ?>
+                        </div>
+                    </div>
+                </div>
+                <?php */echo $this->getChildHtml("demo_footer_tooltip"); ?>
+            </div>
+        </div>
+    <?php
+        }
+        if( $footer['footer_middle_2_enabled'] ){
+    ?>
+        <div class="footer-middle footer-middle-2">
+            <div class="container">
+                <div class="row">
+                <?php
+                    for( $i = 1; $i <= 4; $i++ ){
+                        $area = 'footer_middle_2_column_'.$i;
+                        $type = $footer[$area];
+                        if( $type ){
+                            echo '<div class="col-sm-'.$footer[$area.'_size'].'">';
+                        }
+                        if( $type == 'custom' ){
+                            echo $this->getLayout()->createBlock('cms/block')->setBlockId($footer[$area.'_custom'])->toHtml();
+                        }
+                        if( $type == 'newsletter' ){
+                            echo $this->getChildHtml('footer.newsletter');
+                        }
+                        if( $type== 'facebook' ){
+                            echo $this->getChildHtml('facebook_fans');
+                        }
+                        if( $type== 'flickr' ){
+                            echo $this->getChildHtml('flickr');
+                        }
+                        if( $type ){
+                            echo '</div>';
+                        }
+                ?>
+                <?php
+                    }
+                ?>
+                </div>
+            </div>
+        </div>
+    <?php
+        }
+        if( $footer['footer_bottom_enabled'] ){
+    ?>
+        <div class="footer-bottom">
+            <div class="container">
+                <?php
+                /*
+                if($footer['footer_logo']){
+                ?>
+                    <a href="<?php echo $this->getUrl('') ?>" class="logo"><img src="<?php echo $this->getSkinUrl($footer['footer_logo']); ?>" alt=""/></a>
+                <?php
+                }
+                */
+                if($footer['footer_bottom_socialicons']){
+                ?>
+                <?php echo $this->getChildHtml('socialicons'); ?>
+                <?php
+                }
+                if($footer['footer_bottom_custom_block'] && $footer['footer_bottom_custom_block_id']){
+                    echo '<div class="col-sm-6"><div class="custom-block">'.$this->getLayout()->createBlock('cms/block')->setBlockId($footer['footer_bottom_custom_block_id'])->toHtml().'</div></div>';
+                }
+                ?>
+                <?php
+                if($footer['footer_bottom_custom_block_2'] && $footer['footer_bottom_custom_block_id_2']){
+                    echo '<div class="col-sm-6"><div class="custom-block f-right">'.$this->getLayout()->createBlock('cms/block')->setBlockId($footer['footer_bottom_custom_block_id_2'])->toHtml().'</div></div>';
+                }
+                ?>
+                <div class="col-sm-6">
+                    <div class="footerDiv secondivfooter">
+                        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('certified-verified')->toHtml();?>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <address><?php echo $footer['copyrights'] ?></address>
+                </div>
+                <?php if(isset($footer['footer_bottom_store_switcher']) && $footer['footer_bottom_store_switcher']) echo $this->getChildHtml("store_switcher"); ?>
+            </div>
+        </div>
+    <?php
+        }
+    ?>
+    </div>
+</div>
+<a href="#" id="totop"><i class="icon-up-open"></i></a>
+<script type="text/javascript">
+    var windowScroll_t;
+    jQuery(window).scroll(function(){
+        clearTimeout(windowScroll_t);
+        windowScroll_t = setTimeout(function(){
+            if(jQuery(this).scrollTop() > 100){
+                jQuery('#totop').fadeIn();
+            }else{
+                jQuery('#totop').fadeOut();
+            }
+        }, 500);
+    });
+    jQuery('#totop').click(function(){
+        jQuery('html, body').animate({scrollTop: 0}, 600);
+        return false;
+    });
+    jQuery(function($){
+        $(".cms-index-index .footer-container.fixed-position .footer-top,.cms-index-index .footer-container.fixed-position .footer-middle").remove();
+    });
+</script>
+<script type="text/javascript" src="https://cdn.ywxi﻿.net﻿/js/1.js" async></script>
+<!--87ce21a644f119dcf8887c553f5abe71-->

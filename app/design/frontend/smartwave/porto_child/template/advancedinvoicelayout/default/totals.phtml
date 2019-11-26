@@ -1,0 +1,114 @@
+<?php
+/**
+ * AdvancedInvoiceLayout Pdf totals template
+ *
+ * @section LICENSE
+ * This file is created by vianetz <info@vianetz.com>.
+ * The Magento module is distributed under a commercial license.
+ * Any redistribution, copy or direct modification is explicitly not allowed.
+ *
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@vianetz.com so we can send you a copy immediately.
+ *
+ * @category    Vianetz
+ * @package     Vianetz\AdvancedInvoiceLayout
+ * @author      Christoph Massmann, <C.Massmann@vianetz.com>
+ * @link        http://www.vianetz.com
+* @copyright   Copyright (c) 2006-18 vianetz - C. Massmann (http://www.vianetz.com)
+ * @license     http://www.vianetz.com/license Commercial Software License
+ */
+
+/**
+ * @var Vianetz_AdvancedInvoiceLayout_Block_Pdf_Totals $this
+ */
+?>
+<table id="totalTable">
+    <?php if ($this->isShowSubtotalExcludingTax()): ?>
+    <tr class="rowTotal">
+        <td class="columnTotalLabel"><?php echo $this->__('Subtotal (excl. tax)'); ?>:</td>
+        <td class="columnTotalValue"><?php echo $this->formatPrice($this->getSubTotalExclTax()); ?></td>
+    </tr>
+    <?php endif; ?>
+
+    <?php if ($this->isShowSubtotalIncludingTax()): ?>
+    <tr class="rowTotal">
+        <td class="columnTotalLabel"><?php echo $this->__('Subtotal (incl. tax)'); ?>:</td>
+        <td class="columnTotalValue"><?php echo $this->formatPrice($this->getSubTotal()); ?></td>
+    </tr>
+    <?php endif; ?>
+
+    <?php if ($this->isShowTaxes() === false): ?>
+    <tr class="rowTotal">
+        <td class="columnTotalLabel"><?php echo $this->__('Subtotal'); ?>:</td>
+        <td class="columnTotalValue"><?php echo $this->formatPrice($this->getSubTotal()); ?></td>
+    </tr>
+    <?php endif; ?>
+
+    <?php if ($this->getShippingTotal() != 0): ?>
+    <tr class="rowTotal">
+        <td class="columnTotalLabel"><?php echo $this->__('Shipping'); ?>:</td>
+        <td class="columnTotalValue"><?php echo $this->formatPrice($this->getShippingTotal()); ?></td>
+    </tr>
+    <?php endif; ?>
+
+    <?php if ($this->getDiscountTotal() != 0): ?>
+    <tr class="rowTotal">
+        <td class="columnTotalLabel"><?php echo $this->__('Discount'); ?>:</td>
+        <td class="columnTotalValue"><?php echo $this->formatPrice($this->getDiscountTotal()); ?></td>
+    </tr>
+    <?php endif; ?>
+
+    <?php foreach ($this->getTaxTotalValues() as $taxLabel => $taxAmount): ?>
+        <tr class="rowTotal">
+            <td class="columnTotalLabel"><?php echo $taxLabel; ?>:</td>
+            <td class="columnTotalValue"><?php echo $this->formatPrice($taxAmount); ?></td>
+        </tr>
+    <?php endforeach; ?>
+
+    <?php foreach ($this->getOtherTotalValues() as $totalLabel => $totalValue): ?>
+        <tr class="rowTotal">
+            <td class="columnTotalLabel"><?php echo $totalLabel; ?></td>
+            <td class="columnTotalValue"><?php echo $this->formatPrice($totalValue); ?></td>
+        </tr>
+    <?php endforeach; ?>
+
+    <tr class="rowTotal rowGrandTotal">
+        <td class="columnTotalLabel"><?php echo $this->__('Your Grand Total') ?>:</td>
+        <td class="columnTotalValue"><?php echo $this->formatPrice($this->getGrandTotal()); ?></td>
+    </tr>
+</table>
+
+<?php if ($this->isShowTaxTable()): ?>
+<!-- Show separate Tax Table -->
+<table id="taxTable">
+    <tr>
+        <td><?php echo $this->__('Tax rate'); ?></td>
+        <?php foreach ($this->getTaxPercentValues() as $taxPercent => $taxData): ?>
+            <td><?php echo $taxData['title']; ?></td>
+        <?php endforeach; ?>
+        <td></td>
+    </tr>
+    <tr>
+        <td><?php echo $this->__('Merchandise value (excl. tax)'); ?></td>
+        <?php foreach ($this->getTaxPercentValues() as $taxPercent => $taxData): ?>
+            <td><?php echo $this->formatPrice($taxData['merchandise_value_excl_tax']); ?></td>
+        <?php endforeach; ?>
+        <td></td>
+    </tr>
+    <tr>
+        <td><?php echo $this->__('incl. tax value'); ?></td>
+        <?php foreach ($this->getTaxPercentValues() as $taxPercent => $taxData): ?>
+            <td><?php echo $this->formatPrice($taxData['tax_value']); ?></td>
+        <?php endforeach; ?>
+        <td></td>
+    </tr>
+    <tr>
+        <td><?php echo $this->__('Merchandise value (incl. tax)'); ?></td>
+        <?php foreach ($this->getTaxPercentValues() as $taxPercent => $taxData): ?>
+            <td><?php echo $this->formatPrice($taxData['merchandise_value_incl_tax']); ?></td>
+        <?php endforeach; ?>
+        <td><b><?php echo $this->__('Grand Total'); ?>: <?php echo $this->formatPrice($this->getSubTotal()); ?></b></td>
+    </tr>
+</table>
+<?php endif; ?>

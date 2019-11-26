@@ -1,0 +1,15 @@
+<?php
+$upslabel = new Infomodus_Upslabelinv_Block_Adminhtml_Upslabelinv_Label_Tabs();
+$shipMethodArray = explode('_', $this->getData('order')->getShippingMethod());
+$shipWay = 0;
+if ($shipMethodArray[0] == 'upstablerates' && count($shipMethodArray) > 2) {
+    $upstablerates = Mage::getResourceModel('upstablerates_shipping/carrier_upstablerates')->loadPk($shipMethodArray[2]);
+    $shipWay = $upstablerates['way'];
+    if ((int)$shipWay != 3) {
+        echo '<br /><br /><br />       
+        <a href="' . Mage::app()->getStore()->getUrl() . 'upslabelinv/label/view/order_id/' . $this->getData('order')->getId() . '">
+        	Click here to reprint your label 
+        </a>';
+    }
+}
+?>

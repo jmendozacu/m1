@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <adminhtml_caship_method_index>
+        <reference name="content">
+            
+            <block type="caship/adminhtml_method" name="method"/>
+        </reference>
+    </adminhtml_caship_method_index>
+    <adminhtml_caship_method_new>
+        <reference name="content">
+            <block type="caship/adminhtml_method_new" name="method"/>
+        </reference>
+    </adminhtml_caship_method_new>
+    <adminhtml_caship_errorlog_index>
+        <reference name="content">
+            <block type="caship/adminhtml_errorlog" name="errorlog"/>
+        </reference>
+    </adminhtml_caship_errorlog_index>
+</layout>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Vianetz_AdvancedInvoiceLayout>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Core />
+                <Mage_Sales />
+                <Vianetz_Core />
+                <!-- Vianetz_PdfAttachments dependency is left out by intention so that one can easily disable the
+                     extension because of the mailer class rewrite -->
+            </depends>
+        </Vianetz_AdvancedInvoiceLayout>
+    </modules>
+</config> 

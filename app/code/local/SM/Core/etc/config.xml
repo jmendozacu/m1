@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+	<modules>
+		<SM_Core>
+			<version>0.1.0</version>
+		</SM_Core>
+	</modules>
+	<frontend>
+		<routers>				
+			<review>
+				<args>
+					<modules>
+						<SM_Core before="Mage_Review_ProductController">SM_Core_Review</SM_Core>
+					</modules>
+				</args>
+			</review>				
+		</routers>
+	</frontend>
+</config>

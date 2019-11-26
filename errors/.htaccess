@@ -1,0 +1,3 @@
+<FilesMatch "\.(xml|phtml)$">
+    allow from all
+</FilesMatch>

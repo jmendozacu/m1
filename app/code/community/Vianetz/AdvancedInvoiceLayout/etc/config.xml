@@ -1,0 +1,307 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Vianetz_AdvancedInvoiceLayout>
+            <version>2.5.3</version>
+        </Vianetz_AdvancedInvoiceLayout>
+    </modules>
+
+    <global>
+        <models>
+            <advancedinvoicelayout>
+                <class>Vianetz_AdvancedInvoiceLayout_Model</class>
+                <resourceModel>advancedinvoicelayout_resource</resourceModel>
+            </advancedinvoicelayout>
+            <advancedinvoicelayout_resource>
+                <class>Vianetz_AdvancedInvoiceLayout_Model_Resource</class>
+            </advancedinvoicelayout_resource>
+            <sales>
+                <!-- Note: These rewrites are only inserted for third party applications to be able to use the AdvancedInvoiceLayout
+                     pdf layouts as well without changing their interface, you are free to remove them. -->
+                <rewrite>
+                    <order_pdf_invoice>Vianetz_AdvancedInvoiceLayout_Model_Rewrite_Order_Pdf_Invoice</order_pdf_invoice>
+                    <order_pdf_shipment>Vianetz_AdvancedInvoiceLayout_Model_Rewrite_Order_Pdf_Shipment</order_pdf_shipment>
+                    <order_pdf_creditmemo>Vianetz_AdvancedInvoiceLayout_Model_Rewrite_Order_Pdf_Creditmemo</order_pdf_creditmemo>
+                </rewrite>
+            </sales>
+        </models>
+        <resources>
+            <advancedinvoicelayout_setup>
+                <setup>
+                    <module>Vianetz_AdvancedInvoiceLayout</module>
+                    <class>Mage_Sales_Model_Mysql4_Setup</class>
+                </setup>
+                <connection>
+                    <use>default_setup</use>
+                </connection>
+            </advancedinvoicelayout_setup>
+            <advancedinvoicelayout_write>
+                <use>default_write</use>
+            </advancedinvoicelayout_write>
+            <advancedinvoicelayout_read>
+                <use>default_read</use>
+            </advancedinvoicelayout_read>
+        </resources>
+        <helpers>
+            <advancedinvoicelayout>
+                <class>Vianetz_AdvancedInvoiceLayout_Helper</class>
+            </advancedinvoicelayout>
+        </helpers>
+        <blocks>
+            <advancedinvoicelayout>
+                <class>Vianetz_AdvancedInvoiceLayout_Block</class>
+            </advancedinvoicelayout>
+        </blocks>
+        <events>
+            <resource_get_tablename>
+                <observers>
+                    <vianetz_advancedinvoicelayout_add_autoloader>
+                        <class>advancedinvoicelayout/autoloader</class>
+                        <method>addAutoloader</method>
+                    </vianetz_advancedinvoicelayout_add_autoloader>
+                </observers>
+            </resource_get_tablename>
+            <controller_action_postdispatch_adminhtml_customer_group_save>
+                <observers>
+                    <vianetz_advancedinvoicelayout_save_invoice_free_text_on_customer_group_save>
+                        <class>advancedinvoicelayout/observer</class>
+                        <method>saveInvoiceFreeTextOnCustomerGroupSave</method>
+                    </vianetz_advancedinvoicelayout_save_invoice_free_text_on_customer_group_save>
+                </observers>
+            </controller_action_postdispatch_adminhtml_customer_group_save>
+            <vianetz_pdfattachments_email_send_before>
+                <observers>
+                    <vianetz_advancedinvoicelayout_add_pdf_attachment>
+                        <class>advancedinvoicelayout/email_observer</class>
+                        <method>addPdfAttachment</method>
+                        <type>model</type>
+                    </vianetz_advancedinvoicelayout_add_pdf_attachment>
+                </observers>
+            </vianetz_pdfattachments_email_send_before>
+        </events>
+        <customer>
+            <address>
+                <formats>
+                    <advancedinvoicelayout_html translate="title" module="advancedinvoicelayout">
+                        <title>AdvancedInvoiceLayout HTML</title>
+                        <htmlEscape>true</htmlEscape>
+                    </advancedinvoicelayout_html>
+                </formats>
+            </address>
+        </customer>
+    </global>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <Vianetz_AdvancedInvoiceLayout>
+                    <files>
+                        <default>Vianetz_AdvancedInvoiceLayout.csv</default>
+                    </files>
+                </Vianetz_AdvancedInvoiceLayout>
+            </modules>
+        </translate>
+        <events>
+            <core_block_abstract_prepare_layout_before>
+                <observers>
+                    <vianetz_advancedinvoicelayout_add_print_pdf_button_to_order_view>
+                        <class>advancedinvoicelayout/observer</class>
+                        <method>addPrintPdfButtonToOrderView</method>
+                    </vianetz_advancedinvoicelayout_add_print_pdf_button_to_order_view>
+                    <vianetz_advancedinvoicelayout_add_print_pdf_button_to_invoice_view>
+                        <class>advancedinvoicelayout/observer</class>
+                        <method>addPrintPdfButtonToInvoiceView</method>
+                    </vianetz_advancedinvoicelayout_add_print_pdf_button_to_invoice_view>
+                    <vianetz_advancedinvoicelayout_add_print_pdf_button_to_shipment_view>
+                        <class>advancedinvoicelayout/observer</class>
+                        <method>addPrintPdfButtonToShipmentView</method>
+                    </vianetz_advancedinvoicelayout_add_print_pdf_button_to_shipment_view>
+                    <vianetz_advancedinvoicelayout_add_print_pdf_button_to_creditmemo_view>
+                        <class>advancedinvoicelayout/observer</class>
+                        <method>addPrintPdfButtonToCreditmemoView</method>
+                    </vianetz_advancedinvoicelayout_add_print_pdf_button_to_creditmemo_view>
+                </observers>
+            </core_block_abstract_prepare_layout_before>
+            <adminhtml_block_html_before>
+                <observers>
+                    <vianetz_advancedinvoicelayout_add_mass_print_pdf_action_to_invoice_grid>
+                        <class>advancedinvoicelayout/observer</class>
+                        <method>addMassPrintPdfActionToInvoiceGrid</method>
+                    </vianetz_advancedinvoicelayout_add_mass_print_pdf_action_to_invoice_grid>
+                    <vianetz_advancedinvoicelayout_add_mass_print_pdf_action_to_shipment_grid>
+                        <class>advancedinvoicelayout/observer</class>
+                        <method>addMassPrintPdfActionToShipmentGrid</method>
+                    </vianetz_advancedinvoicelayout_add_mass_print_pdf_action_to_shipment_grid>
+                    <vianetz_advancedinvoicelayout_add_mass_print_pdf_action_to_creditmemo_grid>
+                        <class>advancedinvoicelayout/observer</class>
+                        <method>addMassPrintPdfActionToCreditmemoGrid</method>
+                    </vianetz_advancedinvoicelayout_add_mass_print_pdf_action_to_creditmemo_grid>
+                    <vianetz_advancedinvoicelayout_add_mass_print_invoice_pdf_action_to_order_grid>
+                        <class>advancedinvoicelayout/observer</class>
+                        <method>addMassPrintInvoicePdfActionToOrderGrid</method>
+                    </vianetz_advancedinvoicelayout_add_mass_print_invoice_pdf_action_to_order_grid>
+                    <vianetz_advancedinvoicelayout_add_mass_print_shipment_pdf_action_to_order_grid>
+                        <class>advancedinvoicelayout/observer</class>
+                        <method>addMassPrintShipmentPdfActionToOrderGrid</method>
+                    </vianetz_advancedinvoicelayout_add_mass_print_shipment_pdf_action_to_order_grid>
+                    <vianetz_advancedinvoicelayout_add_mass_print_creditmemo_pdf_action_to_order_grid>
+                        <class>advancedinvoicelayout/observer</class>
+                        <method>addMassPrintCreditmemoPdfActionToOrderGrid</method>
+                    </vianetz_advancedinvoicelayout_add_mass_print_creditmemo_pdf_action_to_order_grid>
+                    <vianetz_advancedinvoicelayout_add_customer_group_free_textarea>
+                        <class>advancedinvoicelayout/observer</class>
+                        <method>addCustomerGroupFreeTextarea</method>
+                    </vianetz_advancedinvoicelayout_add_customer_group_free_textarea>
+                </observers>
+            </adminhtml_block_html_before>
+        </events>
+    </adminhtml>
+
+    <frontend>
+        <translate>
+            <modules>
+                <Vianetz_AdvancedInvoiceLayout>
+                    <files>
+                        <default>Vianetz_AdvancedInvoiceLayout.csv</default>
+                    </files>
+                </Vianetz_AdvancedInvoiceLayout>
+            </modules>
+        </translate>
+        <routers>
+            <Vianetz_AdvancedInvoiceLayout>
+                <use>standard</use>
+                <args>
+                    <module>Vianetz_AdvancedInvoiceLayout</module>
+                    <frontName>advancedinvoicelayout</frontName>
+                </args>
+            </Vianetz_AdvancedInvoiceLayout>
+            <sales>
+                <args>
+                    <modules>
+                        <advancedinvoicelayout before="Mage_Sales">Vianetz_AdvancedInvoiceLayout</advancedinvoicelayout>
+                    </modules>
+                </args>
+            </sales>
+        </routers>
+    </frontend>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Vianetz_AdvancedInvoiceLayout after="Mage_Adminhtml">Vianetz_AdvancedInvoiceLayout_Adminhtml</Vianetz_AdvancedInvoiceLayout>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <default>
+        <advancedinvoicelayout>
+            <themes>
+                <default title="Default PDF layout by vianetz"/>
+            </themes>
+            <fonts>
+                <courier title="Courier"/>
+                <dejavucondensed title="DejaVu Sans Condensed"/>
+                <dejavumono title="DejaVu Sans Mono"/>
+                <dejavusans title="DejaVu Sans"/>
+                <dejavuserif title="DejaVu Serif"/>
+                <helvetica title="Helvetica"/>
+                <times title="Times"/>
+            </fonts>
+            <pdf_options>
+                <pdf_size>A4</pdf_size>
+                <pdf_orientation>portrait</pdf_orientation>
+            </pdf_options>
+            <general>
+                <show_taxes>1</show_taxes>
+                <show_taxrate_name>true</show_taxrate_name>
+                <licenses>1:Vianetz_AdvancedInvoiceLayout</licenses>
+                <show_order_comments>0</show_order_comments>
+                <show_full_payment_info_block>1</show_full_payment_info_block>
+                <enable_debug_mode>0</enable_debug_mode>
+                <font_family>Helvetica</font_family>
+                <font_size>12</font_size>
+            </general>
+            <page_margins>
+                <show_header_on_every_page>1</show_header_on_every_page>
+                <top_margin_first_page>180</top_margin_first_page>
+                <top_margin>180</top_margin>
+                <bottom_margin>100</bottom_margin>
+                <left_margin>50</left_margin>
+                <right_margin>50</right_margin>
+            </page_margins>
+            <layout_header>
+                <show_customer_email>1</show_customer_email>
+                <show_taxvat>1</show_taxvat>
+            </layout_header>
+            <invoice>
+                <enable>1</enable>
+                <file_name>Invoice</file_name>
+                <enable_save_to_file>0</enable_save_to_file> <!-- disabled for security reasons by default -->
+                <storage_folder>invoices</storage_folder>
+                <hide_shipping_address>1</hide_shipping_address>
+                <show_product_image>1</show_product_image>
+                <show_product_description>1</show_product_description>
+                <show_crosssell_products>1</show_crosssell_products>
+                <show_coupon_code>1</show_coupon_code>
+                <show_checkout_attributes>0</show_checkout_attributes>
+                <qrcode>Rechnungs-Nr.: {{increment_id}}
+Bestell-Nr.: {{order_id}}
+Kunde: {{customer_id}}
+Datum: {{date}}
+Versandadresse: {{shipping_address}}
+Rechnungsadresse: {{billing_address}}</qrcode>
+                <show_tax_table>0</show_tax_table>
+                <sign_enabled>0</sign_enabled>
+                <sign_email_attachments>0</sign_email_attachments>
+            </invoice>
+            <shipment>
+                <enable>1</enable>
+                <file_name>Shipment</file_name>
+                <enable_save_to_file>0</enable_save_to_file> <!-- disabled for security reasons by default -->
+                <storage_folder>shipments</storage_folder>
+                <qrcode>Rechnungs-Nr.: {{increment_id}}
+Bestell-Nr.: {{order_id}}
+Kunde: {{customer_id}}
+Datum: {{date}}
+Versandadresse: {{shipping_address}}
+Rechnungsadresse: {{billing_address}}</qrcode>
+            </shipment>
+            <creditmemo>
+                <enable>1</enable>
+                <file_name>Creditmemo</file_name>
+                <enable_save_to_file>0</enable_save_to_file> <!-- disabled for security reasons by default -->
+                <storage_folder>creditmemos</storage_folder>
+                <qrcode>Rechnungs-Nr.: {{increment_id}}
+Bestell-Nr.: {{order_id}}
+Kunde: {{customer_id}}
+Datum: {{date}}
+Versandadresse: {{shipping_address}}
+Rechnungsadresse: {{billing_address}}</qrcode>
+            </creditmemo>
+        </advancedinvoicelayout>
+        <customer>
+            <address_templates>
+                <advancedinvoicelayout_html><![CDATA[{{depend company}}{{var company}}<br />{{/depend}}
+{{depend prefix}}{{var prefix}} {{/depend}}{{var firstname}} {{depend middlename}}{{var middlename}} {{/depend}}{{var lastname}}{{depend suffix}} {{var suffix}}{{/depend}}<br/>
+{{if street1}}{{var street1}}<br />{{/if}}
+{{depend street2}}{{var street2}}<br />{{/depend}}
+{{depend street3}}{{var street3}}<br />{{/depend}}
+{{depend street4}}{{var street4}}<br />{{/depend}}
+{{if postcode}}{{var postcode}}{{/if}} {{if city}}{{var city}}{{/if}}<br/>
+{{var country}}]]></advancedinvoicelayout_html>
+            </address_templates>
+        </customer>
+    </default>
+
+    <phpunit>
+        <suite>
+            <modules>
+                <Vianetz_AdvancedInvoiceLayout/>
+            </modules>
+        </suite>
+    </phpunit>
+</config>

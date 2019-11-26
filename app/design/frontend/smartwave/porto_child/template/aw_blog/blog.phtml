@@ -1,0 +1,122 @@
+<?php $posts = $this->getPosts(); ?>
+<div id="messages_product_view">
+    <?php Mage::app()->getLayout()->getMessagesBlock()->setMessages(Mage::getSingleton('customer/session')->getMessages(true)); ?> 
+    <?php echo Mage::app()->getLayout()->getMessagesBlock()->getGroupedHtml(); ?> 
+</div>
+
+<?php // echo $this->getChildHtml('smartwave_blog_list_toolbar'); 
+$i=1;
+
+?>
+<div class="posts-wrap">
+    <div id="posts-list">
+<?php foreach ($posts as $post): ?>
+    <?php
+    if($i==1 || $i==2 || $i==4){
+        ?>
+            <div class="row">
+        <?php
+    }
+    /*
+    echo "<pre>";
+    print_r($post->getShortContent());
+    echo "</pre>";
+    break;
+    */
+    ?>
+        <div class="postWrapper col-sm-12 col-md-6">
+            <div class="postBanner">
+                <div class="item" style="padding:0;">
+                    <a class="single-image" href="<?php echo $post->getAddress(); ?>">
+                        <?php echo $post->getShortContent(); ?>
+                    </a>
+                </div>
+            </div>
+            <?php
+                $orig_data = $post->getData('created_time');
+                $oldLocale = setlocale(LC_COLLATE, "0");
+                setlocale(LC_ALL, Mage::app()->getLocale()->getLocaleCode().'.UTF-8');
+                $post_day = strftime("%d", strtotime($orig_data) + Mage::getSingleton('core/date')->getGmtOffset());
+                $post_month = strftime("%b", strtotime($orig_data) + Mage::getSingleton('core/date')->getGmtOffset());
+                setlocale(LC_ALL, $oldLocale);
+            ?>
+            <div class="postTitle">
+                <h2><a href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle(); ?></a></h2>
+            </div>
+            <?php $postCats = $post->getCats(); 
+            if(!empty($postCats)): 
+                foreach ($postCats as $data): 
+                    $className = $data['title']; 
+                    $className = str_replace(" ", "", $className);
+                endforeach; 
+            endif; ?>
+            <div class="postDetails <?php echo $className;?>">
+                <?php echo $post->getReadMore(); ?>
+                <?php $postCats = $post->getCats(); ?>
+                <?php if (!empty($postCats)): ?>
+                        <?php foreach ($postCats as $data): ?>
+                            <a class="cat" href="<?php echo $data['url']; ?>"><?php echo $data['title']; ?></a>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+            <div class="postContent"><?php echo $post->getPostContent(); ?></div>
+
+            
+            <?php echo $this->getBookmarkHtml($post) ?>
+        </div>
+    <?php
+    if($i==1 || $i==3 || $i==5){
+        ?>
+            </div>
+        <?php
+    }
+    $i++;
+    ?>
+<?php endforeach; ?>
+    <?php
+    if($i == 3 || $i == 5){
+        ?>
+            </div>
+        <?php
+    }
+    ?>
+    </div>
+
+    <div class="more-button">
+        <input type="hidden" name="last" id="last" value="5">
+        <input type="hidden" name="number_returned" id="number_returned" value="4">
+        <button id="posts-view-more-button" type="button" title="<?php echo $this->__('Show more posts') ?>" class="button">
+            <span>
+                <span><?php echo $this->__('Show more posts') ?></span>
+            </span>
+        </button>
+    </div>
+</div>
+<?php // echo $this->getChildHtml('smartwave_blog_list_toolbar'); ?>
+<script type="text/javascript">
+    jQuery('#last').val(jQuery("#posts-list .postWrapper").length);
+    var request;
+    jQuery('#posts-view-more-button').click(function(){
+        var last = parseInt(jQuery('#last').val());
+        var number_returned = parseInt(jQuery('#number_returned').val());
+        if(number_returned < 4 || last < 5){
+            jQuery('#posts-view-more-button').removeClass('disabled');
+            jQuery('#posts-view-more-button').val('That\'s all :D');
+            jQuery('#posts-view-more-button').html('<span><span>That\'s all <i class="fa fa-smile-o"></i></span></span>');
+            jQuery('#posts-view-more-button').removeClass('button');
+            jQuery('#posts-view-more-button').addClass('btn btn-info');
+        }else{
+            jQuery(this).addClass('disabled');
+            jQuery.ajax({
+                type: "POST",
+                data: {last:last},
+                url: "/blog/index/ajax",
+                success: function(html){
+                    jQuery('#posts-view-more-button').removeClass('disabled');
+                    jQuery( "#posts-list" ).append( html );
+                    jQuery('#last').val(last+4);
+                }
+            });
+        }
+    })
+</script>

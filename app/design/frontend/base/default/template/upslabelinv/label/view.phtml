@@ -1,0 +1,49 @@
+<?php if($this->canViewLabel() === true && $this->getOrderLabel() !== false):
+
+    $http_authorization_required = strpos(Mage::getBaseUrl(),'dev.repairzoom.com') === false ? false : true;
+    $label_url = Mage::getBaseUrl('media') . 'upslabelinv/label/' . $this->getOrderLabel()->getTrackingnumber() .'.html';
+
+    $file_get_contents_failed = false;
+
+    if($http_authorization_required) {
+        $context = stream_context_create(array(
+            'http' => array(
+                'header'  => "Authorization: Basic " . base64_encode("devuser:devpass")
+            )
+        ));
+        $data = file_get_contents($label_url, false, $context);
+        if($data !== false) {
+            $data = mb_convert_encoding($data, 'UTF-8', mb_detect_encoding($data, 'UTF-8, ISO-8859-1', true));
+            $data = str_replace('./label', Mage::getBaseUrl('media') . 'upslabelinv/label/label', $data);
+            echo $data;
+        } else {
+            $file_get_contents_failed = true;
+        }
+    } else {
+        $data = file_get_contents($label_url, false, stream_context_create([
+        	'ssl' => ['verify_peer' => false, 'verify_peer_name' => false]
+		]));
+        if($data !== false) {
+            $data = mb_convert_encoding($data, 'UTF-8', mb_detect_encoding($data, 'UTF-8, ISO-8859-1', true));
+            $data = str_replace('./label', Mage::getBaseUrl('media') . 'upslabelinv/label/label', $data);
+            echo $data;
+        } else {
+            $file_get_contents_failed = true;
+        }
+    }
+
+    if($file_get_contents_failed) {
+        // file_get_contents was unable to open label html file on the server...
+        ?>
+        <p>
+            We're sorry, unfortunately we are unable to generate your shipping label at this time.  Please contact customer support toll free at <a href="tel:18772745964">(877) 274-5964</a> or email us at <a href="mailto:info@repairzoom.com">info@repairzoom.com</a> for more information.  You can also try clicking the shipping label link in your Order Confirmation Email, or try again in a few minutes. We apologize for the inconvenience.
+        </p>
+        <?php
+    }
+    ?>
+
+<?php else: ?>
+    <p>
+        We're sorry, unfortunately we are unable to generate your shipping label at this time.  Please contact customer support toll free at <a href="tel:18772745964">(877) 274-5964</a> or email us at <a href="mailto:info@repairzoom.com">info@repairzoom.com</a> for more information.  You can also try clicking the shipping label link in your Order Confirmation Email, or try again in a few minutes. We apologize for the inconvenience.
+    </p>
+<?php endif; ?>

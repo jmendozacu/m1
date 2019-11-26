@@ -1,0 +1,14 @@
+<?xml version = "1.0"?>
+<config>
+    <menu>
+        <customer>
+            <children>
+                <godogi_request_request translate="title" module="godogi_request">
+                    <title>Academic Accounts Requests</title>
+                    <action>adminhtml/request</action>
+                    <sort_order>1000</sort_order>
+                </godogi_request_request>
+            </children>
+        </customer>
+    </menu>
+</config>

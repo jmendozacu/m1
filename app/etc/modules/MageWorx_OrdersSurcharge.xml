@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * MageWorx
+ * MageWorx Order Surcharge Extension
+ * 
+ * @category   MageWorx
+ * @package    MageWorx_OrdersSurcharge
+ * @copyright  Copyright (c) 2016 MageWorx (http://www.mageworx.com/)
+ */
+-->
+<config>
+    <modules>
+        <MageWorx_OrdersSurcharge>
+            <active>true</active>
+            <codePool>community</codePool>
+            <extension_name>Order Surcharge</extension_name>
+            <depends>
+                <MageWorx_All/>
+                <MageWorx_OrdersEdit/>
+                <Mage_Sales/>
+            </depends>
+        </MageWorx_OrdersSurcharge>
+    </modules>
+</config>

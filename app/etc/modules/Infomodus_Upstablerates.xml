@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Infomodus_Upstablerates>
+			<active>true</active>
+			<codePool>local</codePool>
+		</Infomodus_Upstablerates>
+		<Infomodus_Adminhtml>
+			<active>true</active>
+			<codePool>local</codePool>
+		</Infomodus_Adminhtml>
+	</modules>
+
+	<global>
+		<blocks>
+			<adminhtml>
+				<rewrite>
+					<system_config_form_field_export>Infomodus_Adminhtml_Block_System_Config_Form_Field_Export</system_config_form_field_export>
+				</rewrite>
+			</adminhtml>
+		</blocks>
+
+		<models>
+			<adminhtml>
+				<rewrite>
+					<system_config_source_shipping_upstablerates>Infomodus_Adminhtml_Model_System_Config_Source_Shipping_Upstablerates</system_config_source_shipping_upstablerates>
+				</rewrite>
+
+				<rewrite>
+					<system_config_backend_shipping_upstablerates>Infomodus_Adminhtml_Model_System_Config_Backend_Shipping_Upstablerates</system_config_backend_shipping_upstablerates>
+				</rewrite>
+		  	</adminhtml>
+
+		  	<shipping>
+				<rewrite>
+					<carrier_upstablerates>Infomodus_Upstablerates_Model_Carrier_Upstablerates</carrier_upstablerates>
+					<mysql4_carrier_upstablerates>Infomodus_Upstablerates_Model_Mysql4_Carrier_Upstablerates</mysql4_carrier_upstablerates>
+				</rewrite>
+			</shipping>
+		</models>
+	</global>
+</config>

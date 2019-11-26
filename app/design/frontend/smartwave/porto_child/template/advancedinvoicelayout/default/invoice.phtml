@@ -1,0 +1,192 @@
+<?php
+/**
+ * AdvancedInvoiceLayout Pdf invoice template
+ *
+ * @section LICENSE
+ * This file is created by vianetz <info@vianetz.com>.
+ * The Magento module is distributed under a commercial license.
+ * Any redistribution, copy or direct modification is explicitly not allowed.
+ *
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@vianetz.com so we can send you a copy immediately.
+ *
+ * @category    Vianetz
+ * @package     Vianetz\AdvancedInvoiceLayout
+ * @author      Christoph Massmann, <C.Massmann@vianetz.com>
+ * @link        http://www.vianetz.com
+ * @copyright   Copyright (c) 2006-17 vianetz - C. Massmann (http://www.vianetz.com)
+ * @license     http://www.vianetz.com/license Commercial Software License
+ */
+
+/**
+ * @var $this Vianetz_AdvancedInvoiceLayout_Block_Pdf_Invoice
+ */
+?>
+
+<div id="invoice">
+
+    <?php // Header and footer blocks have to be at the beginning of the file and must be a direct descendant of the body element to work properly. ?>
+    <?php echo $this->getChildHtml('header'); ?>
+    <?php echo $this->getChildHtml('footer'); ?>
+
+
+    <table id="addressWindow">
+        <tr>
+            <td><div id="senderAddress"><?php echo $this->getSenderAddress(); ?></div></td>
+            <?php if ($this->isShowSecondaryAddress() === true): ?>
+            <td></td>
+            <?php endif; ?>
+        </tr>
+        <tr>
+            <td>
+                <div id="invoiceTitle">
+                    <?php echo $this->__('Invoice #%s', $this->getSource()->getIncrementId()); ?>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="billingAddress">
+                    <strong><?php echo $this->__('Bill To:'); ?></strong><br />
+                    <?php echo $this->getBillingAddress(); ?>
+                </div>
+            </td>
+            <?php if ($this->isShowSecondaryAddress() === true): ?>
+            <td>
+                <div id="shippingAddress">
+                    <strong><?php echo $this->__('Ship To:'); ?></strong><br />
+                    <?php echo $this->getShippingAddress(); ?>
+                </div>
+            </td>
+            <?php endif; ?>
+        </tr>
+    </table>
+
+    <?php if ($this->getCustomerEmail()): ?>
+    <div id="customerEmail"><?php echo $this->__('Customer Email: %s', $this->getCustomerEmail()); ?></div>
+    <?php endif; ?>
+
+    <?php if ($this->getCustomerTaxVatNumber()): ?>
+    <div id="customerTaxVatNumber"><?php echo $this->__('TAX/VAT Number: %s', $this->getCustomerTaxVatNumber()); ?></div>
+    <?php endif; ?>
+
+    <div id="invoiceData">
+        <div id="invoiceDate"><?php echo $this->__('Invoice Date: %s', $this->getSourceDate()); ?></div>
+        <div id="orderNumber"><?php echo $this->__('Order No.: %s', $this->getOrder()->getIncrementId()); ?></div>
+        <div id="orderDate"><?php echo $this->__('Order Date: %s', $this->getOrderDate()); ?></div>
+        <?php if ($this->getCustomerId()): ?>
+        <div id="customerNumber"><?php echo $this->__('Customer No.: %s', $this->getCustomerId()); ?></div>
+        <?php endif; ?>
+    </div>
+
+    <?php if ($this->isRecurringProfile()): ?>
+        <div id="recurringProfileData">
+            <div id="recurringProfileStartDate"><?php echo $this->__('Subscription Start Date'); ?>: <?php echo $this->getRecurringProfileStartDate(); ?></div>
+            <div id="recurringProfilePeriod"><?php echo $this->__('Subscription Period'); ?>: <?php echo $this->getRecurringProfilePeriod(); ?></div>
+        </div>
+    <?php endif; ?>
+
+    <table id="paymentAndShippingData" cellpadding="0" cellspacing="0">
+        <tr>
+            <td id="paymentMethodData">
+                <div class="methodTitle"><?php echo $this->__('Payment Method'); ?></div>
+                <div class="methodText"><?php echo $this->getPaymentMethodText(); ?></div>
+            </td>
+            <td id="shippingMethodData">
+                <?php if ($this->getOrder()->getShippingDescription()): ?>
+                    <div class="methodTitle"><?php echo $this->__('Shipping Method'); ?></div>
+                    <div class="methodText"><p><?php echo $this->getOrder()->getShippingDescription(); ?></p></div>
+                <?php endif; ?>
+            </td>
+        </tr>
+    </table>
+
+    <?php if ($this->getSalutationText()): ?>
+    <p>
+        <?php echo $this->getSalutationText(); ?>
+    </p>
+    <?php endif; ?>
+
+    <table id="itemTable">
+        <thead>
+            <tr>
+                <th class="columnSku"><?php echo $this->__('SKU'); ?></th>
+                <th class="columnName"><?php echo $this->__('Product Name'); ?></th>
+                <th class="columnQty"><?php echo $this->__('Qty'); ?></th>
+                <th class="columnPrice"><?php echo $this->__('Price'); ?></th>
+                <?php if ($this->isShowTaxes()): ?>
+                <th class="columnTaxPercent"><nobr><?php echo $this->__('Tax (%)'); ?></nobr></th>
+                <?php endif; ?>
+                <th class="columnRowTotal"><?php echo $this->__('Row Total'); ?></th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($this->getItems() as $sourceItem): ?>
+                <?php echo $this->getItemHtml($sourceItem); ?>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+    <?php echo $this->getChildHtml('totals'); ?>
+
+    <?php foreach ($this->getCrosssellProducts() as $product): ?>
+        <?php echo $this->getCrosssellItemHtml($product); ?>
+        <?php break; ?>
+    <?php endforeach; ?>
+
+    <?php if ($this->getCouponCode()): ?>
+        <p id="couponBox"><b><?php echo $this->__('Used coupon code: %s', $this->getCouponCode()); ?></b></p>
+    <?php endif; ?>
+
+    <?php if ($this->getBillsafeFreetext()): ?>
+        <p><?php echo $this->getBillsafeFreetext(); ?></p>
+    <?php endif; ?>
+
+    <?php if ($this->getGiftMessage()): ?>
+        <p>
+            <?php echo $this->__('Message from: %s', $this->getGiftMessage()->getSender()); ?><br />
+            <?php echo $this->__('Message to: %s', $this->getGiftMessage()->getRecipient()); ?><br />
+            <?php echo $this->getGiftMessage()->getMessage(); ?>
+        </p>
+    <?php endif; ?>
+
+    <?php // Show checkout attributes (if enabled) ?>
+    <?php foreach ($this->getCheckoutAttributes() as $attribute): ?>
+        <?php echo $this->__('%s: %s', $attribute['label'], $attribute['value']); ?>
+    <?php endforeach; ?>
+
+    <?php // Show customer invoice comments (if enabled) ?>
+    <?php if ($this->isShowCustomerSourceComments()): ?>
+        <p>
+        <?php foreach ($this->getSource()->getCommentsCollection() as $comment): ?>
+            <?php if ($comment->getIsVisibleOnFront()): ?>
+                <?php echo $comment->getComment(); ?><br />
+            <?php endif; ?>
+        <?php endforeach; ?>
+        </p>
+    <?php endif; ?>
+
+    <?php // Show customer order comments (if enabled) ?>
+    <?php if ($this->isShowCustomerOrderComments()): ?>
+        <p>
+        <?php foreach ($this->getOrder()->getVisibleStatusHistory() as $comment): ?>
+            <?php echo $comment->getComment(); ?><br />
+        <?php endforeach; ?>
+        </p>
+        <?php // Support for OneStepCheckout extension comments ?>
+        <?php if ($this->getOrder()->getOnestepcheckoutCustomercomment()): ?>
+            <?php echo $this->getOrder()->getOnestepcheckoutCustomercomment(); ?>
+        <?php endif; ?>
+    <?php endif; ?>
+
+    <?php if ($this->getCustomerGroupSpecificFreetext()): ?>
+        <p><?php echo $this->getCustomerGroupSpecificFreetext(); ?></p>
+    <?php endif; ?>
+
+    <?php if ($this->getConfiguredFreeTextWithPlaceholders()): ?>
+        <p><?php echo $this->getConfiguredFreeTextWithPlaceholders(); ?></p>
+    <?php endif; ?>
+
+    <?php echo $this->getFooterPageCountHtml(); ?>
+
+</div>

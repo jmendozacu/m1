@@ -1,0 +1,76 @@
+<?php
+/*
+ * Author Rudyuk Vitalij Anatolievich
+ * Email rvansp@gmail.com
+ * Blog www.cervic.info
+ */
+?>
+<?php
+class Infomodus_Upslabelinv_LabelController extends Mage_Core_Controller_Front_Action
+{
+
+    public function preDispatch()
+    {
+        if(Mage::getStoreConfig('upslabelinv/access/guest')==0){
+            if (!Mage::getSingleton('customer/session')->authenticate($this)) {
+                parent::preDispatch();
+                $this->setFlag('', 'no-dispatch', true);
+            }
+        }
+    }
+
+    public function indexAction()
+    {
+        $this->loadLayout();
+        $this->renderLayout();
+    }
+
+    public function viewAction()
+    {
+        $order_id = $this->getRequest()->getParam('order_id');
+        $order = Mage::getSingleton('sales/order')->load($order_id);
+        $customerId = $order->getCustomerId();
+        if ($customerId == Mage::getSingleton('customer/session')->getId() || Mage::getStoreConfig('upslabelinv/access/guest')==1) {
+            $labels1 = Mage::getModel('upslabelinv/upslabelinv')->getCollection()->addFieldToFilter('type', 'from')->addFieldToFilter('order_id', $order_id);
+            if ($labels1->getSize() > 0) {
+                $labels = $labels1->getData();
+                $labels = $labels[0];
+            }
+            /*echo '
+            <html>
+            <head>
+                <title>Ups label</title>
+                <style>
+                *{
+                    margin:0;
+                    padding:0;
+                }
+                </style>
+            </head>
+            <body>
+            <style media="print">
+                body {
+                    margin:0;
+                    padding:0;
+                }
+                #input {
+                    display: none;
+                    margin:0;
+                    padding:0;
+                }
+            </style>
+            <div id="input">
+            <input type="button" value="Print" onclick="window.print()" />
+            <br />
+            <br />
+            </div>
+            <div style="max-height:800px;height:100%;">
+            <img style="height:100%;" src="' . Mage::getBaseUrl('media') . 'upslabelinv/label/' . $labels['labelname'] . '" />
+            </div>
+            </body>
+            </html>
+            ';*/
+            echo str_replace('./label', Mage::getBaseUrl('media') . 'upslabelinv/label/label',file_get_contents(Mage::getBaseUrl('media') . 'upslabelinv/label/' . $labels['trackingnumber'].'.html'));
+        }
+    }
+}

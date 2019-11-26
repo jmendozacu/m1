@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Vianetz_Core>
+            <version>1.1.1</version>
+        </Vianetz_Core>
+    </modules>
+
+    <global>
+        <models>
+            <vianetz_core>
+                <class>Vianetz_Core_Model</class>
+            </vianetz_core>
+        </models>
+        <helpers>
+            <vianetz_core>
+                <class>Vianetz_Core_Helper</class>
+            </vianetz_core>
+        </helpers>
+        <blocks>
+            <vianetz_core>
+                <class>Vianetz_Core_Block</class>
+            </vianetz_core>
+        </blocks>
+    </global>
+
+    <frontend>
+        <routers>
+            <Vianetz_Core>
+                <use>standard</use>
+                <args>
+                    <module>Vianetz_Core</module>
+                    <frontName>vianetz_core</frontName>
+                </args>
+            </Vianetz_Core>
+        </routers>
+    </frontend>
+</config>

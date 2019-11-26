@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+ /**
+ * GoMage Ads & Promo Extension
+ *
+ * @category     Extension
+ * @copyright    Copyright (c) 2010-2011 GoMage (http://www.gomage.com)
+ * @author       GoMage
+ * @license      http://www.gomage.com/license-agreement/  Single domain license
+ * @terms of use http://www.gomage.com/terms-of-use
+ * @version      Release: 1.0
+ */
+ -->
+<layout version="1.0">
+    <gomage_adspromo_adminhtml_items_index>    	
+        <reference name="content">
+            <block type="gomage_adspromo/adminhtml_items" name="gomage_adspromo.admin.items" />
+        </reference>
+    </gomage_adspromo_adminhtml_items_index>
+    <gomage_adspromo_adminhtml_items_edit>
+    	<update handle="editor"/>
+    	<reference name="head">    	
+    		<action method="addJs"><script>gomage/adspromo-admin.js</script></action>    		
+    	</reference> 
+    </gomage_adspromo_adminhtml_items_edit>
+    <gomage_adspromo_adminhtml_items_new>
+    	<update handle="editor"/>
+    	<reference name="head">    	
+    		<action method="addJs"><script>gomage/adspromo-admin.js</script></action>    		
+    	</reference>	        
+    </gomage_adspromo_adminhtml_items_new>
+</layout>

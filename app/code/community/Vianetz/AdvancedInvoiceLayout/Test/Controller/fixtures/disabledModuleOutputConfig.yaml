@@ -1,0 +1,2 @@
+config:
+  default/advanced/modules_disable_output/Vianetz_AdvancedInvoiceLayout: 1

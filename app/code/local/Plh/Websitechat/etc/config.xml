@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<!-- 
+Version: 0.1.4 http://providelivehelp.com
+FILE: Chat.php
+Date: 11-JUN-2010
+Copyright: (c) 2010 Provide Live Help
+Created By: Sudhansu Ranjan Mangaraj (modulesoft.com)
+-->
+<config>
+	<modules>
+		<Plh_Websitechat>
+			<version>0.1.1</version>
+		</Plh_Websitechat>
+	</modules>
+	
+	<frontend>
+		<routers>
+			<websitechat>
+				<use>standard</use>
+				<args>
+					<module>Plh_Websitechat</module>
+					<frontName>websitechat</frontName>
+				</args>
+			</websitechat>
+		</routers>
+		<layout>
+			<updates>
+				<websitechat>
+					<file>websitechat.xml</file>
+				</websitechat>
+			</updates>
+		</layout>
+	</frontend>
+	
+	<adminhtml>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<system>
+							<children>
+								<config>
+									<children>
+										<websitechat>
+											<title>Website Chat</title>
+										</websitechat>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+	</adminhtml>
+	
+	<global>
+        <models>
+            <websitechat>
+                <class>Plh_Websitechat_Model</class>
+				<resourceModel>websitechat_mysql4</resourceModel>
+            </websitechat>
+        </models>
+		<resources>
+            <websitechat_setup>
+                <setup>
+                    <module>Plh_Websitechat</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </websitechat_setup>
+            <websitechat_write>
+                <connection>
+                  <use>core_write</use>
+                </connection>
+            </websitechat_write>
+            <websitechat_read>
+               <connection>
+                <use>core_read</use>
+              </connection>
+            </websitechat_read>
+        </resources>
+		<blocks>
+            <websitechat><class>Plh_Websitechat_Block</class></websitechat>
+        </blocks>
+		<helpers>
+            <websitechat>
+                <class>Plh_Websitechat_Helper</class>
+            </websitechat>
+        </helpers>
+    </global>
+	<default>
+        <websitechat>
+			<websitechat>
+				<enabled>1</enabled>
+				<title></title>
+				<pages>default</pages>
+				<position>2</position>
+				<chat_button_html>Paste Chat Button HTML code here...</chat_button_html>
+			</websitechat>
+		</websitechat>
+    </default>
+</config>

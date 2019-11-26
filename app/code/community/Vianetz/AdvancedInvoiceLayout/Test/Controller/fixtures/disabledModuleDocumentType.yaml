@@ -1,0 +1,4 @@
+config:
+  default/advancedinvoicelayout/invoice/enable: 0
+  default/advancedinvoicelayout/shipment/enable: 0
+  default/advancedinvoicelayout/creditmemo/enable: 0

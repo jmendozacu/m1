@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <SM_Xmail>
+            <version>0.1.0</version>
+        </SM_Xmail>
+    </modules>
+    
+    <global>        
+        <blocks>
+            <xmail>
+                <class>SM_Xmail_Block</class>
+            </xmail>
+        </blocks>
+        <helpers>
+            <xmail>
+                <class>SM_Xmail_Helper</class>
+            </xmail>  
+        </helpers>
+    </global>
+    
+    <admin>
+        <routers>
+            <xmail>
+                <use>admin</use>
+                <args>
+                    <module>SM_Xmail</module>
+                    <frontName>xmail</frontName>
+                </args>
+            </xmail>
+        </routers>
+    </admin>
+    
+    <adminhtml>        
+        <menu>
+            <sales>
+                <children>
+                    <xmail_adminform translate="title" module="xmail">
+                        <title>xEmail</title>
+                        <action>xmail/adminhtml_xmail</action>
+                        <sort_order>999</sort_order>
+                    </xmail_adminform>
+                </children>
+            </sales>
+        </menu>
+        
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <sales>
+                            <children>
+                                <xmail_adminform>
+                                    <title>Update Email</title>
+                                </xmail_adminform>
+                            </children>
+                        </sales>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        
+        <layout>
+            <updates>
+                <xmail>
+                    <file>xmail.xml</file>
+                </xmail>
+            </updates>
+        </layout>
+    </adminhtml>
+</config>
