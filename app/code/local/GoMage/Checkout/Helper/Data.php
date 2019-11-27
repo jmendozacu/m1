@@ -1,1 +1,476 @@
-<?php eval(base64_decode("LyoqICogR29NYWdlIExpZ2h0Q2hlY2tvdXQgRXh0ZW5zaW9uICogKiBAY2F0ZWdvcnkgRXh0ZW5zaW9uICogQGNvcHlyaWdodCBDb3B5cmlnaHQgKGMpIDIwMTAtMjAxOCBHb01hZ2UgKGh0dHBzOi8vd3d3LmdvbWFnZS5jb20pICogQGF1dGhvciBHb01hZ2UgKiBAbGljZW5zZSBodHRwczovL3d3dy5nb21hZ2UuY29tL2xpY2Vuc2UtYWdyZWVtZW50LyBTaW5nbGUgZG9tYWluIGxpY2Vuc2UgKiBAdGVybXMgb2YgdXNlIGh0dHBzOi8vd3d3LmdvbWFnZS5jb20vdGVybXMtb2YtdXNlICogQHZlcnNpb24gUmVsZWFzZTogNS45LjQgKiBAc2luY2UgQ2xhc3MgYXZhaWxhYmxlIHNpbmNlIFJlbGVhc2UgMS4wICovIHJlcXVpcmVfb25jZShNYWdlOjpnZXRCYXNlRGlyKCdsaWInKSAuIERTIC4gJ0dvTWFnZScgLiBEUyAuICdNb2JpbGVEZXRlY3QnIC4gRFMgLiAnQ2hlY2tvdXRfTW9iaWxlX0RldGVjdC5waHAnKTsgY2xhc3MgR29NYWdlX0NoZWNrb3V0X0hlbHBlcl9EYXRhIGV4dGVuZHMgTWFnZV9Db3JlX0hlbHBlcl9BYnN0cmFjdCB7IHByb3RlY3RlZCAkbW9kZTsgcHJvdGVjdGVkICRjb3VudHJ5X2lkOyBwdWJsaWMgZnVuY3Rpb24gZ2V0Q29uZmlnRGF0YSgkbm9kZSkgeyByZXR1cm4gTWFnZTo6Z2V0U3RvcmVDb25maWcoJ2dvbWFnZV9jaGVja291dC8nIC4gJG5vZGUpOyB9IHB1YmxpYyBmdW5jdGlvbiBnZXRDaGVja291dE1vZGUoKSB7IGlmIChpc19udWxsKCR0aGlzLT5tb2RlKSkgeyBpZiAoTWFnZTo6Z2V0U2luZ2xldG9uKCdnb21hZ2VfY2hlY2tvdXQvdHlwZV9vbmVzdGVwJyktPmdldFF1b3RlKCktPmlzQWxsb3dlZEd1ZXN0Q2hlY2tvdXQoKSkgeyAkdGhpcy0+bW9kZSA9IGludHZhbCgkdGhpcy0+Z2V0Q29uZmlnRGF0YSgncmVnaXN0cmF0aW9uL21vZGUnKSk7IH0gZWxzZSB7ICR0aGlzLT5tb2RlID0gMTsgfSB9IHJldHVybiAkdGhpcy0+bW9kZTsgfSBwdWJsaWMgZnVuY3Rpb24gZ2V0QWxsU3RvcmVEb21haW5zKCkgeyAkZG9tYWlucyA9IGFycmF5KCk7IGZvcmVhY2ggKE1hZ2U6OmFwcCgpLT5nZXRXZWJzaXRlcygpIGFzICR3ZWJzaXRlKSB7ICR1cmwgPSAkd2Vic2l0ZS0+Z2V0Q29uZmlnKCd3ZWIvdW5zZWN1cmUvYmFzZV91cmwnKTsgaWYgKCRkb21haW4gPSB0cmltKHByZWdfcmVwbGFjZSgnL14uKj9cXC9cXC8oLiopP1xcLy8nLCAnJDEnLCAkdXJsKSkpIHsgJGRvbWFpbnNbXSA9ICRkb21haW47IH0gJHVybCA9ICR3ZWJzaXRlLT5nZXRDb25maWcoJ3dlYi9zZWN1cmUvYmFzZV91cmwnKTsgaWYgKCRkb21haW4gPSB0cmltKHByZWdfcmVwbGFjZSgnL14uKj9cXC9cXC8oLiopP1xcLy8nLCAnJDEnLCAkdXJsKSkpIHsgJGRvbWFpbnNbXSA9ICRkb21haW47IH0gfSByZXR1cm4gYXJyYXlfdW5pcXVlKCRkb21haW5zKTsgfSBwdWJsaWMgZnVuY3Rpb24gZ2V0QXZhaWxhYmxlV2Vic2l0ZXMoKSB7IHJldHVybiAkdGhpcy0+X3coKTsgfSBwdWJsaWMgZnVuY3Rpb24gZ2V0QXZhaWxhdmVsV2Vic2l0ZXMoKSB7IHJldHVybiAkdGhpcy0+Z2V0QXZhaWxhYmxlV2Vic2l0ZXMoKTsgfSBwdWJsaWMgZnVuY3Rpb24gaXNBdmFpbGFibGVXZWJzaXRlKCkgeyByZXR1cm4gaW5fYXJyYXkoTWFnZTo6YXBwKCktPmdldFN0b3JlKCktPmdldFdlYnNpdGVJZCgpLCAkdGhpcy0+Z2V0QXZhaWxhYmxlV2Vic2l0ZXMoKSk7IH0gcHJvdGVjdGVkIGZ1bmN0aW9uIF93KCkgeyBpZiAoIU1hZ2U6OmdldFN0b3JlQ29uZmlnKCdnb21hZ2VfYWN0aXZhdGlvbi9saWdodGNoZWNrb3V0L2luc3RhbGxlZCcpIHx8IChpbnR2YWwoTWFnZTo6Z2V0U3RvcmVDb25maWcoJ2dvbWFnZV9hY3RpdmF0aW9uL2xpZ2h0Y2hlY2tvdXQvY291bnQnKSkgPiAxMCkgKSB7IHJldHVybiBhcnJheSgpOyB9ICR0aW1lX3RvX3VwZGF0ZSA9IDYwICogNjAgKiAyNCAqIDE1OyAkciA9IE1hZ2U6OmdldFN0b3JlQ29uZmlnKCdnb21hZ2VfYWN0aXZhdGlvbi9saWdodGNoZWNrb3V0L2FyJyk7ICR0ID0gTWFnZTo6Z2V0U3RvcmVDb25maWcoJ2dvbWFnZV9hY3RpdmF0aW9uL2xpZ2h0Y2hlY2tvdXQvdGltZScpOyAkcyA9IE1hZ2U6OmdldFN0b3JlQ29uZmlnKCdnb21hZ2VfYWN0aXZhdGlvbi9saWdodGNoZWNrb3V0L3dlYnNpdGVzJyk7ICRsYXN0X2NoZWNrID0gc3RyX3JlcGxhY2UoJHIsICcnLCBNYWdlOjpoZWxwZXIoJ2NvcmUnKS0+ZGVjcnlwdCgkdCkpOyAkYWxsc2l0ZXMgPSBleHBsb2RlKCcsJywgc3RyX3JlcGxhY2UoJHIsICcnLCBNYWdlOjpoZWxwZXIoJ2NvcmUnKS0+ZGVjcnlwdCgkcykpKTsgJGFsbHNpdGVzID0gYXJyYXlfZGlmZigkYWxsc2l0ZXMsIGFycmF5KCIiKSk7IGlmICgoJGxhc3RfY2hlY2sgKyAkdGltZV90b191cGRhdGUpIDwgdGltZSgpKSB7ICR0aGlzLT5hKE1hZ2U6OmdldFN0b3JlQ29uZmlnKCdnb21hZ2VfYWN0aXZhdGlvbi9saWdodGNoZWNrb3V0L2tleScpLCBpbnR2YWwoTWFnZTo6Z2V0U3RvcmVDb25maWcoJ2dvbWFnZV9hY3RpdmF0aW9uL2xpZ2h0Y2hlY2tvdXQvY291bnQnKSksIGltcGxvZGUoJywnLCAkYWxsc2l0ZXMpICk7IH0gcmV0dXJuICRhbGxzaXRlczsgfSBwdWJsaWMgZnVuY3Rpb24gYSgkaywgJGMgPSAwLCAkcyA9ICcnKSB7ICRjaCA9IGN1cmxfaW5pdCgpOyBjdXJsX3NldG9wdCgkY2gsIENVUkxPUFRfVVJMLCBzcHJpbnRmKCdodHRwczovL3d3dy5nb21hZ2UuY29tL2luZGV4LnBocC9nb21hZ2VfZG93bmxvYWRhYmxlL2tleS9jaGVjaycpKTsgY3VybF9zZXRvcHQoJGNoLCBDVVJMT1BUX1BPU1QsIHRydWUpOyBjdXJsX3NldG9wdCgkY2gsIENVUkxPUFRfUE9TVEZJRUxEUywgJ2tleT0nIC4gdXJsZW5jb2RlKCRrKSAuICcmc2t1PWxpZ2h0Y2hlY2tvdXQmZG9tYWlucz0nIC4gdXJsZW5jb2RlKGltcGxvZGUoJywnLCAkdGhpcy0+Z2V0QWxsU3RvcmVEb21haW5zKCkpKSAuICcmdmVyPScgLiB1cmxlbmNvZGUoJzUuOS40JykpOyBjdXJsX3NldG9wdCgkY2gsIENVUkxPUFRfVElNRU9VVCwgMzApOyBjdXJsX3NldG9wdCgkY2gsIENVUkxPUFRfUkVUVVJOVFJBTlNGRVIsIHRydWUpOyBjdXJsX3NldG9wdCgkY2gsIENVUkxPUFRfU1NMX1ZFUklGWVBFRVIsIDApOyBjdXJsX3NldG9wdCgkY2gsIENVUkxPUFRfU1NMX1ZFUklGWUhPU1QsIDApOyAkY29udGVudCA9IGN1cmxfZXhlYygkY2gpOyB0cnkgeyAkciA9IFplbmRfSnNvbjo6ZGVjb2RlKCRjb250ZW50KTsgfSBjYXRjaCAoXEV4Y2VwdGlvbiAkZSkgeyAkciA9IGFycmF5KCk7IH0gJGUgPSBNYWdlOjpoZWxwZXIoJ2NvcmUnKTsgaWYgKGVtcHR5KCRyKSkgeyAkdmFsdWUxID0gTWFnZTo6Z2V0U3RvcmVDb25maWcoJ2dvbWFnZV9hY3RpdmF0aW9uL2xpZ2h0Y2hlY2tvdXQvYXInKTsgJGdyb3VwcyA9IGFycmF5KCAnbGlnaHRjaGVja291dCcgPT4gYXJyYXkoICdmaWVsZHMnID0+IGFycmF5KCAnYXInID0+IGFycmF5KCAndmFsdWUnID0+ICR2YWx1ZTEgKSwgJ3dlYnNpdGVzJyA9PiBhcnJheSggJ3ZhbHVlJyA9PiAoc3RyaW5nKU1hZ2U6OmdldFN0b3JlQ29uZmlnKCdnb21hZ2VfYWN0aXZhdGlvbi9saWdodGNoZWNrb3V0L3dlYnNpdGVzJykgKSwgJ3RpbWUnID0+IGFycmF5KCAndmFsdWUnID0+IChzdHJpbmcpJGUtPmVuY3J5cHQoJHZhbHVlMSAuICh0aW1lKCkgLSAoNjAgKiA2MCAqIDI0ICogMTUgLSAxODAwKSkgLiAkdmFsdWUxKSApLCAnY291bnQnID0+IGFycmF5KCAndmFsdWUnID0+ICRjICsgMSkgKSApICk7IE1hZ2U6OmdldE1vZGVsKCdhZG1pbmh0bWwvY29uZmlnX2RhdGEnKSAtPnNldFNlY3Rpb24oJ2dvbWFnZV9hY3RpdmF0aW9uJykgLT5zZXRHcm91cHMoJGdyb3VwcykgLT5zYXZlKCk7IE1hZ2U6OmdldENvbmZpZygpLT5yZWluaXQoKTsgTWFnZTo6YXBwKCktPnJlaW5pdFN0b3JlcygpOyByZXR1cm47IH0gJHZhbHVlMSA9ICcnOyAkdmFsdWUyID0gJyc7IGlmIChpc3NldCgkclsnZCddKSAmJiBpc3NldCgkclsnYyddKSkgeyAkdmFsdWUxID0gJGUtPmVuY3J5cHQoYmFzZTY0X2VuY29kZShaZW5kX0pzb246OmVuY29kZSgkcikpKTsgaWYgKCEkcykgeyAkcyA9IE1hZ2U6OmdldFN0b3JlQ29uZmlnKCdnb21hZ2VfYWN0aXZhdGlvbi9saWdodGNoZWNrb3V0L3dlYnNpdGVzJyk7IH0gJHMgPSBhcnJheV9zbGljZShleHBsb2RlKCcsJywgJHMpLCAwLCAkclsnYyddKTsgJHZhbHVlMiA9ICRlLT5lbmNyeXB0KCR2YWx1ZTEgLiBpbXBsb2RlKCcsJywgJHMpIC4gJHZhbHVlMSk7IH0gJGdyb3VwcyA9IGFycmF5KCAnbGlnaHRjaGVja291dCcgPT4gYXJyYXkoICdmaWVsZHMnID0+IGFycmF5KCAnYXInID0+IGFycmF5KCAndmFsdWUnID0+ICR2YWx1ZTEgKSwgJ3dlYnNpdGVzJyA9PiBhcnJheSggJ3ZhbHVlJyA9PiAoc3RyaW5nKSR2YWx1ZTIgKSwgJ3RpbWUnID0+IGFycmF5KCAndmFsdWUnID0+IChzdHJpbmcpJGUtPmVuY3J5cHQoJHZhbHVlMSAuIHRpbWUoKSAuICR2YWx1ZTEpICksICdpbnN0YWxsZWQnID0+IGFycmF5KCAndmFsdWUnID0+IDEgKSwgJ2NvdW50JyA9PiBhcnJheSggJ3ZhbHVlJyA9PiAwKSApICkgKTsgTWFnZTo6Z2V0TW9kZWwoJ2FkbWluaHRtbC9jb25maWdfZGF0YScpIC0+c2V0U2VjdGlvbignZ29tYWdlX2FjdGl2YXRpb24nKSAtPnNldEdyb3VwcygkZ3JvdXBzKSAtPnNhdmUoKTsgTWFnZTo6Z2V0Q29uZmlnKCktPnJlaW5pdCgpOyBNYWdlOjphcHAoKS0+cmVpbml0U3RvcmVzKCk7IH0gcHVibGljIGZ1bmN0aW9uIGdhKCkgeyAkYXIgPSBiYXNlNjRfZGVjb2RlKE1hZ2U6OmhlbHBlcignY29yZScpLT5kZWNyeXB0KE1hZ2U6OmdldFN0b3JlQ29uZmlnKCdnb21hZ2VfYWN0aXZhdGlvbi9saWdodGNoZWNrb3V0L2FyJykpKTsgcmV0dXJuICRhciA/IFplbmRfSnNvbjo6ZGVjb2RlKCRhcikgOiBhcnJheSgpOyB9IHB1YmxpYyBmdW5jdGlvbiBnZXRHZW9pcFJlY29yZCgpIHsgcmV0dXJuIEdlb0lQX0NvcmU6OmdldEluc3RhbmNlKE1hZ2U6OmdldEJhc2VEaXIoJ21lZGlhJykgLiAiL2dlb2lwL0dlb0xpdGVDaXR5LmRhdCIsIEdlb0lQX0NvcmU6OkdFT0lQX1NUQU5EQVJEKS0+Z2VvaXBfcmVjb3JkX2J5X2FkZHIoTWFnZTo6aGVscGVyKCdjb3JlL2h0dHAnKS0+Z2V0UmVtb3RlQWRkcigpKTsgfSBwdWJsaWMgZnVuY3Rpb24gZ2V0RGVmYXVsdENvdW50cnlJZCgpIHsgaWYgKGlzX251bGwoJHRoaXMtPmNvdW50cnlfaWQpKSB7IGlmIChNYWdlOjpnZXRTdG9yZUNvbmZpZygnZ29tYWdlX2NoZWNrb3V0L2dlb2lwL2dlb2lwX2VuYWJsZWQnKSAmJiBmaWxlX2V4aXN0cyhNYWdlOjpnZXRCYXNlRGlyKCdtZWRpYScpIC4gIi9nZW9pcC9HZW9MaXRlQ2l0eS5kYXQiKSAmJiBleHRlbnNpb25fbG9hZGVkKCdtYnN0cmluZycpKSB7IHRyeSB7ICR0aGlzLT5jb3VudHJ5X2lkID0gR2VvSVBfQ29yZTo6Z2V0SW5zdGFuY2UoTWFnZTo6Z2V0QmFzZURpcignbWVkaWEnKSAuICIvZ2VvaXAvR2VvTGl0ZUNpdHkuZGF0IiwgR2VvSVBfQ29yZTo6R0VPSVBfU1RBTkRBUkQpLT5nZW9pcF9jb3VudHJ5X2NvZGVfYnlfYWRkcihNYWdlOjpoZWxwZXIoJ2NvcmUvaHR0cCcpLT5nZXRSZW1vdGVBZGRyKCkpOyB9IGNhdGNoIChFeGNlcHRpb24gJGUpIHsgZWNobyAkZTsgfSB9IGlmICghJHRoaXMtPmNvdW50cnlfaWQpIHsgJHRoaXMtPmNvdW50cnlfaWQgPSBNYWdlOjpnZXRTdG9yZUNvbmZpZygnZ29tYWdlX2NoZWNrb3V0L2dlbmVyYWwvZGVmYXVsdF9jb3VudHJ5Jyk7IGlmICghJHRoaXMtPmNvdW50cnlfaWQpIHsgJHRoaXMtPmNvdW50cnlfaWQgPSBNYWdlOjpnZXRTdG9yZUNvbmZpZygnZ2VuZXJhbC9jb3VudHJ5L2RlZmF1bHQnKTsgfSB9IH0gcmV0dXJuICR0aGlzLT5jb3VudHJ5X2lkOyB9IHB1YmxpYyBmdW5jdGlvbiBnZXREZWZhdWx0U2hpcHBpbmdNZXRob2QoKSB7ICRhZGRyZXNzID0gTWFnZTo6Z2V0U2luZ2xldG9uKCdjaGVja291dC9zZXNzaW9uJyktPmdldFF1b3RlKCktPmdldFNoaXBwaW5nQWRkcmVzcygpOyAkYWRkcmVzcy0+c2V0Q29sbGVjdFNoaXBwaW5nUmF0ZXModHJ1ZSktPmNvbGxlY3RTaGlwcGluZ1JhdGVzKCk7ICRyYXRlcyA9ICRhZGRyZXNzLT5nZXRHcm91cGVkQWxsU2hpcHBpbmdSYXRlcygpOyBpZiAoY291bnQoJHJhdGVzKSA9PSAxKSB7IGZvcmVhY2ggKCRyYXRlcyBhcyAkcmF0ZV9jb2RlID0+ICRtZXRob2RzKSB7IGlmIChjb3VudCgkbWV0aG9kcykgPT0gMSkgeyBmb3JlYWNoICgkbWV0aG9kcyBhcyAkbWV0aG9kKSB7IHJldHVybiAkbWV0aG9kLT5nZXRDb2RlKCk7IH0gfSBlbHNlIHsgcmV0dXJuICR0aGlzLT5nZXRDb25maWdEYXRhKCdnZW5lcmFsL2RlZmF1bHRfc2hpcHBpbmdfbWV0aG9kJyk7IH0gfSB9IGVsc2UgeyByZXR1cm4gJHRoaXMtPmdldENvbmZpZ0RhdGEoJ2dlbmVyYWwvZGVmYXVsdF9zaGlwcGluZ19tZXRob2QnKTsgfSB9IHB1YmxpYyBmdW5jdGlvbiBnZXREZWZhdWx0UGF5bWVudE1ldGhvZCgpIHsgcmV0dXJuICR0aGlzLT5nZXRDb25maWdEYXRhKCdnZW5lcmFsL2RlZmF1bHRfcGF5bWVudF9tZXRob2QnKTsgfSBwdWJsaWMgZnVuY3Rpb24gZ2V0QWN0aXZlUGF5bWVudE1ldGhvZHMoJHN0b3JlID0gbnVsbCkgeyAkbWV0aG9kcyA9IGFycmF5KCk7ICRjb25maWcgPSBNYWdlOjpnZXRTdG9yZUNvbmZpZygncGF5bWVudCcsICRzdG9yZSk7IGZvcmVhY2ggKCRjb25maWcgYXMgJGNvZGUgPT4gJG1ldGhvZENvbmZpZykgeyBpZiAoaXNzZXQoJG1ldGhvZENvbmZpZ1snbW9kZWwnXSkgJiYgJG1ldGhvZENvbmZpZ1snbW9kZWwnXSkgeyBpZiAoaXNzZXQoJG1ldGhvZENvbmZpZ1snZ3JvdXAnXSkgJiYgJG1ldGhvZENvbmZpZ1snZ3JvdXAnXSA9PSAnbWJvb2tlcnMnICYmIE1hZ2U6OmdldFN0b3JlQ29uZmlnRmxhZygnbW9uZXlib29rZXJzLycgLiAkY29kZSAuICcvYWN0aXZlJywgJHN0b3JlKSkgeyAkbWV0aG9kID0gJHRoaXMtPl9nZXRQYXltZW50TWV0aG9kKCRjb2RlLCAkbWV0aG9kQ29uZmlnKTsgJG1ldGhvZFsnZ3JvdXAnXSA9ICdtYm9va2Vycyc7ICRtZXRob2RzWyRjb2RlXSA9ICRtZXRob2Q7IH0gZWxzZWlmICgkbWV0aG9kQ29uZmlnWydtb2RlbCddID09ICdnb29nbGVjaGVja291dC9wYXltZW50JykgeyBpZiAoTWFnZTo6Z2V0U3RvcmVDb25maWdGbGFnKCdnb29nbGUvY2hlY2tvdXQvYWN0aXZlJywgJHN0b3JlKSkgeyAkbWV0aG9kID0gJHRoaXMtPl9nZXRQYXltZW50TWV0aG9kKCRjb2RlLCAkbWV0aG9kQ29uZmlnKTsgJG1ldGhvZHNbJGNvZGVdID0gJG1ldGhvZDsgfSB9IGVsc2VpZiAoaXNzZXQoJG1ldGhvZENvbmZpZ1snZ3JvdXAnXSkgJiYgJG1ldGhvZENvbmZpZ1snZ3JvdXAnXSA9PSAncGF5b25lJykgeyAkbWV0aG9kID0gJHRoaXMtPl9nZXRQYXltZW50TWV0aG9kKCRjb2RlLCAkbWV0aG9kQ29uZmlnKTsgaWYgKCRtZXRob2QgJiYgJG1ldGhvZC0+aXNBdmFpbGFibGUoKSkgeyAkbWV0aG9kc1skY29kZV0gPSAkbWV0aG9kOyB9IH0gZWxzZWlmIChNYWdlOjpnZXRTdG9yZUNvbmZpZ0ZsYWcoJ3BheW1lbnQvJyAuICRjb2RlIC4gJy9hY3RpdmUnLCAkc3RvcmUpKSB7ICRtZXRob2QgPSAkdGhpcy0+X2dldFBheW1lbnRNZXRob2QoJGNvZGUsICRtZXRob2RDb25maWcpOyAkbWV0aG9kWydncm91cCddID0gJyc7ICRtZXRob2RzWyRjb2RlXSA9ICRtZXRob2Q7IH0gfSB9IHJldHVybiAkbWV0aG9kczsgfSBwcm90ZWN0ZWQgZnVuY3Rpb24gX2dldFBheW1lbnRNZXRob2QoJGNvZGUsICRjb25maWcsICRzdG9yZSA9IG51bGwpIHsgJG1vZGVsTmFtZSA9ICRjb25maWdbJ21vZGVsJ107ICRtZXRob2QgPSBNYWdlOjpnZXRNb2RlbCgkbW9kZWxOYW1lKTsgaWYgKCRtZXRob2QpIHsgJG1ldGhvZC0+c2V0SWQoJGNvZGUpLT5zZXRTdG9yZSgkc3RvcmUpOyB9IHJldHVybiAkbWV0aG9kOyB9IHB1YmxpYyBmdW5jdGlvbiBnZXRWYXRCYXNlQ291bnRyeU1vZGUoKSB7IHJldHVybiAkdGhpcy0+Z2V0Q29uZmlnRGF0YSgndmF0L2Jhc2VfY291bnRyeScpOyB9IHB1YmxpYyBmdW5jdGlvbiBnZXRWYXRXaXRoaW5Db3VudHJ5TW9kZSgpIHsgcmV0dXJuICR0aGlzLT5nZXRDb25maWdEYXRhKCd2YXQvaWZfbm90X2Jhc2VfY291bnRyeScpOyB9IHB1YmxpYyBmdW5jdGlvbiBnZXRUYXhDb3VudHJpZXMoKSB7ICRydWxlX2lkcyA9IE1hZ2U6OmhlbHBlcignZ29tYWdlX2NoZWNrb3V0JyktPmdldENvbmZpZ0RhdGEoJ3ZhdC9ydWxlJyk7ICRydWxlX2lkcyA9IGFycmF5X2ZpbHRlcihleHBsb2RlKCcsJywgJHJ1bGVfaWRzKSk7IGlmIChjb3VudCgkcnVsZV9pZHMpKSB7ICRyZXNvdXJjZSA9IE1hZ2U6OmdldFNpbmdsZXRvbignY29yZS9yZXNvdXJjZScpOyAkY29ubmVjdGlvbiA9ICRyZXNvdXJjZS0+Z2V0Q29ubmVjdGlvbigncmVhZCcpOyAkcSA9IHNwcmludGYoJ1NFTEVDVCBESVNUSU5DVChgdGF4X2NvdW50cnlfaWRgKSBGUk9NIGAlc2AgV0hFUkUgYHRheF9jYWxjdWxhdGlvbl9yYXRlX2lkYCBJTiAoU0VMRUNUIGB0YXhfY2FsY3VsYXRpb25fcmF0ZV9pZGAgRlJPTSBgJXNgIFdIRVJFIGB0YXhfY2FsY3VsYXRpb25fcnVsZV9pZGAgaW4gKCVzKSApJywgJHJlc291cmNlLT5nZXRUYWJsZU5hbWUoJ3RheF9jYWxjdWxhdGlvbl9yYXRlJyksICRyZXNvdXJjZS0+Z2V0VGFibGVOYW1lKCd0YXhfY2FsY3VsYXRpb24nKSwgaW1wbG9kZSgnLCcsICRydWxlX2lkcykgKTsgcmV0dXJuIChhcnJheSkkY29ubmVjdGlvbi0+ZmV0Y2hDb2woJHEpOyB9IHJldHVybiBhcnJheSgpOyB9IHB1YmxpYyBmdW5jdGlvbiBnZXRJc0FueW1vcmVWZXJzaW9uKCRtYWpvciwgJG1pbm9yLCAkcmV2aXNpb24gPSAwKSB7ICR2ZXJzaW9uX2luZm8gPSBNYWdlOjpnZXRWZXJzaW9uSW5mbygpOyBpZiAoJHZlcnNpb25faW5mb1snbWFqb3InXSA+ICRtYWpvcikgeyByZXR1cm4gdHJ1ZTsgfSBlbHNlaWYgKCR2ZXJzaW9uX2luZm9bJ21ham9yJ10gPT0gJG1ham9yKSB7IGlmICgkdmVyc2lvbl9pbmZvWydtaW5vciddID4gJG1pbm9yKSB7IHJldHVybiB0cnVlOyB9IGVsc2VpZiAoJHZlcnNpb25faW5mb1snbWlub3InXSA9PSAkbWlub3IpIHsgaWYgKCR2ZXJzaW9uX2luZm9bJ3JldmlzaW9uJ10gPj0gJHJldmlzaW9uKSB7IHJldHVybiB0cnVlOyB9IH0gfSByZXR1cm4gZmFsc2U7IH0gcHVibGljIGZ1bmN0aW9uIGlzRW50ZXJwcmlzZSgpIHsgJG1vZHVsZXMgPSBhcnJheV9rZXlzKChhcnJheSlNYWdlOjpnZXRDb25maWcoKS0+Z2V0Tm9kZSgnbW9kdWxlcycpLT5jaGlsZHJlbigpKTsgcmV0dXJuIGluX2FycmF5KCdFbnRlcnByaXNlX0VudGVycHJpc2UnLCAkbW9kdWxlcyk7IH0gcHVibGljIGZ1bmN0aW9uIGlzQ29tcGF0aWJsZURldmljZSgpIHsgJGRldGVjdCA9IG5ldyBDaGVja291dF9Nb2JpbGVfRGV0ZWN0KCk7IGlmICghJGRldGVjdC0+aXNNb2JpbGUoKSkgeyByZXR1cm4gKGJvb2wpJHRoaXMtPmdldENvbmZpZ0RhdGEoJ2RldmljZS9kZXNrdG9wJyk7IH0gaWYgKCRkZXRlY3QtPmlzVGFibGV0KCkpIHsgJGRldmljZXMgPSBleHBsb2RlKCcsJywgJHRoaXMtPmdldENvbmZpZ0RhdGEoJ2RldmljZS90YWJsZXQnKSk7IH0gZWxzZSB7ICRkZXZpY2VzID0gZXhwbG9kZSgnLCcsICR0aGlzLT5nZXRDb25maWdEYXRhKCdkZXZpY2Uvc21hcnRwaG9uZScpKTsgfSBpZiAoJGRldGVjdC0+aXNBbmRyb2lkT1MoKSkgeyByZXR1cm4gaW5fYXJyYXkoR29NYWdlX0NoZWNrb3V0X01vZGVsX0FkbWluaHRtbF9TeXN0ZW1fQ29uZmlnX1NvdXJjZV9EZXZpY2U6OkFORFJPSUQsICRkZXZpY2VzKTsgfSBpZiAoJGRldGVjdC0+aXNCbGFja0JlcnJ5T1MoKSkgeyByZXR1cm4gaW5fYXJyYXkoR29NYWdlX0NoZWNrb3V0X01vZGVsX0FkbWluaHRtbF9TeXN0ZW1fQ29uZmlnX1NvdXJjZV9EZXZpY2U6OkJMQUNLQkVSUlksICRkZXZpY2VzKTsgfSBpZiAoJGRldGVjdC0+aXNpT1MoKSkgeyByZXR1cm4gaW5fYXJyYXkoR29NYWdlX0NoZWNrb3V0X01vZGVsX0FkbWluaHRtbF9TeXN0ZW1fQ29uZmlnX1NvdXJjZV9EZXZpY2U6OklPUywgJGRldmljZXMpOyB9IHJldHVybiBpbl9hcnJheShHb01hZ2VfQ2hlY2tvdXRfTW9kZWxfQWRtaW5odG1sX1N5c3RlbV9Db25maWdfU291cmNlX0RldmljZTo6T1RIRVIsICRkZXZpY2VzKTsgfSBwdWJsaWMgZnVuY3Rpb24gaXNMZWZ0dG9SaWdodFdyaXRlKCkgeyByZXR1cm4gaW5fYXJyYXkoTWFnZTo6YXBwKCktPmdldExvY2FsZSgpLT5nZXRMb2NhbGVDb2RlKCksIGFycmF5KCdhcl9EWicsICdhcl9FRycsICdhcl9LVycsICdhcl9NQScsICdhcl9TQScsICdoZV9JTCcsICdmYV9JUicpICk7IH0gcHVibGljIGZ1bmN0aW9uIGdldENvdW50cmllc1N0YXRlc1JlcXVpcmVkKCkgeyAkcmVzdWx0ID0gYXJyYXkoKTsgaWYgKCR0aGlzLT5nZXRDb25maWdEYXRhKCdhZGRyZXNzX2ZpZWxkcy9yZWdpb24nKSA9PSAncmVxJykgeyAkY291bnRyeV9jb2xsZWN0aW9uID0gTWFnZTo6aGVscGVyKCdkaXJlY3RvcnknKS0+Z2V0Q291bnRyeUNvbGxlY3Rpb24oKTsgZm9yZWFjaCAoJGNvdW50cnlfY29sbGVjdGlvbiBhcyAkY291bnRyeSkgeyAkcmVzdWx0W10gPSAkY291bnRyeS0+Z2V0Q291bnRyeUlkKCk7IH0gfSByZXR1cm4gTWFnZTo6aGVscGVyKCdjb3JlJyktPmpzb25FbmNvZGUoJHJlc3VsdCk7IH0gcHVibGljIGZ1bmN0aW9uIGZvcm1hdENvbG9yKCR2YWx1ZSkgeyBpZiAoJHZhbHVlID0gcHJlZ19yZXBsYWNlKCcvW15hLXpBLVowLTlcc10vJywgJycsICR2YWx1ZSkpIHsgJHZhbHVlID0gJyMnIC4gJHZhbHVlOyB9IHJldHVybiAkdmFsdWU7IH0gcHVibGljIGZ1bmN0aW9uIG5vdGlmeSgpIHsgJGZyZXF1ZW5jeSA9IGludHZhbChNYWdlOjphcHAoKS0+bG9hZENhY2hlKCdnb21hZ2Vfbm90aWZpY2F0aW9uc19mcmVxdWVuY3knKSk7IGlmICghJGZyZXF1ZW5jeSkgeyAkZnJlcXVlbmN5ID0gMjQ7IH0gJGxhc3RfdXBkYXRlID0gaW50dmFsKE1hZ2U6OmFwcCgpLT5sb2FkQ2FjaGUoJ2dvbWFnZV9ub3RpZmljYXRpb25zX2xhc3RfdXBkYXRlJykpOyBpZiAoKCRmcmVxdWVuY3kgKiA2MCAqIDYwICsgJGxhc3RfdXBkYXRlKSA+IHRpbWUoKSkgeyByZXR1cm4gZmFsc2U7IH0gJHRpbWVzdGFtcCA9ICRsYXN0X3VwZGF0ZTsgaWYgKCEkdGltZXN0YW1wKSB7ICR0aW1lc3RhbXAgPSB0aW1lKCk7IH0gdHJ5IHsgJGNoID0gY3VybF9pbml0KCk7IGN1cmxfc2V0b3B0KCRjaCwgQ1VSTE9QVF9VUkwsIHNwcmludGYoJ2h0dHBzOi8vd3d3LmdvbWFnZS5jb20vaW5kZXgucGhwL2dvbWFnZV9ub3RpZmljYXRpb24vaW5kZXgvZGF0YScpKTsgY3VybF9zZXRvcHQoJGNoLCBDVVJMT1BUX1BPU1QsIHRydWUpOyBjdXJsX3NldG9wdCgkY2gsIENVUkxPUFRfUE9TVEZJRUxEUywgJ3NrdT1saWdodGNoZWNrb3V0JnRpbWVzdGFtcD0nIC4gJHRpbWVzdGFtcCAuICcmdmVyPScgLiB1cmxlbmNvZGUoJzUuOS4yJykpOyBjdXJsX3NldG9wdCgkY2gsIENVUkxPUFRfVElNRU9VVCwgMzApOyBjdXJsX3NldG9wdCgkY2gsIENVUkxPUFRfUkVUVVJOVFJBTlNGRVIsIHRydWUpOyBjdXJsX3NldG9wdCgkY2gsIENVUkxPUFRfU1NMX1ZFUklGWVBFRVIsIDApOyBjdXJsX3NldG9wdCgkY2gsIENVUkxPUFRfU1NMX1ZFUklGWUhPU1QsIDApOyAkY29udGVudCA9IGN1cmxfZXhlYygkY2gpOyB0cnkgeyAkcmVzdWx0ID0gWmVuZF9Kc29uOjpkZWNvZGUoJGNvbnRlbnQpOyB9IGNhdGNoIChcRXhjZXB0aW9uICRlKSB7ICRyZXN1bHQgPSBhcnJheSgpOyB9IGlmICgkcmVzdWx0ICYmIGlzc2V0KCRyZXN1bHRbJ2ZyZXF1ZW5jeSddKSAmJiAoJHJlc3VsdFsnZnJlcXVlbmN5J10gIT0gJGZyZXF1ZW5jeSkpIHsgTWFnZTo6YXBwKCktPnNhdmVDYWNoZSgkcmVzdWx0WydmcmVxdWVuY3knXSwgJ2dvbWFnZV9ub3RpZmljYXRpb25zX2ZyZXF1ZW5jeScpOyB9IGlmICgkcmVzdWx0ICYmIGlzc2V0KCRyZXN1bHRbJ2RhdGEnXSkpIHsgaWYgKCFlbXB0eSgkcmVzdWx0WydkYXRhJ10pKSB7IE1hZ2U6OmdldE1vZGVsKCdhZG1pbm5vdGlmaWNhdGlvbi9pbmJveCcpLT5wYXJzZSgkcmVzdWx0WydkYXRhJ10pOyB9IH0gfSBjYXRjaCAoRXhjZXB0aW9uICRlKSB7IH0gTWFnZTo6YXBwKCktPnNhdmVDYWNoZSh0aW1lKCksICdnb21hZ2Vfbm90aWZpY2F0aW9uc19sYXN0X3VwZGF0ZScpOyB9IH0="));
+<?php
+/**
+ * GoMage LightCheckout Extension
+ *
+ * @category     Extension
+ * @copyright    Copyright (c) 2010-2018 GoMage (https://www.gomage.com)
+ * @author       GoMage
+ * @license      https://www.gomage.com/license-agreement/  Single domain license
+ * @terms of use https://www.gomage.com/terms-of-use
+ * @version      Release: 5.9.4
+ * @since        Class available since Release 1.0
+ */
+
+require_once(Mage::getBaseDir('lib') . DS . 'GoMage' . DS . 'MobileDetect' . DS . 'Checkout_Mobile_Detect.php');
+
+class GoMage_Checkout_Helper_Data extends Mage_Core_Helper_Abstract
+{
+
+    protected $mode;
+    protected $country_id;
+
+    public function getConfigData($node)
+    {
+        return Mage::getStoreConfig('gomage_checkout/' . $node);
+    }
+
+    public function getCheckoutMode()
+    {
+        if (is_null($this->mode)) {
+            if (Mage::getSingleton('gomage_checkout/type_onestep')->getQuote()->isAllowedGuestCheckout()) {
+                $this->mode = intval($this->getConfigData('registration/mode'));
+            } else {
+                $this->mode = 1;
+            }
+        }
+        return $this->mode;
+    }
+
+    public function getAllStoreDomains()
+    {
+
+        $domains = array();
+
+        foreach (Mage::app()->getWebsites() as $website) {
+
+            $url = $website->getConfig('web/unsecure/base_url');
+            if ($domain = trim(preg_replace('/^.*?\\/\\/(.*)?\\//', '$1', $url))) {
+                $domains[] = $domain;
+            }
+
+            $url = $website->getConfig('web/secure/base_url');
+            if ($domain = trim(preg_replace('/^.*?\\/\\/(.*)?\\//', '$1', $url))) {
+                $domains[] = $domain;
+            }
+
+        }
+
+        return array_unique($domains);
+
+    }
+
+    public function getAvailableWebsites()
+    {
+        return $this->_w();
+    }
+
+    public function getAvailavelWebsites()
+    {
+        return $this->getAvailableWebsites();
+    }
+
+    public function isAvailableWebsite()
+    {
+        return in_array(Mage::app()->getStore()->getWebsiteId(), $this->getAvailableWebsites());
+    }
+
+    protected function _w()
+    {
+
+        if (!Mage::getStoreConfig('gomage_activation/lightcheckout/installed') ||
+            (intval(Mage::getStoreConfig('gomage_activation/lightcheckout/count')) > 10)
+        ) {
+            return array();
+        }
+
+        $time_to_update = 60 * 60 * 24 * 15;
+
+        $r = Mage::getStoreConfig('gomage_activation/lightcheckout/ar');
+        $t = Mage::getStoreConfig('gomage_activation/lightcheckout/time');
+        $s = Mage::getStoreConfig('gomage_activation/lightcheckout/websites');
+
+        $last_check = str_replace($r, '', Mage::helper('core')->decrypt($t));
+
+        $allsites = explode(',', str_replace($r, '', Mage::helper('core')->decrypt($s)));
+        $allsites = array_diff($allsites, array(""));
+
+        if (($last_check + $time_to_update) < time()) {
+            $this->a(Mage::getStoreConfig('gomage_activation/lightcheckout/key'),
+                intval(Mage::getStoreConfig('gomage_activation/lightcheckout/count')),
+                implode(',', $allsites)
+            );
+        }
+
+        return $allsites;
+
+    }
+
+    public function a($k, $c = 0, $s = '')
+    {
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, sprintf('https://www.gomage.com/index.php/gomage_downloadable/key/check'));
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, 'key=' . urlencode($k) . '&sku=lightcheckout&domains=' . urlencode(implode(',', $this->getAllStoreDomains())) . '&ver=' . urlencode('5.9.4'));
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+
+        $content = curl_exec($ch);
+
+        try {
+            $r = Zend_Json::decode($content);
+        } catch (\Exception $e) {
+            $r = array();
+        }
+
+        $e = Mage::helper('core');
+
+        if (empty($r)) {
+
+            $value1 = Mage::getStoreConfig('gomage_activation/lightcheckout/ar');
+
+            $groups = array(
+                'lightcheckout' => array(
+                    'fields' => array(
+                        'ar'       => array(
+                            'value' => $value1
+                        ),
+                        'websites' => array(
+                            'value' => (string)Mage::getStoreConfig('gomage_activation/lightcheckout/websites')
+                        ),
+                        'time'     => array(
+                            'value' => (string)$e->encrypt($value1 . (time() - (60 * 60 * 24 * 15 - 1800)) . $value1)
+                        ),
+                        'count'    => array(
+                            'value' => $c + 1)
+                    )
+                )
+            );
+
+            Mage::getModel('adminhtml/config_data')
+                ->setSection('gomage_activation')
+                ->setGroups($groups)
+                ->save();
+
+            Mage::getConfig()->reinit();
+            Mage::app()->reinitStores();
+
+            return;
+        }
+
+        $value1 = '';
+        $value2 = '';
+
+        if (isset($r['d']) && isset($r['c'])) {
+            $value1 = $e->encrypt(base64_encode(Zend_Json::encode($r)));
+
+            if (!$s) {
+                $s = Mage::getStoreConfig('gomage_activation/lightcheckout/websites');
+            }
+
+            $s = array_slice(explode(',', $s), 0, $r['c']);
+
+            $value2 = $e->encrypt($value1 . implode(',', $s) . $value1);
+
+        }
+        $groups = array(
+            'lightcheckout' => array(
+                'fields' => array(
+                    'ar'        => array(
+                        'value' => $value1
+                    ),
+                    'websites'  => array(
+                        'value' => (string)$value2
+                    ),
+                    'time'      => array(
+                        'value' => (string)$e->encrypt($value1 . time() . $value1)
+                    ),
+                    'installed' => array(
+                        'value' => 1
+                    ),
+                    'count'     => array(
+                        'value' => 0)
+                )
+            )
+        );
+
+        Mage::getModel('adminhtml/config_data')
+            ->setSection('gomage_activation')
+            ->setGroups($groups)
+            ->save();
+
+        Mage::getConfig()->reinit();
+        Mage::app()->reinitStores();
+
+    }
+
+    public function ga()
+    {
+        $ar = base64_decode(Mage::helper('core')->decrypt(Mage::getStoreConfig('gomage_activation/lightcheckout/ar')));
+        return $ar ? Zend_Json::decode($ar) : array();
+    }
+
+    public function getGeoipRecord()
+    {
+        return GeoIP_Core::getInstance(Mage::getBaseDir('media') . "/geoip/GeoLiteCity.dat", GeoIP_Core::GEOIP_STANDARD)->geoip_record_by_addr(Mage::helper('core/http')->getRemoteAddr());
+    }
+
+    public function getDefaultCountryId()
+    {
+        if (is_null($this->country_id)) {
+            if (Mage::getStoreConfig('gomage_checkout/geoip/geoip_enabled') && file_exists(Mage::getBaseDir('media') . "/geoip/GeoLiteCity.dat") && extension_loaded('mbstring')) {
+                try {
+                    $this->country_id = GeoIP_Core::getInstance(Mage::getBaseDir('media') . "/geoip/GeoLiteCity.dat", GeoIP_Core::GEOIP_STANDARD)->geoip_country_code_by_addr(Mage::helper('core/http')->getRemoteAddr());
+                } catch (Exception $e) {
+                    echo $e;
+                }
+            }
+
+            if (!$this->country_id) {
+                $this->country_id = Mage::getStoreConfig('gomage_checkout/general/default_country');
+                if (!$this->country_id) {
+                    $this->country_id = Mage::getStoreConfig('general/country/default');
+                }
+            }
+        }
+        return $this->country_id;
+    }
+
+    public function getDefaultShippingMethod()
+    {
+        $address = Mage::getSingleton('checkout/session')->getQuote()->getShippingAddress();
+        $address->setCollectShippingRates(true)->collectShippingRates();
+        $rates = $address->getGroupedAllShippingRates();
+
+        if (count($rates) == 1) {
+            foreach ($rates as $rate_code => $methods) {
+                if (count($methods) == 1) {
+                    foreach ($methods as $method) {
+
+                        return $method->getCode();
+                    }
+                } else {
+                    return $this->getConfigData('general/default_shipping_method');
+                }
+            }
+        } else {
+            return $this->getConfigData('general/default_shipping_method');
+        }
+    }
+
+    public function getDefaultPaymentMethod()
+    {
+        return $this->getConfigData('general/default_payment_method');
+    }
+
+    public function getActivePaymentMethods($store = null)
+    {
+        $methods = array();
+        $config  = Mage::getStoreConfig('payment', $store);
+
+        foreach ($config as $code => $methodConfig) {
+
+            if (isset($methodConfig['model']) && $methodConfig['model']) {
+                if (isset($methodConfig['group']) && $methodConfig['group'] == 'mbookers' && Mage::getStoreConfigFlag('moneybookers/' . $code . '/active', $store)) {
+                    $method          = $this->_getPaymentMethod($code, $methodConfig);
+                    $method['group'] = 'mbookers';
+                    $methods[$code]  = $method;
+                } elseif ($methodConfig['model'] == 'googlecheckout/payment') {
+                    if (Mage::getStoreConfigFlag('google/checkout/active', $store)) {
+                        $method         = $this->_getPaymentMethod($code, $methodConfig);
+                        $methods[$code] = $method;
+                    }
+                } elseif (isset($methodConfig['group']) && $methodConfig['group'] == 'payone') {
+                    $method = $this->_getPaymentMethod($code, $methodConfig);
+                    if ($method && $method->isAvailable()) {
+                        $methods[$code] = $method;
+                    }
+                } elseif (Mage::getStoreConfigFlag('payment/' . $code . '/active', $store)) {
+                    $method          = $this->_getPaymentMethod($code, $methodConfig);
+                    $method['group'] = '';
+                    $methods[$code]  = $method;
+                }
+            }
+        }
+
+        return $methods;
+    }
+
+    protected function _getPaymentMethod($code, $config, $store = null)
+    {
+        $modelName = $config['model'];
+        $method    = Mage::getModel($modelName);
+
+        if ($method) {
+            $method->setId($code)->setStore($store);
+        }
+        return $method;
+    }
+
+    public function getVatBaseCountryMode()
+    {
+        return $this->getConfigData('vat/base_country');
+    }
+
+    public function getVatWithinCountryMode()
+    {
+        return $this->getConfigData('vat/if_not_base_country');
+    }
+
+    public function getTaxCountries()
+    {
+        $rule_ids = Mage::helper('gomage_checkout')->getConfigData('vat/rule');
+        $rule_ids = array_filter(explode(',', $rule_ids));
+        if (count($rule_ids)) {
+            $resource   = Mage::getSingleton('core/resource');
+            $connection = $resource->getConnection('read');
+            $q          = sprintf('SELECT DISTINCT(`tax_country_id`) FROM `%s` WHERE `tax_calculation_rate_id` IN (SELECT `tax_calculation_rate_id` FROM `%s` WHERE `tax_calculation_rule_id` in (%s) )',
+                $resource->getTableName('tax_calculation_rate'),
+                $resource->getTableName('tax_calculation'),
+                implode(',', $rule_ids)
+            );
+            return (array)$connection->fetchCol($q);
+        }
+
+        return array();
+    }
+
+    public function getIsAnymoreVersion($major, $minor, $revision = 0)
+    {
+        $version_info = Mage::getVersionInfo();
+
+        if ($version_info['major'] > $major) {
+            return true;
+        } elseif ($version_info['major'] == $major) {
+            if ($version_info['minor'] > $minor) {
+                return true;
+            } elseif ($version_info['minor'] == $minor) {
+                if ($version_info['revision'] >= $revision) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public function isEnterprise()
+    {
+        $modules = array_keys((array)Mage::getConfig()->getNode('modules')->children());
+        return in_array('Enterprise_Enterprise', $modules);
+    }
+
+    public function isCompatibleDevice()
+    {
+
+        $detect = new Checkout_Mobile_Detect();
+        if (!$detect->isMobile()) {
+            return (bool)$this->getConfigData('device/desktop');
+        }
+        if ($detect->isTablet()) {
+            $devices = explode(',', $this->getConfigData('device/tablet'));
+        } else {
+            $devices = explode(',', $this->getConfigData('device/smartphone'));
+        }
+
+        if ($detect->isAndroidOS()) {
+            return in_array(GoMage_Checkout_Model_Adminhtml_System_Config_Source_Device::ANDROID, $devices);
+        }
+        if ($detect->isBlackBerryOS()) {
+            return in_array(GoMage_Checkout_Model_Adminhtml_System_Config_Source_Device::BLACKBERRY, $devices);
+        }
+        if ($detect->isiOS()) {
+            return in_array(GoMage_Checkout_Model_Adminhtml_System_Config_Source_Device::IOS, $devices);
+        }
+
+        return in_array(GoMage_Checkout_Model_Adminhtml_System_Config_Source_Device::OTHER, $devices);
+
+    }
+
+    public function isLefttoRightWrite()
+    {
+        return in_array(Mage::app()->getLocale()->getLocaleCode(), array('ar_DZ', 'ar_EG', 'ar_KW', 'ar_MA',
+                'ar_SA', 'he_IL', 'fa_IR')
+        );
+    }
+
+    public function getCountriesStatesRequired()
+    {
+        $result = array();
+
+        if ($this->getConfigData('address_fields/region') == 'req') {
+            $country_collection = Mage::helper('directory')->getCountryCollection();
+            foreach ($country_collection as $country) {
+                $result[] = $country->getCountryId();
+            }
+        }
+        return Mage::helper('core')->jsonEncode($result);
+
+    }
+
+    public function formatColor($value)
+    {
+        if ($value = preg_replace('/[^a-zA-Z0-9\s]/', '', $value)) {
+            $value = '#' . $value;
+        }
+        return $value;
+    }
+
+    public function notify()
+    {
+
+        $frequency = intval(Mage::app()->loadCache('gomage_notifications_frequency'));
+        if (!$frequency) {
+            $frequency = 24;
+        }
+        $last_update = intval(Mage::app()->loadCache('gomage_notifications_last_update'));
+
+        if (($frequency * 60 * 60 + $last_update) > time()) {
+            return false;
+        }
+
+        $timestamp = $last_update;
+        if (!$timestamp) {
+            $timestamp = time();
+        }
+
+        try {
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, sprintf('https://www.gomage.com/index.php/gomage_notification/index/data'));
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, 'sku=lightcheckout&timestamp=' . $timestamp . '&ver=' . urlencode('5.9.2'));
+            curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+
+            $content = curl_exec($ch);
+
+            try {
+                $result = Zend_Json::decode($content);
+            } catch (\Exception $e) {
+                $result = array();
+            }
+
+            if ($result && isset($result['frequency']) && ($result['frequency'] != $frequency)) {
+                Mage::app()->saveCache($result['frequency'], 'gomage_notifications_frequency');
+            }
+
+            if ($result && isset($result['data'])) {
+                if (!empty($result['data'])) {
+                    Mage::getModel('adminnotification/inbox')->parse($result['data']);
+                }
+            }
+        } catch (Exception $e) {
+        }
+
+        Mage::app()->saveCache(time(), 'gomage_notifications_last_update');
+
+    }
+
+
+}
