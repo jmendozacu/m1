@@ -6,8 +6,5 @@
             <codePool>local</codePool>
             <extension_name>SEO Suite</extension_name>
         </MageWorx_SeoSuite>
-        <Yoast_MetaRobots>
-            <active>false</active>
-        </Yoast_MetaRobots>	
     </modules>
 </config>
