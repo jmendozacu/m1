@@ -26,14 +26,6 @@
 <?php
 $_coreHelper = $this->helper('core');
 ?>
-<?php if ($_coreHelper->isModuleEnabled("Magegiant_Dailydeal")): ?>
-<script type="text/javascript">
-//<![CDATA[
-var dailydealTimeCountersCategory = new Array();
-var i = 0;
-//]]>
-</script>
-<?php endif; ?>
 
 <?php if(!$_productCollection->count()): ?>
 <div class="category-products">
@@ -63,36 +55,6 @@ var i = 0;
                     <?php
                         }
                     ?>
-                    <?php if ($_coreHelper->isModuleEnabled("Magegiant_Dailydeal")): ?>
-                    <?php
-                        if(Mage::getStoreConfig("dailydeal/general/enable", $code)){
-                        $deal = Mage::getModel('dailydeal/dailydeal')->getDealByProduct($_product->getId());
-
-                        if ($deal && ($deal->getQuantity() - $deal->getSold() > 0)) {
-                    ?>
-                            <?php $now = Mage::getModel('core/date')->timestamp(time()) ?>
-                            <?php $endTime = Mage::getModel('core/date')->timestamp(strtotime($deal->getCloseTime())); ?>
-                            <div class="deal-label">
-                                <i class="icon-clock"></i>
-                            </div>
-                            <div class="bottom-product-dailydeal bottom-home-dailydeal">
-                                <ul class="time-left">
-                                    <div class="timeleft timeleft_<?php echo $_product->getId() ?>"> </div>
-                                </ul>
-                            </div>
-                            <script type="text/javascript">
-                                //<![CDATA[
-                                if(typeof dailydealTimeCountersCategory[<?php echo $deal->getId() ?>] == 'undefined'){
-                                    dailydealTimeCountersCategory[<?php echo $deal->getId() ?>] = new DailydealTimeCounter('<?php echo $now ?>', '<?php echo $endTime ?>', '<?php echo $deal->getId() ?>');
-                                    dailydealTimeCountersCategory[<?php echo $deal->getId() ?>].setTimeleft('timeleft_<?php echo $_product->getId() ?>');
-                                }
-                                //]]>
-                            </script>
-                    <?php
-                        }
-                        }
-                    ?>
-                        <?php endif; ?>
                     </a>
                     <?php 
 						
@@ -305,36 +267,6 @@ var i = 0;
                     <?php
                         }
                     ?>
-                    <?php if ($_coreHelper->isModuleEnabled("Magegiant_Dailydeal")): ?>
-                        <?php
-                        if(Mage::getStoreConfig("dailydeal/general/enable", $code)){
-                        $deal = Mage::getModel('dailydeal/dailydeal')->getDealByProduct($_product->getId());
-
-                        if ($deal && ($deal->getQuantity() - $deal->getSold() > 0)) {
-                            ?>
-                            <?php $now = Mage::getModel('core/date')->timestamp(time()) ?>
-                            <?php $endTime = Mage::getModel('core/date')->timestamp(strtotime($deal->getCloseTime())); ?>
-                            <div class="deal-label">
-                                <i class="icon-clock"></i>
-                            </div>
-                            <div class="bottom-product-dailydeal bottom-home-dailydeal">
-                                <ul class="time-left">
-                                    <div class="timeleft timeleft_<?php echo $_product->getId() ?>"> </div>
-                                </ul>
-                            </div>
-                            <script type="text/javascript">
-                                //<![CDATA[
-                                if(typeof dailydealTimeCountersCategory[<?php echo $deal->getId() ?>] == 'undefined'){
-                                    dailydealTimeCountersCategory[<?php echo $deal->getId() ?>] = new DailydealTimeCounter('<?php echo $now ?>', '<?php echo $endTime ?>', '<?php echo $deal->getId() ?>');
-                                    dailydealTimeCountersCategory[<?php echo $deal->getId() ?>].setTimeleft('timeleft_<?php echo $_product->getId() ?>');
-                                }
-                                //]]>
-                            </script>
-                    <?php
-                        }
-                        }
-                    ?>
-                    <?php endif; ?>
                     </a>
                     <?php 
                         
