@@ -402,9 +402,6 @@ class Amasty_Banners_Adminhtml_RuleController extends Mage_Adminhtml_Controller_
     
     protected function _title($text = null, $resetIfExists = true)
     {
-        if (Mage::helper('ambase')->isVersionLessThan(1,4)){
-            return $this;
-        }
         return parent::_title($text, $resetIfExists);
     }
 }

@@ -1,5 +1,13 @@
 <?xml version="1.0"?>
 <config>
+<!-- 2019-11-28 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+"Disable Amasty notifications": https://github.com/repairzoom/m1/issues/15 -->
+    <tabs>
+        <amasty>
+            <label>Amasty</label>
+            <sort_order>400</sort_order>
+        </amasty>
+    </tabs>
     <sections>
         <ampromo translate="label" module="ampromo">
             <label>Promo Items</label>
