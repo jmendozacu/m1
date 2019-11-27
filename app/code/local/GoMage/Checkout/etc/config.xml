@@ -395,9 +395,6 @@
 	                                    <gomage_activation>
 	                                    	<title>GoMage - Activation</title>
 	                                    </gomage_activation>
-                                        <gomage_notification>
-                                            <title>GoMage - Notifications</title>
-                                        </gomage_notification>
 	                                </children>
 	                            </config>
 	                        </children>
@@ -560,10 +557,5 @@
                 </areas>
             </frontend>    
 		</captcha>
-        <gomage_notification>
-            <notification>
-                <enable>1</enable>
-            </notification>
-        </gomage_notification>
 	</default>
 </config>
