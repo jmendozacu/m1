@@ -86,27 +86,8 @@
                 </admin>
             </resources>
         </acl>
-        <events>
-            <controller_action_predispatch>
-                <observers>
-                    <awall_exts>
-                        <type>singleton</type>
-                        <class>awall/feed_extensions</class>
-                        <method>check</method>
-                    </awall_exts>
-                    <awall_check>
-                        <type>singleton</type>
-                        <class>awall/feed_extensions</class>
-                        <method>checkExtensions</method>
-                    </awall_check>
-                    <awall_upds>
-                        <type>singleton</type>
-                        <class>awall/feed_updates</class>
-                        <method>check</method>
-                    </awall_upds>
-                </observers>
-            </controller_action_predispatch>
-        </events>
+<!-- 2019-11-27 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+"Disable aheadWorks notifications": https://github.com/repairzoom/m1/issues/14 -->
     </adminhtml>
     <default>
         <awall>
