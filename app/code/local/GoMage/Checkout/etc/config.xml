@@ -354,14 +354,8 @@
                     </collect_totals_after>
                 </observers>
             </admin_system_config_changed_section_gomage_activation>
-            <controller_action_predispatch>
-                <observers>
-                    <gomage_checkout_notify>
-                        <class>gomage_checkout/observer_notify</class>
-                        <method>notify</method>
-                    </gomage_checkout_notify>
-                </observers>
-            </controller_action_predispatch>
+<!-- 2019-11-28 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+"Disable GoMage notifications": https://github.com/repairzoom/m1/issues/16 -->
             <core_block_abstract_to_html_after>
                 <observers>
                     <gomage_checkout_order_view_info>
