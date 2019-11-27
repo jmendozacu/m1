@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<config>
-    <modules>
-        <Rnicklin_Fancybox>
-            <active>false</active>
-            <codePool>local</codePool>
-        </Rnicklin_Fancybox>
-    </modules>
-</config> 
