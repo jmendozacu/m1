@@ -56,12 +56,6 @@ class EmjaInteractive_Accountreceivable_Model_Accountreceivable extends Mage_Cor
                 'order' => $order
             )
         );
-
-        $pdf = Mage::getModel('emjainteractive_purchaseordermanagement/sales_order_pdf')->getPoInvoiceForAttachment($orderId);
-        if ($pdf) {
-            $mailer->addAttachment($pdf->render(), 'order'.Mage::getSingleton('core/date')->date('Y-m-d_H-i-s').'.pdf');
-        }
-
         $mailer->send();
         return $this;
     }
