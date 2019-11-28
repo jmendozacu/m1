@@ -29,3 +29,4 @@
 /var/package/*
 !/var/package/*.xml
 /_my
+/composer.lock
