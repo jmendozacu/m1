@@ -204,60 +204,6 @@ function sliderAjax(url) {
                         });
                         if(old_class)
                             $(".col-main .products-grid").attr("class", old_class);
-                        <?php
-                            $store = Mage::app()->getStore();
-                            $code  = $store->getCode();
-
-                            $except = Mage::getStoreConfig('fullajax/general/except', $code);
-                            if(Mage::getStoreConfig('fullajax/general/enabled', $code)){
-                        ?>
-                        var page_loaded = false;
-                        var except = "<?php echo $except; ?>";
-                        $("a").each(function(){
-                            var b = $(this).attr('href');
-                            myhost = new RegExp(location.host);
-                            var ev = $._data(this,'events');
-                            var flg = true;
-                            var current_a = $(this);
-                            if(except){
-                                $(except).each(function(){
-                                    if($(this).is(current_a)){
-                                        flg = false;
-                                        return;
-                                    }
-                                });
-                            }
-                            if((b != '#') && (b != '') && (b !== undefined) && (myhost.test(b) == true || b.slice(0, 1) == "/") && ($(this).attr("onClick") == undefined) && (b.indexOf("javascript:")==-1) && !(ev && ev.click) && flg){
-                                $(this).unbind('click').click(function (a) {
-                                    a.preventDefault();
-                                    reloadData(b)
-                                });
-                            }
-                        });
-                        var c = {success: showResponse};
-                        window.onpopstate = function(event) {
-
-                            /**
-                             * This was breaking the back button on the first press.
-                             * Unsure why it's here, but skipping the first block fixes the problem.
-                             * Toggle this if if other errors popup.
-                             */
-
-                            //if(false && !page_loaded){
-                            if(!page_loaded){
-                                page_loaded = true;
-                            } else {
-                                $("#fullajax_loader").show();
-                                console.log("pathname: "+location.pathname);
-
-                                $.ajax({url: location.pathname,data:{fullpageajax:true},success: showResponse,error: function() {
-                                    window.location.href = a
-                                }});
-                            }
-                        };
-                        <?php
-                            }
-                        ?>
                     }
                 })
             } catch (e) {}
@@ -425,60 +371,6 @@ function infiniteAjax(url) {
                         });
                         if(old_class)
                             $(".col-main .products-grid").attr("class", old_class);
-                        <?php
-                            $store = Mage::app()->getStore();
-                            $code  = $store->getCode();
-
-                            $except = Mage::getStoreConfig('fullajax/general/except', $code);
-                            if(Mage::getStoreConfig('fullajax/general/enabled', $code)){
-                        ?>
-                        var page_loaded = false;
-                        var except = "<?php echo $except; ?>";
-                        $("a").each(function(){
-                            var b = $(this).attr('href');
-                            myhost = new RegExp(location.host);
-                            var ev = $._data(this,'events');
-                            var flg = true;
-                            var current_a = $(this);
-                            if(except){
-                                $(except).each(function(){
-                                    if($(this).is(current_a)){
-                                        flg = false;
-                                        return;
-                                    }
-                                });
-                            }
-                            if((b != '#') && (b != '') && (b !== undefined) && (myhost.test(b) == true || b.slice(0, 1) == "/") && ($(this).attr("onClick") == undefined) && (b.indexOf("javascript:")==-1) && !(ev && ev.click) && flg){
-                                $(this).unbind('click').click(function (a) {
-                                    a.preventDefault();
-                                    reloadData(b)
-                                });
-                            }
-                        });
-                        var c = {success: showResponse};
-                        window.onpopstate = function(event) {
-
-                            /**
-                             * This was breaking the back button on the first press.
-                             * Unsure why it's here, but skipping the first block fixes the problem.
-                             * Toggle this if if other errors popup.
-                             */
-
-                            //if(false && !page_loaded){
-                            if(!page_loaded){
-                                page_loaded = true;
-                            } else {
-                                $("#fullajax_loader").show();
-                                console.log("pathname: "+location.pathname);
-
-                                $.ajax({url: location.pathname,data:{fullpageajax:true},success: showResponse,error: function() {
-                                    window.location.href = a
-                                }});
-                            }
-                        };
-                        <?php
-                            }
-                        ?>
                     }
                 })
             } catch (e) {}
