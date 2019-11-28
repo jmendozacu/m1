@@ -1,28 +1,20 @@
 <?php
-
-/**
- * Product list toolbar
- *
- * @category    MDN
- * @package     MDN_Canonical
- * @author      MDN
- */
-class MDN_Canonical_Block_Catalog_Product_List_Toolbar extends Mage_Catalog_Block_Product_List_Toolbar
-{
-
-    public function getPagerUrl($params=array())
-    {
-
-        if (isset($params['p']) && $params['p'] == 1)
-               $params['p'] = NULL;
-
-        $urlParams = array();
-        $urlParams['_current']  = true;
-        $urlParams['_escape']   = true;
-        $urlParams['_use_rewrite']   = true;
-        $urlParams['_query']    = $params;
-
-        return $this->getUrl('*/*/*', $urlParams);
-    }
-
+// 2019-11-29 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+final class MDN_Canonical_Block_Catalog_Product_List_Toolbar extends Mage_Catalog_Block_Product_List_Toolbar {
+	/**
+	 * 2019-11-29 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+	 * @override
+	 * @see Mage_Catalog_Block_Product_List_Toolbar::getPagerUrl()
+	 * @used-by Mage_Catalog_Block_Product_List_Toolbar::getLimitUrl()
+	 * @used-by Mage_Catalog_Block_Product_List_Toolbar::getModeUrl()
+	 * @used-by Mage_Catalog_Block_Product_List_Toolbar::getOrderUrl()
+	 * @param array $p
+	 * @return string
+	 */
+	function getPagerUrl($p = []) {
+		if (isset($p['p']) && 1 == $p['p']) {
+			$p['p'] = null;
+		}
+		return $this->getUrl('*/*/*', ['_current' => true, '_escape' => true, '_query' => $p, '_use_rewrite' => true]);
+	}
 }

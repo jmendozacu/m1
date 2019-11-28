@@ -1,44 +1,35 @@
 <?php
-
-/**
- * Description of Head
- *
- * @author nicolas
- */
 class MDN_Canonical_Block_Head extends Mage_Core_Block_Template {
+	function getCanonicalUrl(){
+		// get current url
+		$url = mage::helper('core/url')->getCurrentUrl();
 
-    public function getCanonicalUrl(){
+		// parse url
+		$parsedUrl = parse_url($url);
 
-        // get current url
-        $url = mage::helper('core/url')->getCurrentUrl();
+		$scheme = $parsedUrl['scheme'];
+		$host = $parsedUrl['host'];
+		$path = $parsedUrl['path'];
+		$path = preg_replace('#/$#',"", $path);
 
-        // parse url
-        $parsedUrl = parse_url($url);
+		// optional parameters
+		$query = isset($parsedUrl['query']) ? $parsedUrl['query'] : null ;
 
-        $scheme = $parsedUrl['scheme'];
-        $host = $parsedUrl['host'];
-        $path = $parsedUrl['path'];
-        $path = preg_replace('#/$#',"", $path);
+		// build canonical url
+		$canonicalUrl = $scheme.'://'.$host.$path;
 
-        // optional parameters
-        $query = isset($parsedUrl['query']) ? $parsedUrl['query'] : null ;
+		// get parameters
+		$q = $this->getRequest()->getParam('q');
+		$p = $this->getRequest()->getParam('p');
 
-        // build canonical url
-        $canonicalUrl = $scheme.'://'.$host.$path;
+		// add parameters
+		if($p != "" && $q != "")
+			$canonicalUrl .= '?p='.$p.'&q='.$q;
+		elseif($p != "" && $q == "")
+			$canonicalUrl .= '?p='.$p;
+		elseif($p == "" && $q != "")
+			$canonicalUrl .= '?q='.$q;
 
-        // get parameters
-        $q = $this->getRequest()->getParam('q');
-        $p = $this->getRequest()->getParam('p');
-
-        // add parameters
-        if($p != "" && $q != "")
-            $canonicalUrl .= '?p='.$p.'&q='.$q;
-        elseif($p != "" && $q == "")
-            $canonicalUrl .= '?p='.$p;
-        elseif($p == "" && $q != "")
-            $canonicalUrl .= '?q='.$q;
-
-        return $canonicalUrl;
-    }
+		return $canonicalUrl;
+	}
 }
-?>
