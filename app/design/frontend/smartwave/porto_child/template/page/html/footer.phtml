@@ -132,104 +132,7 @@
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                <!--
-                <div class="row">
-                -->
-                <?php
-                /*
-                    for( $i = 1; $i <= 4; $i++ ){
-                        if($i == 2){
-                            echo '<div class="col-sm-9"><div class="col-sm-12 footer_text">RepairZoom | USA | iPhone Repair, Mac Repair, &amp; iPad Repair</div>';
-                        }
-                        $area = 'footer_middle_column_'.$i;
-                        $type = $footer[$area];
-                        if( $type ){
-                            echo '<div class="col-sm-'.$footer[$area.'_size'].'">';
-                        }
-                        if( $type == 'custom' ){
-                            echo $this->getLayout()->createBlock('cms/block')->setBlockId($footer[$area.'_custom'])->toHtml();
-                        }
-                        if( $type == 'newsletter' ){
-                            echo $this->getChildHtml('footer.newsletter');
-                        }
-                        if( $type== 'facebook' ){
-                            echo $this->getChildHtml('facebook_fans');
-                        }
-                        if( $type== 'flickr' ){
-                            echo $this->getChildHtml('flickr');
-                        }
-                        if( $type== 'twitter' ){
-                            echo Mage::getSingleton("core/layout")->getBlock("tweets")->setTemplate("socialfeeds/footer_middle_twitterfeed.phtml")->toHtml();
-                        }
-                        if( $type ){
-                            echo '</div>';
-                        }
-                */
-                ?>
-                <?php
-                /*
-                    }
-                    ?>
-                        <div class="col-sm-4">
-                            <?php
-                            echo $this->getLayout()->createBlock('cms/block')->setBlockId('porto_footer_2nd_row_shop_4th')->toHtml();
-                            ?>
-                        </div>
-                    </div>
-                </div>
-                <?php */echo $this->getChildHtml("demo_footer_tooltip"); ?>
-            </div>
-        </div>
-    <?php
-        }
-        if( $footer['footer_middle_2_enabled'] ){
-    ?>
-        <div class="footer-middle footer-middle-2">
-            <div class="container">
-                <div class="row">
-                <?php
-                    for( $i = 1; $i <= 4; $i++ ){
-                        $area = 'footer_middle_2_column_'.$i;
-                        $type = $footer[$area];
-                        if( $type ){
-                            echo '<div class="col-sm-'.$footer[$area.'_size'].'">';
-                        }
-                        if( $type == 'custom' ){
-                            echo $this->getLayout()->createBlock('cms/block')->setBlockId($footer[$area.'_custom'])->toHtml();
-                        }
-                        if( $type == 'newsletter' ){
-                            echo $this->getChildHtml('footer.newsletter');
-                        }
-                        if( $type== 'facebook' ){
-                            echo $this->getChildHtml('facebook_fans');
-                        }
-                        if( $type== 'flickr' ){
-                            echo $this->getChildHtml('flickr');
-                        }
-                        if( $type ){
-                            echo '</div>';
-                        }
-                ?>
-                <?php
-                    }
-                ?>
-                </div>
+                <?php echo $this->getChildHtml("demo_footer_tooltip"); ?>
             </div>
         </div>
     <?php
@@ -239,13 +142,6 @@
         <div class="footer-bottom">
             <div class="container">
                 <?php
-                /*
-                if($footer['footer_logo']){
-                ?>
-                    <a href="<?php echo $this->getUrl('') ?>" class="logo"><img src="<?php echo $this->getSkinUrl($footer['footer_logo']); ?>" alt=""/></a>
-                <?php
-                }
-                */
                 if($footer['footer_bottom_socialicons']){
                 ?>
                 <?php echo $this->getChildHtml('socialicons'); ?>
@@ -297,5 +193,8 @@
         $(".cms-index-index .footer-container.fixed-position .footer-top,.cms-index-index .footer-container.fixed-position .footer-middle").remove();
     });
 </script>
-<script type="text/javascript" src="https://cdn.ywxi﻿.net﻿/js/1.js" async></script>
+<!-- 2019-11-29 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+«Technical implementation of McAfee SECURE certification»:
+https://blog.trustedsite.com/2018/07/20/technical-implementation-of-mcafee-secure-certification -->
+<script type="text/javascript" src="https://cdn.ywxi.net/js/1.js" async></script>
 <!--87ce21a644f119dcf8887c553f5abe71-->
