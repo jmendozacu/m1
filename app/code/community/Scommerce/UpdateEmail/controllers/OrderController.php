@@ -1,1 +1,40 @@
-<?php eval("?>".base64_decode("PD9waHANCi8qKg0KICogT3JkZXJDb250cm9sbGVyDQogKg0KICogQGNhdGVnb3J5ICAgU2NvbW1lcmNlDQogKiBAcGFja2FnZSAgICBTY29tbWVyY2VfVXBkYXRlRW1haWwNCiAqIEBhdXRob3IgICAgIFNjb21tZXJjZSBNYWdlIDxjb3JlQHNjb21tZXJjZS1tYWdlLmNvLnVrPg0KICovDQpjbGFzcyBTY29tbWVyY2VfVXBkYXRlRW1haWxfT3JkZXJDb250cm9sbGVyIGV4dGVuZHMgTWFnZV9BZG1pbmh0bWxfQ29udHJvbGxlcl9BY3Rpb24NCnsNCglwcm90ZWN0ZWQgZnVuY3Rpb24gX2lzQWxsb3dlZCgpDQoJew0KCQlyZXR1cm4gTWFnZTo6Z2V0U2luZ2xldG9uKCdhZG1pbi9zZXNzaW9uJyktPmlzQWxsb3dlZCgnc2FsZXMvb3JkZXInKTsNCgl9DQoJDQogICAgcHVibGljIGZ1bmN0aW9uIHNhdmVBY3Rpb24oKQ0KICAgIHsNCiAgICAgICAgJHJlc3VsdCA9IGFycmF5KCk7DQogICAgICAgICRyZXN1bHRbJ3N1Y2Nlc3MnXSA9IDA7DQogICAgICAgIA0KICAgICAgICAkZW1haWwgPSAkdGhpcy0+Z2V0UmVxdWVzdCgpLT5nZXRQYXJhbSgnZW1haWwnKTsNCiAgICAgICAgJGlkID0gJHRoaXMtPmdldFJlcXVlc3QoKS0+Z2V0UGFyYW0oJ29yZGVyX2lkJyk7DQogICAgICAgICRvcmRlciA9IE1hZ2U6OmdldE1vZGVsKCdzYWxlcy9vcmRlcicpLT5sb2FkKCRpZCk7DQogICAgICAgIA0KICAgICAgICAkdmFsaWRhdG9yID0gbmV3IFplbmRfVmFsaWRhdGVfRW1haWxBZGRyZXNzKCk7DQoNCiAgICAgICAgaWYgKCRvcmRlci0+Z2V0SWQoKSAmJiAkdmFsaWRhdG9yLT5pc1ZhbGlkKCRlbWFpbCkpIHsNCiAgICAgICAgICAgICRyZXNvdXJjZSA9IE1hZ2U6OmdldFNpbmdsZXRvbignY29yZS9yZXNvdXJjZScpOw0KICAgICAgICAgICAgJHdyaXRlQ29ubmVjdGlvbiA9ICRyZXNvdXJjZS0+Z2V0Q29ubmVjdGlvbignY29yZV93cml0ZScpOw0KICAgICAgICAgICAgJHRhYmxlID0gJHJlc291cmNlLT5nZXRUYWJsZU5hbWUoJ3NhbGVzL29yZGVyJyk7DQogICAgICAgICAgICANCiAgICAgICAgICAgICRxdWVyeSA9ICJVUERBVEUgeyR0YWJsZX0gU0VUIGN1c3RvbWVyX2VtYWlsID0gJyIgLiAkZW1haWwuICInIFdIRVJFIGVudGl0eV9pZCA9ICIgLiAkb3JkZXItPmdldElkKCk7DQogICAgICAgICAgICAkd3JpdGVDb25uZWN0aW9uLT5xdWVyeSgkcXVlcnkpOw0KICAgICAgICAgICAgDQogICAgICAgICAgICAkcmVzdWx0WydzdWNjZXNzJ10gPSAxOw0KICAgICAgICB9IA0KICAgICAgICANCiAgICAgICAgJHRoaXMtPmdldFJlc3BvbnNlKCktPnNldEJvZHkoTWFnZTo6aGVscGVyKCdjb3JlJyktPmpzb25FbmNvZGUoJHJlc3VsdCkpOw0KICAgIH0NCn0=")); ?>
+<?php
+/**
+ * OrderController
+ *
+ * @category   Scommerce
+ * @package    Scommerce_UpdateEmail
+ * @author     Scommerce Mage <core@scommerce-mage.co.uk>
+ */
+class Scommerce_UpdateEmail_OrderController extends Mage_Adminhtml_Controller_Action
+{
+	protected function _isAllowed()
+	{
+		return Mage::getSingleton('admin/session')->isAllowed('sales/order');
+	}
+
+    public function saveAction()
+    {
+        $result = array();
+        $result['success'] = 0;
+
+        $email = $this->getRequest()->getParam('email');
+        $id = $this->getRequest()->getParam('order_id');
+        $order = Mage::getModel('sales/order')->load($id);
+
+        $validator = new Zend_Validate_EmailAddress();
+
+        if ($order->getId() && $validator->isValid($email)) {
+            $resource = Mage::getSingleton('core/resource');
+            $writeConnection = $resource->getConnection('core_write');
+            $table = $resource->getTableName('sales/order');
+
+            $query = "UPDATE {$table} SET customer_email = '" . $email. "' WHERE entity_id = " . $order->getId();
+            $writeConnection->query($query);
+
+            $result['success'] = 1;
+        }
+
+        $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($result));
+    }
+}
