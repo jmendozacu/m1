@@ -1,13 +1,5 @@
 <?php
-/**
- * OrderController
- *
- * @category   Scommerce
- * @package    Scommerce_UpdateEmail
- * @author     Scommerce Mage <core@scommerce-mage.co.uk>
- */
-class Scommerce_UpdateEmail_OrderController extends Mage_Adminhtml_Controller_Action
-{
+class Scommerce_UpdateEmail_OrderController extends Mage_Adminhtml_Controller_Action {
 	protected function _isAllowed()
 	{
 		return Mage::getSingleton('admin/session')->isAllowed('sales/order');
