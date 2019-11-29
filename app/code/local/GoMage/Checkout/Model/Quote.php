@@ -13,7 +13,7 @@
 
 	class GoMage_Checkout_Model_Quote extends Mage_Sales_Model_Quote{
 		
-		public function setCustomer(Mage_Customer_Model_Customer $customer){
+		function setCustomer(Mage_Customer_Model_Customer $customer){
 	        $this->_customer = $customer;
 	        $this->setCustomerId($customer->getId());
 	        

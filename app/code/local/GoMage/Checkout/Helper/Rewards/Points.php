@@ -13,7 +13,7 @@
 
 class GoMage_Checkout_Helper_Rewards_Points extends Mage_Core_Helper_Data {
 	
-	public function getPoints($item) {
+	function getPoints($item) {
 		$html = '';		
 		if (Mage::getStoreConfig('rewards/general/layoutsactive')) {
 			$layout = Mage::getSingleton('core/layout');

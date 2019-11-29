@@ -14,7 +14,7 @@
 class GoMage_Checkout_Model_Sales_Pdf_Giftwrap extends Mage_Sales_Model_Order_Pdf_Total_Default
 {
 
-    public function getTotalsForDisplay()
+    function getTotalsForDisplay()
     {
         $order         = $this->getOrder();
         $amount        = $order->formatPriceTxt($this->getAmount());

@@ -13,7 +13,7 @@
  */
 class GoMage_Checkout_Block_Adminhtml_Sales_Order_Create_Totals_Giftwrap extends Mage_Adminhtml_Block_Sales_Order_Create_Totals_Default
 {
-    public function displayBoth()
+    function displayBoth()
     {
         return Mage::helper('gomage_checkout/giftwrap')->displayBoth();
     }

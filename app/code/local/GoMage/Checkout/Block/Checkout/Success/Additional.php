@@ -16,13 +16,13 @@ class GoMage_Checkout_Block_Checkout_Success_Additional extends Mage_Core_Block_
 
     protected $item;
 
-    public function setItem($item)
+    function setItem($item)
     {
         $this->item = $item;
         return $this;
     }
 
-    public function getItem()
+    function getItem()
     {
         if (is_null($this->item)) {
             if ($parent = $this->getParentBlock()) {
@@ -32,7 +32,7 @@ class GoMage_Checkout_Block_Checkout_Success_Additional extends Mage_Core_Block_
         return $this->item;
     }
 
-    public function isGiftWrap()
+    function isGiftWrap()
     {
         $item = $this->getItem();
         return $item && $item->getData('gomage_gift_wrap');

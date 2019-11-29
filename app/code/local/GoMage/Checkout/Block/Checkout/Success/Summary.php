@@ -19,7 +19,7 @@ class GoMage_Checkout_Block_Checkout_Success_Summary extends Mage_Sales_Block_Or
 		}
 	}
 	
-	public function getOrder() {		
+	function getOrder() {		
 		return Mage::getModel('sales/order')->load(Mage::getSingleton('checkout/session')->getLastOrderId());
 	}
 

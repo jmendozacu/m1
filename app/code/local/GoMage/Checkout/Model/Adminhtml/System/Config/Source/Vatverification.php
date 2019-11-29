@@ -21,7 +21,7 @@ class GoMage_Checkout_Model_Adminhtml_System_Config_Source_Vatverification{
      *
      * @return array
      */
-    public function toOptionArray()
+    function toOptionArray()
     {
         return array(
             array('value' => self::VIES, 'label'=>Mage::helper('gomage_checkout')->__('VIES')),

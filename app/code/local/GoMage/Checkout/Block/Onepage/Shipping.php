@@ -15,7 +15,7 @@ class GoMage_Checkout_Block_Onepage_Shipping extends GoMage_Checkout_Block_Onepa
 	
 	protected $prefix = 'shipping';
 	
-	public function customerHasAddresses(){
+	function customerHasAddresses(){
 		
 		if(intval($this->helper->getConfigData('address_fields/address_book'))){
 			
@@ -26,12 +26,12 @@ class GoMage_Checkout_Block_Onepage_Shipping extends GoMage_Checkout_Block_Onepa
 		
 	}
 	
-    public function getMethod()
+    function getMethod()
     {
         return $this->getQuote()->getCheckoutMethod();
     }
 
-    public function getAddress()
+    function getAddress()
     {
     	
     	if($this->asBilling()){
@@ -56,7 +56,7 @@ class GoMage_Checkout_Block_Onepage_Shipping extends GoMage_Checkout_Block_Onepa
     }
 	
 	
-	public function asBilling(){
+	function asBilling(){
     	
     	if(null === $this->getCheckout()->getShippingSameAsBilling()){
     		return true;
@@ -71,12 +71,12 @@ class GoMage_Checkout_Block_Onepage_Shipping extends GoMage_Checkout_Block_Onepa
      *
      * @return bool
      */
-    public function isShow()
+    function isShow()
     {
         return !$this->getQuote()->isVirtual();
     }
     
-    public function getCountryHtmlSelect($type)
+    function getCountryHtmlSelect($type)
     {
     	
         $countryId = $this->getAddress()->getCountryId();

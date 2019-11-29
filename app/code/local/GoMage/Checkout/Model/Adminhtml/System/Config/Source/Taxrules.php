@@ -18,7 +18,7 @@ class GoMage_Checkout_Model_Adminhtml_System_Config_Source_Taxrules{
      *
      * @return array
      */
-    public function toOptionArray()
+    function toOptionArray()
     {
     	
     	$tax_calculation_rule_table = Mage::getSingleton('core/resource')->getTableName('tax/tax_calculation_rule');

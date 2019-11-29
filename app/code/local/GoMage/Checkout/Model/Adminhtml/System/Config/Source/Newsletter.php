@@ -13,7 +13,7 @@
 	
 class GoMage_Checkout_Model_Adminhtml_System_Config_Source_Newsletter{
     
-    public function toOptionArray()
+    function toOptionArray()
     {
         return array(
             array('value' => 0, 'label'=>Mage::helper('gomage_checkout')->__('Disable')),

@@ -14,12 +14,12 @@
 class GoMage_Checkout_Model_Quote_Giftwrap extends Mage_Sales_Model_Quote_Address_Total_Abstract
 {
 
-    public function __construct()
+    function __construct()
     {
         $this->setCode('gomage_gift_wrap');
     }
 
-    public function collect(Mage_Sales_Model_Quote_Address $address)
+    function collect(Mage_Sales_Model_Quote_Address $address)
     {
         parent::collect($address);
 
@@ -76,7 +76,7 @@ class GoMage_Checkout_Model_Quote_Giftwrap extends Mage_Sales_Model_Quote_Addres
         return $this;
     }
 
-    public function fetch(Mage_Sales_Model_Quote_Address $address)
+    function fetch(Mage_Sales_Model_Quote_Address $address)
     {
         $address->addTotal(array(
                 'code'                         => $this->getCode(),

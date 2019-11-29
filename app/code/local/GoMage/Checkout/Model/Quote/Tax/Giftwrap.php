@@ -26,7 +26,7 @@ class GoMage_Checkout_Model_Quote_Tax_Giftwrap extends Mage_Sales_Model_Quote_Ad
     /** @var  GoMage_Checkout_Helper_Giftwrap */
     protected $_helper;
 
-    public function __construct()
+    function __construct()
     {
         $this->setCode('gomage_tax_gift_wrap');
         $this->_helper          = Mage::helper('gomage_checkout/giftwrap');
@@ -39,7 +39,7 @@ class GoMage_Checkout_Model_Quote_Tax_Giftwrap extends Mage_Sales_Model_Quote_Ad
      * @param   Mage_Sales_Model_Quote_Address $address
      * @return  Enterprise_GiftWrapping_Model_Total_Quote_Tax_Giftwrapping
      */
-    public function collect(Mage_Sales_Model_Quote_Address $address)
+    function collect(Mage_Sales_Model_Quote_Address $address)
     {
         parent::collect($address);
 
@@ -181,7 +181,7 @@ class GoMage_Checkout_Model_Quote_Tax_Giftwrap extends Mage_Sales_Model_Quote_Ad
      * @param Mage_Sales_Model_Quote_Address $address
      * @return GoMage_Checkout_Model_Quote_Tax_Giftwrap
      */
-    public function fetch(Mage_Sales_Model_Quote_Address $address)
+    function fetch(Mage_Sales_Model_Quote_Address $address)
     {
         $address->addTotal(array(
                 'code'                             => 'gomage_gift_wrap',

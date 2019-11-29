@@ -13,7 +13,7 @@
 
 class GoMage_Checkout_Block_Adminhtml_Fieldset extends Mage_Adminhtml_Block_System_Config_Form_Fieldset {
 	
-	public function render(Varien_Data_Form_Element_Abstract $element) {
+	function render(Varien_Data_Form_Element_Abstract $element) {
 		$html = $this->_getHeaderHtml($element);
 		
 		foreach ($element->getSortedElements() as $field) {

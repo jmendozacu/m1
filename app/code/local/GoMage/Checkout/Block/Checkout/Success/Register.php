@@ -26,7 +26,7 @@ class GoMage_Checkout_Block_Checkout_Success_Register extends Mage_Customer_Bloc
 		}
 	}
 	
-	public function getOrder() {
+	function getOrder() {
 		return Mage::getModel('sales/order')->load(Mage::getSingleton('checkout/session')->getLastOrderId());
 	}
 

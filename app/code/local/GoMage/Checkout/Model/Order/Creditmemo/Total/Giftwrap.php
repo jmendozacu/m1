@@ -13,7 +13,7 @@
  */
 class GoMage_Checkout_Model_Order_Creditmemo_Total_Giftwrap extends Mage_Sales_Model_Order_Creditmemo_Total_Abstract
 {
-    public function collect(Mage_Sales_Model_Order_Creditmemo $creditmemo)
+    function collect(Mage_Sales_Model_Order_Creditmemo $creditmemo)
     {
         $order = $creditmemo->getOrder();
 

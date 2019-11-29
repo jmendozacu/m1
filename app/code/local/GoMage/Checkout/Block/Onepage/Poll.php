@@ -15,7 +15,7 @@ class GoMage_Checkout_Block_Onepage_Poll extends Mage_Core_Block_Template
 {   
     protected $_voted;
      
-    public function __construct()
+    function __construct()
     {
         parent::__construct();
 

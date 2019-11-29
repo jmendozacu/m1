@@ -18,7 +18,7 @@ class GoMage_Checkout_Model_Adminhtml_System_Config_Source_Skin{
      *
      * @return array
      */
-    public function toOptionArray()
+    function toOptionArray()
     {
         return array(
             array('value' => 'default', 'label'=>'Custom'),

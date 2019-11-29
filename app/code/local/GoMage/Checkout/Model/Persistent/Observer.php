@@ -19,7 +19,7 @@ class GoMage_Checkout_Model_Persistent_Observer extends Mage_Persistent_Model_Ob
      *
      * @param Varien_Event_Observer $observer
      */
-    public function emulateQuote($observer)
+    function emulateQuote($observer)
     {
         parent::emulateQuote($observer);
         if (Mage::helper('persistent')->isEnabled() && $this->_isShoppingCartPersist() && !Mage::getSingleton('customer/session')->isLoggedIn()) {

@@ -14,17 +14,17 @@
 class GoMage_Checkout_Block_Onepage extends GoMage_Checkout_Block_Onepage_Abstract
 {
 
-    public function getContent()
+    function getContent()
     {
         return nl2br($this->helper->getConfigData('general/content'));
     }
 
-    public function getLoginForm()
+    function getLoginForm()
     {
         return $this->getLayout()->createBlock('core/template')->setTemplate('gomage/checkout/onepage/login.phtml')->toHtml();
     }
 
-    public function getContentCssClasses()
+    function getContentCssClasses()
     {
         $classes = array();
         if (Mage::getSingleton('checkout/session')->getQuote()->isVirtual()) {
@@ -53,12 +53,12 @@ class GoMage_Checkout_Block_Onepage extends GoMage_Checkout_Block_Onepage_Abstra
 
     }
 
-    public function getTermsHtml()
+    function getTermsHtml()
     {
         return $this->getLayout()->createBlock('core/template')->setTemplate('gomage/checkout/onepage/terms.phtml')->toHtml();
     }
 
-    public function getCentinelHtml()
+    function getCentinelHtml()
     {
         return $this->getLayout()->createBlock('core/template')->setTemplate('gomage/checkout/onepage/centinel.phtml')->toHtml();
     }

@@ -15,7 +15,7 @@ class GoMage_Checkout_Block_Adminhtml_Sales_Order_View_Info_Block extends Mage_C
 	
 	protected $order;
 	
-	public function getOrder() {
+	function getOrder() {
 		
 		if (is_null($this->order)) {
 			if (Mage::registry('current_order')) {

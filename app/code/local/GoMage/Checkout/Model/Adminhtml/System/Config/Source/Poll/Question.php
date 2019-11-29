@@ -18,7 +18,7 @@ class GoMage_Checkout_Model_Adminhtml_System_Config_Source_Poll_Question{
      *
      * @return array
      */
-    public function toOptionArray()
+    function toOptionArray()
     {
         $data = array();
         $data[] = array('value' => '', 'label'=>'');

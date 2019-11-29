@@ -16,7 +16,7 @@ class GoMage_Checkout_Model_Adminhtml_System_Config_Source_Payment_Buttons
 	const PAYPAL = 'paypal';
 	const GOOGLE_CHECKOUT = 'google';
 
-	public function toOptionArray()
+	function toOptionArray()
     {
         $buttons = array(array('value'=>'', 'label'=>''));
         

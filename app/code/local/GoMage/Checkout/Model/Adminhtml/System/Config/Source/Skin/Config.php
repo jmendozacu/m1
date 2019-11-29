@@ -13,7 +13,7 @@
 	
 class GoMage_Checkout_Model_Adminhtml_System_Config_Source_Skin_Config{
 
-    public function toOptionArray()
+    function toOptionArray()
     {
         return array(
             'black' => array(
@@ -383,7 +383,7 @@ class GoMage_Checkout_Model_Adminhtml_System_Config_Source_Skin_Config{
         );
     }
     
-	public function toOptionDefaultArray()
+	function toOptionDefaultArray()
     {
         return array(
 			 'skin_header' => array(

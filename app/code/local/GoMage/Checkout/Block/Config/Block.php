@@ -55,19 +55,19 @@ class GoMage_Checkout_Block_Config_Block extends Mage_Core_Block_Template
         return null;
     }
 
-    public function setConfigBlock($config_block)
+    function setConfigBlock($config_block)
     {
         $this->config_block = $config_block;
         return $this;
     }
 
-    public function setIfConfig($ifconfig)
+    function setIfConfig($ifconfig)
     {
         $this->ifconfig = $ifconfig;
         return $this;
     }
 
-    public function setCallMethod($method, $parms = array())
+    function setCallMethod($method, $parms = array())
     {
         $this->call_methods[] = array('method' => $method, 'params' => $parms);
         return $this;

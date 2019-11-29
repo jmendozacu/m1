@@ -18,7 +18,7 @@ class GoMage_Checkout_Model_Type_Onestep extends Mage_Checkout_Model_Type_Onepag
     protected $mode;
     protected $helper;
 
-    public function __construct()
+    function __construct()
     {
         $this->helper = Mage::helper('gomage_checkout');
 
@@ -27,12 +27,12 @@ class GoMage_Checkout_Model_Type_Onestep extends Mage_Checkout_Model_Type_Onepag
         }
     }
 
-    public function getCustomerSession()
+    function getCustomerSession()
     {
         return Mage::getSingleton('customer/session');
     }
 
-    public function getCheckoutMode()
+    function getCheckoutMode()
     {
         if (is_null($this->mode)) {
             $this->mode = $this->helper->getConfigData('general/mode');
@@ -40,12 +40,12 @@ class GoMage_Checkout_Model_Type_Onestep extends Mage_Checkout_Model_Type_Onepag
         return $this->mode;
     }
 
-    public function getConfigData($node)
+    function getConfigData($node)
     {
         return $this->helper->getConfigData($node);
     }
 
-    public function getDefaultCountryId()
+    function getDefaultCountryId()
     {
         return $this->helper->getDefaultCountryId();
     }
@@ -115,7 +115,7 @@ class GoMage_Checkout_Model_Type_Onestep extends Mage_Checkout_Model_Type_Onepag
         return true;
     }
 
-    public function saveBilling($data, $customerAddressId)
+    function saveBilling($data, $customerAddressId)
     {
         if (empty($data)) {
             return array('error' => -1, 'message' => $this->helper->__('Invalid data.'));
@@ -206,7 +206,7 @@ class GoMage_Checkout_Model_Type_Onestep extends Mage_Checkout_Model_Type_Onepag
         return array();
     }
 
-    public function saveShipping($data, $customerAddressId)
+    function saveShipping($data, $customerAddressId)
     {
         if (empty($data)) {
             return array('error' => -1, 'message' => $this->helper->__('Invalid data.'));
@@ -256,7 +256,7 @@ class GoMage_Checkout_Model_Type_Onestep extends Mage_Checkout_Model_Type_Onepag
         return false;
     }
 
-    public function shippingAsBilling()
+    function shippingAsBilling()
     {
         if (null === $this->getCheckout()->getShippingSameAsBilling()) {
             return true;
@@ -265,7 +265,7 @@ class GoMage_Checkout_Model_Type_Onestep extends Mage_Checkout_Model_Type_Onepag
         return (bool)$this->getCheckout()->getShippingSameAsBilling();
     }
 
-    public function initCheckout()
+    function initCheckout()
     {
 
         if (Mage::getSingleton('checkout/session')->getCheckoutState() !== Mage_Checkout_Model_Session::CHECKOUT_STATE_BEGIN) {
@@ -534,7 +534,7 @@ class GoMage_Checkout_Model_Type_Onestep extends Mage_Checkout_Model_Type_Onepag
         return $this;
     }
 
-    public function savePaymentMethod($method)
+    function savePaymentMethod($method)
     {
 
         if (!empty($method)) {
@@ -543,7 +543,7 @@ class GoMage_Checkout_Model_Type_Onestep extends Mage_Checkout_Model_Type_Onepag
 
     }
 
-    public function saveShippingMethod($method)
+    function saveShippingMethod($method)
     {
         if (!empty($method)) {
             $this->getQuote()->getShippingAddress()->setShippingMethod($method);
@@ -551,7 +551,7 @@ class GoMage_Checkout_Model_Type_Onestep extends Mage_Checkout_Model_Type_Onepag
 
     }
 
-    public function verifyCustomerVat()
+    function verifyCustomerVat()
     {
         $billing_address  = $this->getQuote()->getBillingAddress();
         $shipping_address = $this->getQuote()->getShippingAddress();

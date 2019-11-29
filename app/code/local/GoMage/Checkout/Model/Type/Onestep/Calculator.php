@@ -20,36 +20,36 @@ class GoMage_Checkout_Model_Type_Onestep_Calculator extends Varien_Object
     public $result;
     private $request;
 
-    public function __construct($request)
+    function __construct($request)
     {
         $this->request = $request;
         $this->result  = new stdClass();
         $this->initialize();
     }
 
-    public function initialize()
+    function initialize()
     {
         $this->result->error = false;
     }
 
-    public function setResultParam($key, $value)
+    function setResultParam($key, $value)
     {
         $this->result->{$key} = $value;
         return $this;
     }
 
-    public function getCacheBlocks()
+    function getCacheBlocks()
     {
         return array('shippings', 'payments', 'review');
     }
 
-    public function cleanCache()
+    function cleanCache()
     {
         Mage::app()->getCache()->clean(Zend_Cache::CLEANING_MODE_MATCHING_TAG, array(self::CACHE_TAG));
         return $this;
     }
 
-    public function generateResult(array $blocks)
+    function generateResult(array $blocks)
     {
         foreach ($blocks as $block) {
             $block_html = null;
@@ -154,7 +154,7 @@ class GoMage_Checkout_Model_Type_Onestep_Calculator extends Varien_Object
         return trim($html);
     }
 
-    public function calcShippings($quote)
+    function calcShippings($quote)
     {
 
         $address = $quote->getShippingAddress();
@@ -183,7 +183,7 @@ class GoMage_Checkout_Model_Type_Onestep_Calculator extends Varien_Object
 
     }
 
-    public function calcPayments($quote)
+    function calcPayments($quote)
     {
         if ($current_method = $quote->getPayment()->getMethod()) {
             $payment_methods = Mage::helper('payment')->getStoreMethods($quote->getStoreId(), $quote);
@@ -206,7 +206,7 @@ class GoMage_Checkout_Model_Type_Onestep_Calculator extends Varien_Object
         }
     }
 
-    public function prepareResult()
+    function prepareResult()
     {
 
         if (isset($this->result->methods)) {

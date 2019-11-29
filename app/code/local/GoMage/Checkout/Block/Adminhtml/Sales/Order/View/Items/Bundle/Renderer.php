@@ -14,7 +14,7 @@
 class GoMage_Checkout_Block_Adminhtml_Sales_Order_View_Items_Bundle_Renderer extends Mage_Bundle_Block_Adminhtml_Sales_Order_View_Items_Renderer
 {
 
-    public function getOrderOptions($item = null)
+    function getOrderOptions($item = null)
     {
         $result = parent::getOrderOptions($item);
 

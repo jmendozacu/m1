@@ -13,7 +13,7 @@
  */
 class GoMage_Checkout_Model_Order_Invoice_Total_Tax_Giftwrap extends Mage_Sales_Model_Order_Invoice_Total_Abstract
 {
-    public function collect(Mage_Sales_Model_Order_Invoice $invoice)
+    function collect(Mage_Sales_Model_Order_Invoice $invoice)
     {
         $order        = $invoice->getOrder();
         $baseInvoiced = 0;

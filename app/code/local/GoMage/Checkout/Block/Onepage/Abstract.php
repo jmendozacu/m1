@@ -19,7 +19,7 @@ class GoMage_Checkout_Block_Onepage_Abstract extends Mage_Checkout_Block_Onepage
     protected $default_address_template = 'gomage/checkout/html/address/field/default.phtml';
     protected $field_code_to_label;
 
-    public function __construct()
+    function __construct()
     {
         $this->helper              = Mage::helper('gomage_checkout');
         $this->field_code_to_label = array('company'    => 'Company',
@@ -33,12 +33,12 @@ class GoMage_Checkout_Block_Onepage_Abstract extends Mage_Checkout_Block_Onepage
         );
     }
 
-    public function getCustomerComment()
+    function getCustomerComment()
     {
         return $this->getQuote()->getGomageCheckoutCustomerComment();
     }
 
-    public function getCheckoutMode()
+    function getCheckoutMode()
     {
         if (is_null($this->mode)) {
             $this->mode = intval($this->helper->getCheckoutMode());
@@ -47,32 +47,32 @@ class GoMage_Checkout_Block_Onepage_Abstract extends Mage_Checkout_Block_Onepage
         return $this->mode;
     }
 
-    public function getConfigData($node)
+    function getConfigData($node)
     {
         return $this->helper->getConfigData($node);
     }
 
-    public function isEnabled($node)
+    function isEnabled($node)
     {
         return (bool)$this->getConfigData('address_fields/' . $node);
     }
 
-    public function getDefaultCountryId()
+    function getDefaultCountryId()
     {
         return $this->helper->getDefaultCountryId();
     }
 
-    public function getDefaultShippingMethod()
+    function getDefaultShippingMethod()
     {
         return $this->helper->getDefaultShippingMethod();
     }
 
-    public function getDefaultPaymentMethod()
+    function getDefaultPaymentMethod()
     {
         return $this->helper->getDefaultPaymentMethod();
     }
 
-    public function getSortedFields()
+    function getSortedFields()
     {
         $address_fields = array('company', 'street', 'city', 'telephone', 'fax', 'postcode', 'country_id', 'region');
         $rows           = array();
@@ -171,7 +171,7 @@ class GoMage_Checkout_Block_Onepage_Abstract extends Mage_Checkout_Block_Onepage
         return $html;
     }
 
-    public function getAddressesHtmlSelect($type)
+    function getAddressesHtmlSelect($type)
     {
         if ($this->isCustomerLoggedIn()) {
             $options = array();

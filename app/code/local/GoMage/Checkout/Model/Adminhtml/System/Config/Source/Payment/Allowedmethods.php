@@ -33,7 +33,7 @@ class GoMage_Checkout_Model_Adminhtml_System_Config_Source_Payment_Allowedmethod
     	return Mage::helper('gomage_checkout')->getActivePaymentMethods($tmpStoreId);
     	
     }
-	public function toOptionArray()
+	function toOptionArray()
     {
         $methods = array(array('value'=>'', 'label'=>''));
         foreach ($this->_getPaymentMethods() as $paymentCode=>$paymentModel) {

@@ -13,7 +13,7 @@
 
 class GoMage_Checkout_Block_Adminhtml_Sales_Items_Column_Name extends Mage_Adminhtml_Block_Sales_Items_Column_Name {
 	
-	public function getOrderOptions() {
+	function getOrderOptions() {
 		$result = parent::getOrderOptions();
 		if ($item = $this->getItem()) {
 			if ($item->getData('gomage_gift_wrap')) {

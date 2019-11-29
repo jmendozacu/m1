@@ -16,7 +16,7 @@ class GoMage_Checkout_Model_Quote_Address extends Amasty_Promo_Model_Sales_Quote
 
     protected $required_fields = array();
 
-    public function __construct($data = null)
+    function __construct($data = null)
     {
         parent::__construct($data);
 
@@ -39,7 +39,7 @@ class GoMage_Checkout_Model_Quote_Address extends Amasty_Promo_Model_Sales_Quote
         }
     }
 
-    public function validate()
+    function validate()
     {
         $request = Mage::app()->getFrontController()->getRequest();
         if ((bool)Mage::helper('gomage_checkout')->getConfigData('general/enabled') && $request->getModulename() != "admin") {

@@ -34,7 +34,7 @@ class GoMage_Checkout_Helper_GiftMessage extends Mage_Core_Helper_Data
      * @param Varien_Object $entity
      * @return string
      */
-    public function getButton($type, Varien_Object $entity)
+    function getButton($type, Varien_Object $entity)
     {
         if (!$this->isMessagesAvailable($type, $entity)) {
             return '&nbsp;';
@@ -55,7 +55,7 @@ class GoMage_Checkout_Helper_GiftMessage extends Mage_Core_Helper_Data
      * @param boolean $dontDisplayContainer
      * @return string
      */
-    public function getInline($type, Varien_Object $entity, $dontDisplayContainer=false)
+    function getInline($type, Varien_Object $entity, $dontDisplayContainer=false)
     {        
         if (in_array($type, array('onepage_checkout','multishipping_adress'))) {
             if (!$this->isMessagesAvailable('items', $entity)) {                
@@ -73,7 +73,7 @@ class GoMage_Checkout_Helper_GiftMessage extends Mage_Core_Helper_Data
             ->setType($type)->toHtml() . $this->getAdditionalInline();
     }
     
-    public function getAdditionalInline()
+    function getAdditionalInline()
     {
     	if (Mage::helper('gomage_checkout')->getIsAnymoreVersion(1, 11)){
 	    	$giftwrapping = Mage::getSingleton('core/layout')->createBlock('enterprise_giftwrapping/checkout_options');
@@ -93,7 +93,7 @@ class GoMage_Checkout_Helper_GiftMessage extends Mage_Core_Helper_Data
      * @param Mage_Core_Model_Store|integer $store
      * @return boolean
      */
-    public function isMessagesAvailable($type, Varien_Object $entity, $store=null)
+    function isMessagesAvailable($type, Varien_Object $entity, $store=null)
     {        
         $resultItems = $this->getConfigGiftMessageAllowItems($store);
         $resultOrder = $this->getConfigGiftMessageAllowOrder($store);
@@ -170,7 +170,7 @@ class GoMage_Checkout_Helper_GiftMessage extends Mage_Core_Helper_Data
      * @param Mage_Core_Model_Store|integer $store
      * @return boolen
      */
-    public function getIsMessagesAvailable($type, Varien_Object $entity, $store=null)
+    function getIsMessagesAvailable($type, Varien_Object $entity, $store=null)
     {
         return $this->isMessagesAvailable($type, $entity, $store);
     }
@@ -181,7 +181,7 @@ class GoMage_Checkout_Helper_GiftMessage extends Mage_Core_Helper_Data
      * @param Varien_Object $entity
      * @return unknown
      */
-    public function getEscapedGiftMessage(Varien_Object $entity)
+    function getEscapedGiftMessage(Varien_Object $entity)
     {
         $message = $this->getGiftMessageForEntity($entity);
         if ($message) {
@@ -196,7 +196,7 @@ class GoMage_Checkout_Helper_GiftMessage extends Mage_Core_Helper_Data
      * @param Varien_Object $entity
      * @return Mage_GiftMessage_Model_Message
      */
-    public function getGiftMessageForEntity(Varien_Object $entity)
+    function getGiftMessageForEntity(Varien_Object $entity)
     {
         if($entity->getGiftMessageId() && !$entity->getGiftMessage()) {
             $message = $this->getGiftMessage($entity->getGiftMessageId());
@@ -213,7 +213,7 @@ class GoMage_Checkout_Helper_GiftMessage extends Mage_Core_Helper_Data
      * @param string $key
      * @return mixed|null
      */
-    public function getCached($key)
+    function getCached($key)
     {
         if($this->isCached($key)) {
             return $this->_innerCache[$key];
@@ -228,7 +228,7 @@ class GoMage_Checkout_Helper_GiftMessage extends Mage_Core_Helper_Data
      * @param string $key
      * @return boolean
      */
-    public function isCached($key)
+    function isCached($key)
     {
         return isset($this->_innerCache[$key]);
     }
@@ -240,7 +240,7 @@ class GoMage_Checkout_Helper_GiftMessage extends Mage_Core_Helper_Data
      * @param mixed $value
      * @return Mage_GiftMessage_Helper_Message
      */
-    public function setCached($key, $value)
+    function setCached($key, $value)
     {
         $this->_innerCache[$key] = $value;
         return $this;
@@ -253,7 +253,7 @@ class GoMage_Checkout_Helper_GiftMessage extends Mage_Core_Helper_Data
      * @param Mage_Core_Model_Store|integer $store
      * @return boolen
      */
-    public function getAvailableForQuoteItems($quote, $store=null)
+    function getAvailableForQuoteItems($quote, $store=null)
     {
         foreach($quote->getAllItems() as $item) {
             if($this->isMessagesAvailable('item', $item, $store)) {
@@ -271,7 +271,7 @@ class GoMage_Checkout_Helper_GiftMessage extends Mage_Core_Helper_Data
      * @param Mage_Core_Model_Store|integer $store
      * @return boolen
      */
-    public function getAvailableForAddressItems($items, $store=null)
+    function getAvailableForAddressItems($items, $store=null)
     {
         foreach($items as $item) {
             if($this->isMessagesAvailable('address_item', $item, $store)) {
@@ -287,7 +287,7 @@ class GoMage_Checkout_Helper_GiftMessage extends Mage_Core_Helper_Data
      * @param integer $messageId
      * @return Mage_GiftMessage_Model_Message
      */
-    public function getGiftMessage($messageId=null)
+    function getGiftMessage($messageId=null)
     {
         $message = Mage::getModel('giftmessage/message');
         if(!is_null($messageId)) {
@@ -297,7 +297,7 @@ class GoMage_Checkout_Helper_GiftMessage extends Mage_Core_Helper_Data
         return $message;
     }
     
-    public function getConfigGiftMessageAllowItems($store=null)
+    function getConfigGiftMessageAllowItems($store=null)
     {        
         if (Mage::helper('gomage_checkout')->getIsAnymoreVersion(1, 5))            
             return Mage::getStoreConfig('sales/gift_options/allow_items', $store);    
@@ -305,7 +305,7 @@ class GoMage_Checkout_Helper_GiftMessage extends Mage_Core_Helper_Data
             return Mage::getStoreConfig('sales/gift_messages/allow_items', $store);    
     }
     
-    public function getConfigGiftMessageAllowOrder($store=null)
+    function getConfigGiftMessageAllowOrder($store=null)
     {        
         if (Mage::helper('gomage_checkout')->getIsAnymoreVersion(1, 5))
             return Mage::getStoreConfig('sales/gift_options/allow_order', $store);    

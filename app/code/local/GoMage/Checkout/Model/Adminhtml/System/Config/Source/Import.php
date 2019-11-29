@@ -13,7 +13,7 @@
 	
 class GoMage_Checkout_Model_Adminhtml_System_Config_Source_Import extends Mage_Core_Model_Config_Data {
 		
- 	public function _afterSave()
+ 	function _afterSave()
     {
      	if (empty($_FILES['groups']['tmp_name']['geoip']['fields']['import']['value'])) {     		
             return $this;

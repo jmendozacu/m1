@@ -16,7 +16,7 @@ class GoMage_Checkout_Block_Onepage_Billing extends GoMage_Checkout_Block_Onepag
 
     protected $prefix = 'billing';
 
-    public function customerHasAddresses()
+    function customerHasAddresses()
     {
         if (intval($this->helper->getConfigData('address_fields/address_book'))) {
             return parent::customerHasAddresses();
@@ -29,12 +29,12 @@ class GoMage_Checkout_Block_Onepage_Billing extends GoMage_Checkout_Block_Onepag
         return parent::_prepareLayout();
     }
 
-    public function getCountries()
+    function getCountries()
     {
         return Mage::getResourceModel('directory/country_collection')->loadByStore();
     }
 
-    public function getMethod()
+    function getMethod()
     {
         return $this->getQuote()->getCheckoutMethod();
     }
@@ -44,7 +44,7 @@ class GoMage_Checkout_Block_Onepage_Billing extends GoMage_Checkout_Block_Onepag
         return $this->getQuote()->getBillingAddress();
     }
 
-    public function getFirstname()
+    function getFirstname()
     {
         $firstname = $this->getAddress()->getFirstname();
         if (empty($firstname) && $this->getQuote()->getCustomer()) {
@@ -53,7 +53,7 @@ class GoMage_Checkout_Block_Onepage_Billing extends GoMage_Checkout_Block_Onepag
         return $firstname;
     }
 
-    public function getLastname()
+    function getLastname()
     {
         $lastname = $this->getAddress()->getLastname();
         if (empty($lastname) && $this->getQuote()->getCustomer()) {
@@ -62,7 +62,7 @@ class GoMage_Checkout_Block_Onepage_Billing extends GoMage_Checkout_Block_Onepag
         return $lastname;
     }
 
-    public function shippingAsBilling()
+    function shippingAsBilling()
     {
         if (null === $this->getCheckout()->getShippingSameAsBilling()) {
             return true;
@@ -70,7 +70,7 @@ class GoMage_Checkout_Block_Onepage_Billing extends GoMage_Checkout_Block_Onepag
         return (bool)$this->getCheckout()->getShippingSameAsBilling();
     }
 
-    public function canShip()
+    function canShip()
     {
         if (!$this->getQuote()->isVirtual()) {
             if (intval($this->getConfigData('general/different_shipping_enabled'))) {
@@ -81,7 +81,7 @@ class GoMage_Checkout_Block_Onepage_Billing extends GoMage_Checkout_Block_Onepag
         return false;
     }
 
-    public function getCountryHtmlSelect($type)
+    function getCountryHtmlSelect($type)
     {
         $countryId = $this->getAddress()->getCountryId();
 
@@ -109,19 +109,19 @@ class GoMage_Checkout_Block_Onepage_Billing extends GoMage_Checkout_Block_Onepag
     }
 
 
-    public function getAutoRegistration()
+    function getAutoRegistration()
     {
         return intval($this->getConfigData('registration/auto'));
     }
 
-    public function isReferralBlockShow()
+    function isReferralBlockShow()
     {
         return Mage::getStoreConfig('rewards/general/layoutsactive') &&
         Mage::getStoreConfig('rewards/referral/show_in_onepage_checkout') &&
         (Mage::getStoreConfig('rewards/referral/show_referral_email') || Mage::getStoreConfig('rewards/referral/show_referral_code'));
     }
 
-    public function getReferralLabel()
+    function getReferralLabel()
     {
         if (Mage::getStoreConfig('rewards/referral/show_referral_email') && !Mage::getStoreConfig('rewards/referral/show_referral_code')) {
             return $this->__('Referral E-mail');

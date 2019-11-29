@@ -14,7 +14,7 @@
 class GoMage_Checkout_Block_Bundle_Sales_Order_Items_Renderer extends Mage_Bundle_Block_Sales_Order_Items_Renderer
 {
 
-    public function getItemOptions()
+    function getItemOptions()
     {
         $result = parent::getItemOptions();
 

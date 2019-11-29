@@ -29,7 +29,7 @@ class GoMage_Checkout_Model_Tax_Calculation extends Mage_Tax_Model_Calculation
      * @param   null|int $store
      * @return  Varien_Object
      */
-    public function getRateRequest($shippingAddress = null, $billingAddress = null, $customerTaxClass = null, $store = null)
+    function getRateRequest($shippingAddress = null, $billingAddress = null, $customerTaxClass = null, $store = null)
     {
         if ($shippingAddress === false && $billingAddress === false && $customerTaxClass === false) {
             return $this->getRateOriginRequest($store);

@@ -28,7 +28,7 @@ class GoMage_Checkout_Block_Authorizenet_Directpost_Form extends Mage_Authorizen
         return parent::_toHtml();
     }
 
-    public function setMethodInfo()
+    function setMethodInfo()
     {
         $payment = Mage::getSingleton('checkout/type_onepage')->getQuote()->getPayment();
         if ($payment->getMethod()) {

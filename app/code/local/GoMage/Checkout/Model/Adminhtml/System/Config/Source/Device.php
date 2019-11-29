@@ -19,7 +19,7 @@ class GoMage_Checkout_Model_Adminhtml_System_Config_Source_Device{
     const IOS = 3;
     const OTHER = 4;
 	
-    public function toOptionArray()
+    function toOptionArray()
     {
         return array(
         	array('value' => '', 'label' => ''),

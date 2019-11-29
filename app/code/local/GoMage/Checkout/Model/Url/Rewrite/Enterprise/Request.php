@@ -23,7 +23,7 @@ class GoMage_Checkout_Model_Url_Rewrite_Enterprise_Request extends Enterprise_Ur
 			$requestPath = trim($this->_request->getPathInfo(), '/');
 			
 			if ($requestPath == 'checkout/onepage' || $requestPath == 'checkout/onepage/index') {
-				if ($h->isAvailableWebsite() && $h->isCompatibleDevice()) {
+				if ($h->isCompatibleDevice()) {
 					$this->_request->setPathInfo('gomage_checkout/onepage');
 					return true;
 				}

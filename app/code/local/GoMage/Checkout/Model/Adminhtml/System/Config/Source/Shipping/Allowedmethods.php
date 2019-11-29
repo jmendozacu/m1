@@ -14,7 +14,7 @@
 class GoMage_Checkout_Model_Adminhtml_System_Config_Source_Shipping_Allowedmethods
     extends Mage_Adminhtml_Model_System_Config_Source_Shipping_Allmethods
 {
-    public function toOptionArray($isActiveOnlyFlag=true)
+    function toOptionArray($isActiveOnlyFlag=true)
     {      
     $tmpStoreId = null;
           

@@ -13,7 +13,7 @@
 
 class GoMage_Checkout_Block_Onepage_Review extends GoMage_Checkout_Block_Onepage_Abstract {
 	
-	public function getCustomerComment() {
+	function getCustomerComment() {
 		
 		return strval($this->getCheckout()->getQuote()->getGomageCheckoutCustomerComment());
 	}

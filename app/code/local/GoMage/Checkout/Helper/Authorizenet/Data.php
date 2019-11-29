@@ -19,7 +19,7 @@ class GoMage_Checkout_Helper_Authorizenet_Data extends Mage_Authorizenet_Helper_
      * @param string $controller
      * @return array
      */
-    public function getSaveOrderUrlParams($controller)
+    function getSaveOrderUrlParams($controller)
     {    	
         $route = array();
         switch ($controller) {

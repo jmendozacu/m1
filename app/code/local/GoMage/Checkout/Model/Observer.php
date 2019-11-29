@@ -14,7 +14,7 @@
 class GoMage_Checkout_Model_Observer
 {
 
-    static public function salesOrderLoad($event)
+    static function salesOrderLoad($event)
     {
         if ($date = $event->getOrder()->getGomageDeliverydate()) {
             $formated_date = Mage::app()->getLocale()->date($date, Varien_Date::DATETIME_INTERNAL_FORMAT)->toString(Mage::app()->getLocale()->getDateTimeFormat(Mage_Core_Model_Locale::FORMAT_TYPE_MEDIUM));
@@ -22,13 +22,7 @@ class GoMage_Checkout_Model_Observer
         }
     }
 
-    static public function checkK($event)
-    {
-        $key = Mage::getStoreConfig('gomage_activation/lightcheckout/key');
-        Mage::helper('gomage_checkout')->a($key);
-    }
-
-    public function setResponseAfterSaveOrder(Varien_Event_Observer $observer)
+    function setResponseAfterSaveOrder(Varien_Event_Observer $observer)
     {
         try {
             $paypal_observer = Mage::getModel('paypal/observer');
@@ -53,7 +47,7 @@ class GoMage_Checkout_Model_Observer
         return $this;
     }
 
-    public function checkGoMageCheckout($observer)
+    function checkGoMageCheckout($observer)
     {
         if (Mage::getStoreConfig('customer/captcha/enable')) {
             $formId       = 'gcheckout_onepage';
@@ -74,7 +68,7 @@ class GoMage_Checkout_Model_Observer
         return $this;
     }
 
-    public function addGiftWrapItem($observer)
+    function addGiftWrapItem($observer)
     {
         if (Mage::helper('gomage_checkout')->getConfigData('gift_wrapping/enable') > 0) {
             $cart = $observer->getEvent()->getData('paypal_cart');
@@ -92,11 +86,11 @@ class GoMage_Checkout_Model_Observer
         return $this;
     }
 
-    public function disableShoppingCart($event)
+    function disableShoppingCart($event)
     {
         $h = Mage::helper('gomage_checkout');
 
-        if ($h->getConfigData('general/disable_cart') && $h->getConfigData('general/enabled') && $h->isAvailableWebsite()) {
+        if ($h->getConfigData('general/disable_cart') && $h->getConfigData('general/enabled')) {
             $quote = Mage::getSingleton('gomage_checkout/type_onestep')->getQuote();
             if ($quote->hasItems()) {
                 $event->getEvent()->getControllerAction()->getResponse()->setRedirect(Mage::getUrl('checkout/onepage'));
@@ -104,7 +98,7 @@ class GoMage_Checkout_Model_Observer
         }
     }
 
-    public function prepareCustomerOrder($event)
+    function prepareCustomerOrder($event)
     {
         $customer           = $event->getCustomer();
         $account_controller = $event->getAccountController();
@@ -138,7 +132,7 @@ class GoMage_Checkout_Model_Observer
         }
     }
 
-    public function getSalesOrderViewInfo(Varien_Event_Observer $observer)
+    function getSalesOrderViewInfo(Varien_Event_Observer $observer)
     {
         $block = $observer->getBlock();
         if (($block->getNameInLayout() == 'order_info') && ($child = $block->getChild('gomage.checkout.order.info'))) {
@@ -151,7 +145,7 @@ class GoMage_Checkout_Model_Observer
         }
     }
 
-    public function prepareCheckoutSuccess(Varien_Event_Observer $observer)
+    function prepareCheckoutSuccess(Varien_Event_Observer $observer)
     {
         $block = $observer->getBlock();
         if ($block->getNameInLayout() == 'gomage.checkout.success.register') {
@@ -172,7 +166,7 @@ class GoMage_Checkout_Model_Observer
      *
      * @param Varien_Event_Observer $observer
      */
-    public function quoteCollectTotalsBefore(Varien_Event_Observer $observer)
+    function quoteCollectTotalsBefore(Varien_Event_Observer $observer)
     {
         $quote = $observer->getEvent()->getQuote();
         $quote->setIsNewGomageGiftWrapCollecting(true);

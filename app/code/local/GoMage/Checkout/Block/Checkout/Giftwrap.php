@@ -16,12 +16,12 @@ class GoMage_Checkout_Block_Checkout_Giftwrap extends Mage_Checkout_Block_Total_
 
     protected $_template = 'gomage/checkout/giftwrap/totals.phtml';
 
-    public function displayBoth()
+    function displayBoth()
     {
         return Mage::helper('gomage_checkout/giftwrap')->displayBoth();
     }
 
-    public function getValues()
+    function getValues()
     {
         $values = array();
         $total  = $this->getTotal();

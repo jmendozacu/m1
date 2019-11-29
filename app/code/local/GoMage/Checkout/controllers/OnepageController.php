@@ -19,7 +19,7 @@ class GoMage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
     /**
      * @return GoMage_Checkout_Model_Type_Onestep
      */
-    public function getOnepage()
+    function getOnepage()
     {
         if (empty($this->_onepage)) {
             $this->_onepage = Mage::getSingleton('gomage_checkout/type_onestep');
@@ -27,7 +27,7 @@ class GoMage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
         return $this->_onepage;
     }
 
-    public function getSession()
+    function getSession()
     {
         if (empty($this->_session)) {
             $this->_session = Mage::getSingleton('customer/session');
@@ -35,7 +35,7 @@ class GoMage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
         return $this->_session;
     }
 
-    public function getCheckout()
+    function getCheckout()
     {
         if (empty($this->_checkout)) {
             $this->_checkout = Mage::getSingleton('checkout/session');
@@ -43,7 +43,7 @@ class GoMage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
         return $this->_checkout;
     }
 
-    public function indexAction()
+    function indexAction()
     {
 
         $helper = Mage::helper('gomage_checkout');
@@ -86,7 +86,7 @@ class GoMage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
         $this->renderLayout();
     }
 
-    public function ajaxAction()
+    function ajaxAction()
     {
 
         $helper     = Mage::helper('gomage_checkout');
@@ -937,7 +937,7 @@ class GoMage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
         $this->getResponse()->setBody(json_encode($calculator->result));
     }
 
-    public function saveAction()
+    function saveAction()
     {
         $helper = Mage::helper('gomage_checkout');
 
@@ -1175,7 +1175,7 @@ class GoMage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
 
     }
 
-    public function customerLoginAction()
+    function customerLoginAction()
     {
 
         $result = array('error' => false);
@@ -1246,7 +1246,7 @@ class GoMage_Checkout_OnepageController extends Mage_Checkout_Controller_Action
         $this->getResponse()->setBody(Zend_Json::encode($result));
     }
 
-    public function forgotPasswordAction()
+    function forgotPasswordAction()
     {
         $result = array('error' => false);
 

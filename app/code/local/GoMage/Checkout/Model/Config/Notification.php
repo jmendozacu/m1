@@ -25,7 +25,7 @@ class GoMage_Checkout_Model_Config_Notification extends Mage_Core_Model_Config_D
      *
      * @param array $args
      */
-    public function __construct(array $args = array())
+    function __construct(array $args = array())
     {
         $this->_factory = !empty($args['factory']) ? $args['factory'] : Mage::getSingleton('core/factory');
         parent::__construct($args);

@@ -17,7 +17,7 @@ class GoMage_Checkout_Helper_Giftwrap extends Mage_Core_Helper_Data
     /**
      * @return bool
      */
-    public function displayBoth()
+    function displayBoth()
     {
         return Mage::helper('gomage_checkout')->getConfigData('gift_wrapping/display') == Mage_Tax_Model_Config::DISPLAY_TYPE_BOTH;
     }
@@ -25,7 +25,7 @@ class GoMage_Checkout_Helper_Giftwrap extends Mage_Core_Helper_Data
     /**
      * @return bool
      */
-    public function displayIncluding()
+    function displayIncluding()
     {
         return Mage::helper('gomage_checkout')->getConfigData('gift_wrapping/display') == Mage_Tax_Model_Config::DISPLAY_TYPE_INCLUDING_TAX;
     }
@@ -33,7 +33,7 @@ class GoMage_Checkout_Helper_Giftwrap extends Mage_Core_Helper_Data
     /**
      * @return string
      */
-    public function getTitle()
+    function getTitle()
     {
         return Mage::helper('gomage_checkout')->getConfigData('gift_wrapping/title');
     }
@@ -41,7 +41,7 @@ class GoMage_Checkout_Helper_Giftwrap extends Mage_Core_Helper_Data
     /**
      * @return float
      */
-    public function getPrice()
+    function getPrice()
     {
         return Mage::helper('gomage_checkout')->getConfigData('gift_wrapping/price');
     }
@@ -49,7 +49,7 @@ class GoMage_Checkout_Helper_Giftwrap extends Mage_Core_Helper_Data
     /**
      * @return int
      */
-    public function getTaxClass()
+    function getTaxClass()
     {
         return Mage::helper('gomage_checkout')->getConfigData('gift_wrapping/tax_class');
     }
@@ -60,7 +60,7 @@ class GoMage_Checkout_Helper_Giftwrap extends Mage_Core_Helper_Data
      * @param  Varien_Object $dataObject
      * @return array
      */
-    public function getTotals($dataObject)
+    function getTotals($dataObject)
     {
         $totals = array();
 
