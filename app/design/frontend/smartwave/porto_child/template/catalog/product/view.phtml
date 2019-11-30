@@ -178,51 +178,8 @@ if($enable_addtocart_sticky){
                 <div class="product-name">
                     <h1 <?php if($enabled_richsnippets): ?>itemprop="name"<?php endif; ?>><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
                 </div>
-                <?php if($enabled_richsnippets): ?>
-                <?php
-                    $storeId = Mage::app()->getStore()->getId();
-                    $summaryData = Mage::getModel('review/review_summary')->setStoreId($storeId)->load($_product->getId());
-                ?>
-                <?php if ($summaryData['reviews_count']): ?>
-                    <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="no-display">
-                        <span itemprop="ratingValue"><?php echo $summaryData['rating_summary']; ?></span>
-                        <span itemprop="reviewCount"><?php echo $summaryData['reviews_count']; ?></span>
-                        <span itemprop="bestRating">100</span>
-                        <span itemprop="worstRating">0</span>
-                    </span>
-                <?php endif; ?>
-                <?php endif; ?>
-
-                <?php 
-                if (Mage::helper('catalog')->isModuleEnabled('Mage_Review')):
-                ?>
-                <?php 
-                    $review_html = $this->getReviewsSummaryHtml($product);
-                    if($review_html){
-                        echo $review_html;
-                    }else{
-                ?>
-                    <div class="ratings">
-                        <div class="rating-box">
-                            <div class="rating" style="width:0"></div>
-                        </div>
-                        <p class="rating-links">
-                            <a href="javascript:void(0)"><?php echo $this->__('%s Review(s)', 0);?></a>
-                        </p>
-                    </div>
-                <?php                            
-                    }
-                ?>
-                <?php else: ?>
-                    <div class="ratings">
-                        <div class="rating-box">
-                            <div class="rating" style="width:0"></div>
-                        </div>
-                        <p class="rating-links">
-                            <a href="javascript:void(0)"><?php echo $this->__('%s Review(s)', 0);?></a>
-                        </p>
-                    </div>
-                <?php endif; ?>
+<!-- 2019-12-01 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+"Disable the Mage_Review and Mage_Rating modules": https://github.com/repairzoom/m1/issues/43 -->
                 <?php if ($_product->getShortDescription()):?>
                     <div class="short-description <?php if($move_custom_block):?>no-border<?php endif;?>"">
                         <h2><?php echo $this->__('Quick Overview') ?></h2>
