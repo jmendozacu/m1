@@ -180,12 +180,38 @@ if($enable_addtocart_sticky){
                 </div>
 <!-- 2019-12-01 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
 "Disable the Mage_Review and Mage_Rating modules": https://github.com/repairzoom/m1/issues/43 -->
-                <?php if ($_product->getShortDescription()):?>
-                    <div class="short-description <?php if($move_custom_block):?>no-border<?php endif;?>"">
-                        <h2><?php echo $this->__('Quick Overview') ?></h2>
-                        <div class="std" <?php if($enabled_richsnippets): ?>itemprop="description"<?php endif; ?>><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
-                    </div>
-                <?php endif;?>
+<!-- 2019-12-01 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+"Remove product titles duplication from frontend product pages": https://github.com/repairzoom/m1/issues/45 -->
+<style>.product-view .product-name h1 {font-size: 40px; font-weight: 600; margin: 0; padding: 0;}</style>
+<?php
+	if ($sd = $_product->getShortDescription()) { /** @var string|null $sd */
+		// 2019-12-01 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+		// "How to strip a tag and all of its inner html using the tag's id?": https://stackoverflow.com/a/3308652
+		$dom = new DOMDocument;
+		// 2019-12-01 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+		// "How to saveHTML of DOMDocument without HTML wrapper?": https://stackoverflow.com/a/44866403
+		$dom->loadHTML($sd, LIBXML_HTML_NODEFDTD);
+		$xPath = new DOMXPath($dom);
+		// 2019-12-01 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+		// "DOMXPath query to return element with img tag": https://stackoverflow.com/a/19414495
+		$nodes = $xPath->query('//h1');
+		foreach($nodes as $node) {
+			$node->parentNode->removeChild($node);
+		}
+		// 2019-12-01 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+		// "How to saveHTML of DOMDocument without HTML wrapper?": https://stackoverflow.com/a/44866403
+		$sd = substr($dom->saveHTML(), 12, -15);
+		?>
+			<div class="short-description <?php if($move_custom_block):?>no-border<?php endif;?>"">
+				<h2><?= $this->__('Quick Overview') ?></h2>
+				<div
+					class="std"
+					<?php if($enabled_richsnippets): ?>itemprop="description"<?php endif; ?>
+				><?= $_helper->productAttribute($_product, trim($sd), 'short_description') ?></div>
+			</div>
+		<?php
+	}
+?>
                 <?php if($custom_block_html && $move_custom_block):?>
                     <div class="short-custom-block">
                         <?php echo $custom_block_html; ?>
