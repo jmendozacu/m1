@@ -31,7 +31,7 @@ if (!$_productCollection->count()) { ?>
 		<?= $this->getToolbarHtml() ?>
 		<?php $_columnCount = $cfg('porto_settings/category_grid/columns'); ?>
 		<ul class='products-grid <?php if ($cfg('porto_settings/category_grid/flex_grid')):?>flex-grid<?php endif; ?> columns<?= $_columnCount; ?><?php if (!$cfg('porto_settings/category_grid/show_addtolinks')):?> hide-addtolinks<?php endif; ?><?php if (!$cfg('porto_settings/category_grid/show_addtocart')):?> hide-addtocart<?php endif; ?><?php if ($cfg('porto_settings/category_grid/move_actions')):?> move-action<?php endif; ?>'>
-		<?php foreach ($_productCollection as $_product): ?>
+		<?php foreach ($_productCollection as $_product) { ?>
 		<?php $product = $_product; ?>
 				<li class='item'><div class='item-area'>
 				<div class='product-image-area'>
@@ -177,7 +177,7 @@ if (!$_productCollection->count()) { ?>
 						<?php endif; ?>
 					</div>
 				</div></li>
-			<?php endforeach ?>
+			<?php } ?>
 			</ul>
 		<script type='text/javascript'>
 			var $ = jQuery;
