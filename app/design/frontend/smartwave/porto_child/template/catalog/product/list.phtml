@@ -179,21 +179,17 @@ if (!$_productCollection->count()) { ?>
 				</div></li>
 			<?php endforeach ?>
 			</ul>
-			<script type='text/javascript'>
-				var $ = jQuery;
-				var $g = $('.col-main .products-grid');
-				var i;
-				var nth = 'nth-child';
-				for (i = 2, i < 9; i++) {
-					$(`li:${nth}(${i}n)`, $g).addClass(`${nth}-${i}n`);
-					$(`li:${nth}(${i}n+1)`, $g).addClass(`${nth}-${i}np1`);
-				}
-			</script>
-
-		<?php if ($cfg("ajax_catalog/price_slider_settings/infinitescroll")): ?>
-		<div class="infinite-loader"><span class="loading"><i class="ajax-loader small animate-spin"></i><?= $this->__("Loading ..."); ?></span><a href="javascript:void(0)" class="btn-load-more"><?= $this->__("Load More ..."); ?></a></div>
-		<?php endif; ?>
-		<div class="toolbar-bottom">
+		<script type='text/javascript'>
+			var $ = jQuery;
+			var $g = $('.col-main .products-grid');
+			var i;
+			var nth = 'nth-child';
+			for (i = 2, i < 9; i++) {
+				$(`li:${nth}(${i}n)`, $g).addClass(`${nth}-${i}n`);
+				$(`li:${nth}(${i}n+1)`, $g).addClass(`${nth}-${i}np1`);
+			}
+		</script>
+		<div class='toolbar-bottom'>
 			<?= $this->getToolbarHtml() ?>
 		</div>
 	</div>
