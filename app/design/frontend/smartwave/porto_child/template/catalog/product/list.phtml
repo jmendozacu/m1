@@ -179,21 +179,22 @@ if (!$_productCollection->count()) { ?>
 				</div></li>
 			<?php endforeach ?>
 			</ul>
-			<script type="text/javascript">
-				jQuery('.col-main .products-grid li:nth-child(2n)').addClass('nth-child-2n');
-				jQuery('.col-main .products-grid li:nth-child(2n+1)').addClass('nth-child-2np1');
-				jQuery('.col-main .products-grid li:nth-child(3n)').addClass('nth-child-3n');
-				jQuery('.col-main .products-grid li:nth-child(3n+1)').addClass('nth-child-3np1');
-				jQuery('.col-main .products-grid li:nth-child(4n)').addClass('nth-child-4n');
-				jQuery('.col-main .products-grid li:nth-child(4n+1)').addClass('nth-child-4np1');
-				jQuery('.col-main .products-grid li:nth-child(5n)').addClass('nth-child-5n');
-				jQuery('.col-main .products-grid li:nth-child(5n+1)').addClass('nth-child-5np1');
-				jQuery('.col-main .products-grid li:nth-child(6n)').addClass('nth-child-6n');
-				jQuery('.col-main .products-grid li:nth-child(6n+1)').addClass('nth-child-6np1');
-				jQuery('.col-main .products-grid li:nth-child(7n)').addClass('nth-child-7n');
-				jQuery('.col-main .products-grid li:nth-child(7n+1)').addClass('nth-child-7np1');
-				jQuery('.col-main .products-grid li:nth-child(8n)').addClass('nth-child-8n');
-				jQuery('.col-main .products-grid li:nth-child(8n+1)').addClass('nth-child-8np1');
+			<script type='text/javascript'>
+				var $ = jQuery;
+				$('.col-main .products-grid li:nth-child(2n)').addClass('nth-child-2n');
+				$('.col-main .products-grid li:nth-child(2n+1)').addClass('nth-child-2np1');
+				$('.col-main .products-grid li:nth-child(3n)').addClass('nth-child-3n');
+				$('.col-main .products-grid li:nth-child(3n+1)').addClass('nth-child-3np1');
+				$('.col-main .products-grid li:nth-child(4n)').addClass('nth-child-4n');
+				$('.col-main .products-grid li:nth-child(4n+1)').addClass('nth-child-4np1');
+				$('.col-main .products-grid li:nth-child(5n)').addClass('nth-child-5n');
+				$('.col-main .products-grid li:nth-child(5n+1)').addClass('nth-child-5np1');
+				$('.col-main .products-grid li:nth-child(6n)').addClass('nth-child-6n');
+				$('.col-main .products-grid li:nth-child(6n+1)').addClass('nth-child-6np1');
+				$('.col-main .products-grid li:nth-child(7n)').addClass('nth-child-7n');
+				$('.col-main .products-grid li:nth-child(7n+1)').addClass('nth-child-7np1');
+				$('.col-main .products-grid li:nth-child(8n)').addClass('nth-child-8n');
+				$('.col-main .products-grid li:nth-child(8n+1)').addClass('nth-child-8np1');
 			</script>
 
 		<?php if ($cfg("ajax_catalog/price_slider_settings/infinitescroll")): ?>
