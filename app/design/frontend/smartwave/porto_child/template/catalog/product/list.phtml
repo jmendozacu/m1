@@ -181,20 +181,13 @@ if (!$_productCollection->count()) { ?>
 			</ul>
 			<script type='text/javascript'>
 				var $ = jQuery;
-				$('.col-main .products-grid li:nth-child(2n)').addClass('nth-child-2n');
-				$('.col-main .products-grid li:nth-child(2n+1)').addClass('nth-child-2np1');
-				$('.col-main .products-grid li:nth-child(3n)').addClass('nth-child-3n');
-				$('.col-main .products-grid li:nth-child(3n+1)').addClass('nth-child-3np1');
-				$('.col-main .products-grid li:nth-child(4n)').addClass('nth-child-4n');
-				$('.col-main .products-grid li:nth-child(4n+1)').addClass('nth-child-4np1');
-				$('.col-main .products-grid li:nth-child(5n)').addClass('nth-child-5n');
-				$('.col-main .products-grid li:nth-child(5n+1)').addClass('nth-child-5np1');
-				$('.col-main .products-grid li:nth-child(6n)').addClass('nth-child-6n');
-				$('.col-main .products-grid li:nth-child(6n+1)').addClass('nth-child-6np1');
-				$('.col-main .products-grid li:nth-child(7n)').addClass('nth-child-7n');
-				$('.col-main .products-grid li:nth-child(7n+1)').addClass('nth-child-7np1');
-				$('.col-main .products-grid li:nth-child(8n)').addClass('nth-child-8n');
-				$('.col-main .products-grid li:nth-child(8n+1)').addClass('nth-child-8np1');
+				var $g = $('.col-main .products-grid');
+				var i;
+				var nth = 'nth-child';
+				for (i = 2, i < 9; i++) {
+					$(`li:${nth}(${i}n)`, $g).addClass(`${nth}-${i}n`);
+					$(`li:${nth}(${i}n+1)`, $g).addClass(`${nth}-${i}np1`);
+				}
 			</script>
 
 		<?php if ($cfg("ajax_catalog/price_slider_settings/infinitescroll")): ?>
