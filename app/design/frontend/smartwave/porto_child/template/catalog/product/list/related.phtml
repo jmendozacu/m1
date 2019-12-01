@@ -40,30 +40,8 @@
                         </div>
                         <div class="product-details col-xs-6">
                             <p class="product-name"><a href="<?php echo $_item->getProductUrl() ?>"><?php echo $this->escapeHtml($_item->getName()) ?></a></p>
-                            <?php if(Mage::getStoreConfig("porto_settings/category/rating_star", $code)):?>
-                            <?php if (Mage::helper('catalog')->isModuleEnabled('Mage_Review')): ?>
-                            <?php 
-                                $review_html = $this->getReviewsSummaryHtml($_item, 'short');
-                                if($review_html){
-                                    echo $review_html;
-                                }else{
-                            ?>
-                                <div class="ratings">
-                                    <div class="rating-box">
-                                        <div class="rating" style="width:0"></div>
-                                    </div>
-                                </div>
-                            <?php                            
-                                }
-                            ?>
-                            <?php else: ?>
-                                <div class="ratings">
-                                    <div class="rating-box">
-                                        <div class="rating" style="width:0"></div>
-                                    </div>
-                                </div>
-                            <?php endif; ?>
-                            <?php endif; ?>
+<!-- 2019-12-01 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+"Disable the Mage_Review and Mage_Rating modules": https://github.com/repairzoom/m1/issues/43 -->
                             <?php if(Mage::getStoreConfig("porto_settings/category/product_price", $code)):?>
                             <?php echo $this->getPriceHtml($_item, true, '-related') ?>
                             <?php endif; ?>

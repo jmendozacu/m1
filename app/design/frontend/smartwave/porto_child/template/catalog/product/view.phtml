@@ -78,30 +78,8 @@ if($enable_addtocart_sticky){
                         <h2 class="product-name"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h2>
                         <?php echo $this->getPriceHtml($_product, false, '_clone') ?>
                     </div>
-                    <?php 
-                    if (Mage::helper('catalog')->isModuleEnabled('Mage_Review')):
-                    ?>
-                    <?php 
-                        $review_html = $this->getReviewsSummaryHtml($product, 'short');
-                        if($review_html){
-                            echo $review_html;
-                        }else{
-                    ?>
-                        <div class="ratings">
-                            <div class="rating-box">
-                                <div class="rating" style="width:0"></div>
-                            </div>
-                        </div>
-                    <?php                            
-                        }
-                    ?>
-                    <?php else: ?>
-                        <div class="ratings">
-                            <div class="rating-box">
-                                <div class="rating" style="width:0"></div>
-                            </div>
-                        </div>
-                    <?php endif; ?>
+<!-- 2019-12-01 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+"Disable the Mage_Review and Mage_Rating modules": https://github.com/repairzoom/m1/issues/43 -->
                     <?php if($enabled_richsnippets): ?>
                     <?php if ($this->getReviewsCount()): ?>
                         <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">

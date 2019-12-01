@@ -137,32 +137,8 @@
                             <?php if(!Mage::getStoreConfig("porto_settings/category_grid/move_title", $code)):?>
                                 <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
                             <?php endif;?>
-                            <?php if(Mage::getStoreConfig("porto_settings/category/rating_star", $code)):?>
-                                <?php
-                                if (Mage::helper('catalog')->isModuleEnabled('Mage_Review')):
-                                    ?>
-                                    <?php
-                                    $review_html = $this->getReviewsSummaryHtml($product, 'short');
-                                    if($review_html){
-                                        echo $review_html;
-                                    }else{
-                                        ?>
-                                        <div class="ratings">
-                                            <div class="rating-box">
-                                                <div class="rating" style="width:0"></div>
-                                            </div>
-                                        </div>
-                                        <?php
-                                    }
-                                    ?>
-                                <?php else: ?>
-                                    <div class="ratings">
-                                        <div class="rating-box">
-                                            <div class="rating" style="width:0"></div>
-                                        </div>
-                                    </div>
-                                <?php endif; ?>
-                            <?php endif; ?>
+<!-- 2019-12-01 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+"Disable the Mage_Review and Mage_Rating modules": https://github.com/repairzoom/m1/issues/43 -->
                             <?php if(Mage::getStoreConfig("porto_settings/category_grid/move_title", $code)):?>
                                 <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
                             <?php endif;?>
@@ -314,32 +290,8 @@
                             <?php if(!Mage::getStoreConfig("porto_settings/category_grid/move_title", $code)):?>
                             <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
                             <?php endif;?>
-                            <?php if(Mage::getStoreConfig("porto_settings/category/rating_star", $code)):?>
-                            <?php
-                            if (Mage::helper('catalog')->isModuleEnabled('Mage_Review')):
-                            ?>
-                            <?php
-                                $review_html = $this->getReviewsSummaryHtml($product, 'short');
-                                if($review_html){
-                                    echo $review_html;
-                                }else{
-                            ?>
-                                <div class="ratings">
-                                    <div class="rating-box">
-                                        <div class="rating" style="width:0"></div>
-                                    </div>
-                                </div>
-                            <?php
-                                }
-                            ?>
-                            <?php else: ?>
-                                <div class="ratings">
-                                    <div class="rating-box">
-                                        <div class="rating" style="width:0"></div>
-                                    </div>
-                                </div>
-                            <?php endif; ?>
-                            <?php endif; ?>
+<!-- 2019-12-01 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
+"Disable the Mage_Review and Mage_Rating modules": https://github.com/repairzoom/m1/issues/43 -->
                             <?php if(Mage::getStoreConfig("porto_settings/category_grid/move_title", $code)):?>
                                 <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
                             <?php endif;?>
