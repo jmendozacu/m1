@@ -29,9 +29,8 @@ if (!$_productCollection->count()) { ?>
 <?php } else { ?>
 	<div class="category-products">
 		<?= $this->getToolbarHtml() ?>
-		<?php $_collectionSize = $_productCollection->count() ?>
-		<?php $_columnCount = $cfg("porto_settings/category_grid/columns",$code); ?>
-		<ul class="products-grid <?php if($cfg("porto_settings/category_grid/flex_grid",$code)):?>flex-grid<?php endif; ?> columns<?= $_columnCount; ?><?php if(!$cfg("porto_settings/category_grid/show_addtolinks")):?> hide-addtolinks<?php endif; ?><?php if(!$cfg("porto_settings/category_grid/show_addtocart")):?> hide-addtocart<?php endif; ?><?php if($cfg("porto_settings/category_grid/move_actions")):?> move-action<?php endif; ?>">
+		<?php $_columnCount = $cfg("porto_settings/category_grid/columns"); ?>
+		<ul class="products-grid <?php if($cfg("porto_settings/category_grid/flex_grid")):?>flex-grid<?php endif; ?> columns<?= $_columnCount; ?><?php if(!$cfg("porto_settings/category_grid/show_addtolinks")):?> hide-addtolinks<?php endif; ?><?php if(!$cfg("porto_settings/category_grid/show_addtocart")):?> hide-addtocart<?php endif; ?><?php if($cfg("porto_settings/category_grid/move_actions")):?> move-action<?php endif; ?>">
 		<?php $i=0; foreach ($_productCollection as $_product): ?>
 		<?php $product = $_product;//Mage::getModel('catalog/product')->load($_product->getId()); ?>
 				<li class="item"><div class="item-area">
