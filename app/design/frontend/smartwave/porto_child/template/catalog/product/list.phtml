@@ -31,7 +31,7 @@ if (!$_productCollection->count()) { ?>
 		<?= $this->getToolbarHtml() ?>
 		<?php $_columnCount = $cfg("porto_settings/category_grid/columns"); ?>
 		<ul class="products-grid <?php if($cfg("porto_settings/category_grid/flex_grid")):?>flex-grid<?php endif; ?> columns<?= $_columnCount; ?><?php if(!$cfg("porto_settings/category_grid/show_addtolinks")):?> hide-addtolinks<?php endif; ?><?php if(!$cfg("porto_settings/category_grid/show_addtocart")):?> hide-addtocart<?php endif; ?><?php if($cfg("porto_settings/category_grid/move_actions")):?> move-action<?php endif; ?>">
-		<?php $i=0; foreach ($_productCollection as $_product): ?>
+		<?php foreach ($_productCollection as $_product): ?>
 		<?php $product = $_product;//Mage::getModel('catalog/product')->load($_product->getId()); ?>
 				<li class="item"><div class="item-area">
 				<div class="product-image-area">
@@ -47,12 +47,6 @@ if (!$_productCollection->count()) { ?>
 								$base_url = explode("?",$this->getUrl());
 							if(is_array($base_url))
 								$base_url = $base_url[0];
-	//                        if(strpos($base_url,'index.php')!==false){
-	//                            $base_url = str_replace('index.php/','',$base_url);
-	//                            $base_url .= "index.php/quickview/index/view/";
-	//                        }else{
-	//                            $base_url .= "quickview/index/view/";
-	//                        }
 							$base_url .= "quickview/index/view/";
 							$quickview_url = $base_url."id/".$_product->getId();
 							?>
@@ -74,10 +68,7 @@ if (!$_productCollection->count()) { ?>
 							}
 						?>
 						<?php
-
 							$sale_label = false;
-
-
 							// Get the Special Price
 							$specialprice = $product->getFinalPrice();
 							$orgprice = $product->getPrice();
