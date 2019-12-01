@@ -1,7 +1,7 @@
 <?php /** @var Mage_Catalog_Block_Product_List $this */
 $pc = $this->getLoadedProductCollection(); /** @var Mage_Catalog_Model_Resource_Product_Collection $pc */
 $hOutput = $this->helper('catalog/output'); /** @var Mage_Catalog_Helper_Output $hOutput */
-$hImage = $this->helper('catalog/image');
+$hImage = $this->helper('catalog/image'); /** @var Mage_Catalog_Helper_Image $hImage */
 /**
  * 2019-12-01 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
  * @param string $k
@@ -9,7 +9,7 @@ $hImage = $this->helper('catalog/image');
  * @return mixed
  */
 $cfg = function($k) {return Mage::getStoreConfig(false !== strpos($k, '/') ? $k : "porto_settings/category/$k");};
-$aspect_ratio = $this['aspect_ratio'] ?: $cfg('aspect_ratio');
+$aspect_ratio = true;
 $ratio_width = $this['image_width'];
 if (!$ratio_width) {
 	$ratio_width = $cfg('ratio_width');
@@ -53,18 +53,15 @@ if (!$pc->count()) { ?>
 						}
 						?>
 						<a href="<?= $_product->getProductUrl() ?>" title="<?= $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
-						<?php
-							if ($cfg("alternative_image")) {
-						?>
-							<img id="product-collection-image-<?= $_product->getId(); ?>" class="defaultImage" src="<?php if ($aspect_ratio):?><?= $hImage->init($_product, 'small_image')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize($ratio_width);?><?php else: ?><?= $hImage->init($_product, 'small_image')->resize($ratio_width,$ratio_height); ?><?php endif; ?>" width="<?= $ratio_width; ?>" <?php if (!$aspect_ratio):?>height="<?= $ratio_height; ?>"<?php endif; ?> alt="<?= $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"/>
+							<img
+								id="product-collection-image-<?= $_product->getId(); ?>"
+								class="defaultImage"
+								src="<?php if ($aspect_ratio):?><?= $hImage->init($_product, 'small_image')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize($ratio_width);?><?php else: ?><?= $hImage->init($_product, 'small_image')->resize($ratio_width,$ratio_height); ?><?php endif; ?>"
+								width="<?= $ratio_width; ?>" <?php if (!$aspect_ratio):?>
+								height="<?= $ratio_height; ?>"<?php endif; ?>
+								alt="<?= $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"
+							/>
 							<img class="hoverImage" src="<?php if ($aspect_ratio):?><?= $hImage->init($_product, 'thumbnail')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize($ratio_width);?><?php else: ?><?= $hImage->init($_product, 'thumbnail')->resize($ratio_width,$ratio_height); ?><?php endif; ?>" width="<?= $ratio_width; ?>" <?php if (!$aspect_ratio):?>height="<?= $ratio_height; ?>"<?php endif; ?> alt="<?= $this->stripTags($this->getImageLabel($_product, 'thumbnail'), null, true) ?>"/>
-						<?php
-							} else {
-						?>
-							<img id="product-collection-image-<?= $_product->getId(); ?>" src="<?php if ($aspect_ratio):?><?= $hImage->init($_product, 'small_image')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize($ratio_width);?><?php else: ?><?= $hImage->init($_product, 'small_image')->resize($ratio_width,$ratio_height); ?><?php endif; ?>" width="<?= $ratio_width; ?>" <?php if (!$aspect_ratio):?>height="<?= $ratio_height; ?>"<?php endif; ?> alt="<?= $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>"/>
-						<?php
-							}
-						?>
 						<?php
 							$sale_label = false;
 							// Get the Special Price
