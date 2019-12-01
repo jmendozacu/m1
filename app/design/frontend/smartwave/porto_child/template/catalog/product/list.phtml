@@ -28,29 +28,26 @@ if (!$pc->count()) { ?>
 	<div class='category-products'>
 		<?= $this->getToolbarHtml() ?>
 		<ul class='products-grid columns4 hide-addtolinks'>
-		<?php foreach ($pc as $_product) { ?>
-		<?php $product = $_product; ?>
-				<li class='item'><div class='item-area'>
-				<div class='product-image-area'>
+		<?php foreach ($pc as $_product) {$product = $_product; ?>
+			<li class='item'>
+				<div class='item-area'>
+					<div class='product-image-area'>
 						<div class='loader-container'>
 							<div class='loader'>
 								<i class='ajax-loader medium animate-spin'></i>
 							</div>
 						</div>
 						<?php
-						if ( $cfg('quickview/general/enableview') ) {
 							$base_url = $this->getUrl();
-							if (strpos($base_url,'?')!==false)
+							if (strpos($base_url,'?') !== false)
 								$base_url = explode('?',$this->getUrl());
 							if (is_array($base_url))
 								$base_url = $base_url[0];
 							$base_url .= 'quickview/index/view/';
 							$quickview_url = $base_url.'id/'.$_product->getId();
-							?>
-							<a href='<?= $quickview_url; ?>' class='quickview-icon'><i class='icon-export'></i><span><?= $this->__('Quick View'); ?></span></a>
-						<?php
-						}
 						?>
+						<a href='<?= $quickview_url; ?>' class='quickview-icon'
+						><i class='icon-export'></i><span><?= $this->__('Quick View'); ?></span></a>
 						<a href="<?= $_product->getProductUrl() ?>" title="<?= $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
 							<img
 								id="product-collection-image-<?= $_product->getId(); ?>"
@@ -170,9 +167,10 @@ if (!$pc->count()) { ?>
 						</div>
 						<?php endif; ?>
 					</div>
-				</div></li>
+				</div>
+				</li>
 			<?php } ?>
-			</ul>
+		</ul>
 		<script type='text/javascript'>
 			var $ = jQuery;
 			var $g = $('.col-main .products-grid');
