@@ -133,17 +133,14 @@ if (!$pc->count()) { ?>
 									echo $_nameAfterChild->toHtml();
 								}
 							}
+							$this->getPriceHtml($p, true); 
 						?>
-						<?php if ($cfg("product_price")):?>
-						<?= $this->getPriceHtml($p, true) ?>
-						<?php endif; ?>
-						<?php if ($cfg("actions")):?>
-						<div class="actions">
-							<?php if ($cfg("qty_field")):?>
+						<div class='actions'>
+							<?php if ($cfg('qty_field')):?>
 								<?php if ($p->isSaleable()): ?>
 									<?php  if ( !($p->getTypeInstance(true)->hasOptions($p) || $p->isGrouped()) ) :  ?>
-									<?php if (!$cfg("ajaxcart/addtocart/enablecategory")):?>
-									<form id="addtocart_form_<?= $p->getId(); ?>" action="<?= $this->getAddToCartUrl($p) ?>" method="post">
+									<?php if (!$cfg('ajaxcart/addtocart/enablecategory')):?>
+									<form id='addtocart_form_<?= $p->getId(); ?>' action='<?= $this->getAddToCartUrl($p) ?>' method='post'>
 										<input type="hidden" name="form_key" value="<?= Mage::getSingleton('core/session')->getFormKey(); ?>" />
 									<?php endif; ?>
 									<div class="qty-field">
@@ -180,7 +177,6 @@ if (!$pc->count()) { ?>
 							<?php endif; ?>
 							<div class="clearer"></div>
 						</div>
-						<?php endif; ?>
 					</div>
 				</div>
 				</li>
