@@ -136,9 +136,6 @@ if (!$pc->count()) { ?>
 							echo $this->getPriceHtml($p, true);
 						?>
 						<div class='actions'>
-							<?php if ($this->helper('wishlist')->isAllow()) : ?>
-							<a href="<?php if ($cfg("ajaxcart/addtolinks/enablecategory")):?>javascript:void(0)<?php else: ?><?= $this->helper('wishlist')->getAddUrl($p) ?><?php endif; ?>" <?php if ($cfg("ajaxcart/addtolinks/enablecategory")):?>onclick="ajaxWishlist(this,'<?= $this->helper('wishlist')->getAddUrl($p) ?>','<?= $p->getId()?>');"<?php endif;?> class="addtowishlist" title="<?= $this->__('Add to Wishlist') ?>"><i class="icon-wishlist"></i></a>
-							<?php endif; ?>
 							<?php if ($p->isSaleable()): ?>
 								<?php  if ( !($p->getTypeInstance(true)->hasOptions($p)/*$p->getData('has_options')*/ || $p->isGrouped()) ) :  ?>
 									<a href="<?php if (!$cfg("ajaxcart/addtocart/enablecategory") && !$cfg("qty_field")): ?><?= $this->getAddToCartUrl($p) ?><?php else: ?>javascript:void(0)<?php endif; ?>" class="addtocart" title="<?= $this->__('Add to Cart') ?>" <?php if ($cfg("ajaxcart/addtocart/enablecategory")):?>onclick="setLocationAjax(this,'<?= $this->getAddToCartUrl($p) ?>','<?= $p->getId(); ?>')"<?php elseif ($cfg("qty_field")): ?>onclick="document.getElementById('addtocart_form_<?= $p->getId(); ?>').submit()"<?php endif; ?>><i class="icon-cart"></i><span>&nbsp;<?= $this->__('Add to Cart') ?></span></a>
