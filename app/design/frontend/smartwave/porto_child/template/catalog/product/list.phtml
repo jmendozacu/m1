@@ -89,9 +89,13 @@ if (!$pc->count()) { ?>
 										|| ($specialPriceFromDate == '' && $now<=$specialPriceToDate)
 									) {
 										$sale_label = true;
-							?>
-										<div class="product-label" style="right: 10px;"><span class="sale-product-icon"><?php if ($cfg("porto_settings/product_label/sale_label_type")):?><?= "-".$save_percent."%"; ?><?php else: ?><?= $cfg("porto_settings/product_label/sale_label_text");?><?php endif; ?></span></div>
-							<?php
+										?>
+											<div class="product-label" style="right: 10px;">
+												<span class="sale-product-icon">
+													<?= $cfg("porto_settings/product_label/sale_label_text");?>
+												</span>
+											</div>
+										<?php
 									}
 								}
 							}
