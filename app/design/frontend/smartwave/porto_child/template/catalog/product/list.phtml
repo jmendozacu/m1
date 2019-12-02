@@ -133,32 +133,9 @@ if (!$pc->count()) { ?>
 									echo $_nameAfterChild->toHtml();
 								}
 							}
-							$this->getPriceHtml($p, true); 
+							echo $this->getPriceHtml($p, true);
 						?>
 						<div class='actions'>
-							<?php if ($cfg('qty_field')):?>
-								<?php if ($p->isSaleable()): ?>
-									<?php  if ( !($p->getTypeInstance(true)->hasOptions($p) || $p->isGrouped()) ) :  ?>
-									<?php if (!$cfg('ajaxcart/addtocart/enablecategory')):?>
-									<form id='addtocart_form_<?= $p->getId(); ?>' action='<?= $this->getAddToCartUrl($p) ?>' method='post'>
-										<input type="hidden" name="form_key" value="<?= Mage::getSingleton('core/session')->getFormKey(); ?>" />
-									<?php endif; ?>
-									<div class="qty-field">
-										<label for="qty"><?= $this->__('Qty:') ?></label>
-										<div class="qty-holder">
-											<input type="text" name="qty" id="qty_<?= $p->getId(); ?>" maxlength="12" value="<?= $p->getProductDefaultQty() * 1 ?>" title="<?= $this->__('Qty') ?>" class="input-text qty" />
-											<div class="qty-changer">
-												<a href="javascript:void(0)" class="qty_inc"><i class="icon-up-dir"></i></a>
-												<a href="javascript:void(0)" class="qty_dec"><i class="icon-down-dir"></i></a>
-											</div>
-								</div>
-							</div>
-						<?php if (!$cfg("ajaxcart/addtocart/enablecategory")):?>
-									</form>
-									<?php endif; ?>
-									<?php endif; ?>
-								<?php endif; ?>
-							<?php endif; ?>
 							<?php if ($this->helper('wishlist')->isAllow()) : ?>
 							<a href="<?php if ($cfg("ajaxcart/addtolinks/enablecategory")):?>javascript:void(0)<?php else: ?><?= $this->helper('wishlist')->getAddUrl($p) ?><?php endif; ?>" <?php if ($cfg("ajaxcart/addtolinks/enablecategory")):?>onclick="ajaxWishlist(this,'<?= $this->helper('wishlist')->getAddUrl($p) ?>','<?= $p->getId()?>');"<?php endif;?> class="addtowishlist" title="<?= $this->__('Add to Wishlist') ?>"><i class="icon-wishlist"></i></a>
 							<?php endif; ?>
