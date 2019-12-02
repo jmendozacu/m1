@@ -56,39 +56,44 @@ if (!$pc->count()) { ?>
 							title="<?= $this->stripTags($this->getImageLabel($p, 'small_image'), null, true) ?>" 
 						>
 							<img
-								id="product-collection-image-<?= $p->getId(); ?>"
-								class="defaultImage"
-								src="<?php if ($aspect_ratio):?><?= $hImage->init($p, 'small_image')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize($ratio_width);?><?php else: ?><?= $hImage->init($p, 'small_image')->resize($ratio_width,$ratio_height); ?><?php endif; ?>"
-								width="<?= $ratio_width; ?>" <?php if (!$aspect_ratio):?>
-								height="<?= $ratio_height; ?>"<?php endif; ?>
 								alt="<?= $this->stripTags($this->getImageLabel($p, 'small_image'), null, true) ?>"
+								class="defaultImage"
+								id="product-collection-image-<?= $p->getId(); ?>"
+								src="<?= $hImage->init($p, 'small_image')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize($ratio_width);?>"
+								width="<?= $ratio_width; ?>"
 							/>
-							<img class="hoverImage" src="<?php if ($aspect_ratio):?><?= $hImage->init($p, 'thumbnail')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize($ratio_width);?><?php else: ?><?= $hImage->init($p, 'thumbnail')->resize($ratio_width,$ratio_height); ?><?php endif; ?>" width="<?= $ratio_width; ?>" <?php if (!$aspect_ratio):?>height="<?= $ratio_height; ?>"<?php endif; ?> alt="<?= $this->stripTags($this->getImageLabel($p, 'thumbnail'), null, true) ?>"/>
+							<img
+								alt="<?= $this->stripTags($this->getImageLabel($p, 'thumbnail'), null, true) ?>"
+								class="hoverImage"
+								src="<?= $hImage->init($p, 'thumbnail')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize($ratio_width);?>"
+								width="<?= $ratio_width; ?>"
+							/>
 						<?php
 							$sale_label = false;
-							// Get the Special Price
 							$specialprice = $p->getFinalPrice();
 							$orgprice = $p->getPrice();
-							// Get the Special Price FROM date
 							$now = date("Y-m-d");
 							$specialPriceFromDate = substr($p->getSpecialFromDate(),0,10);
-							// Get the Special Price TO date
 							$specialPriceToDate = substr($p->getSpecialToDate(),0,10);
-							// Get Current date
-							$today =  time();
-
-							if ($specialprice<$orgprice) {
+							if ($specialprice < $orgprice) {
 								$save_percent = 100-round(($specialprice/$orgprice)*100);
 								if ($specialPriceToDate != '' || $specialPriceFromDate != '') {
-								if (($specialPriceToDate != '' && $specialPriceFromDate != '' && $now>=$specialPriceFromDate && $now<=$specialPriceToDate) || ($specialPriceToDate == '' && $now >=$specialPriceFromDate) || ($specialPriceFromDate == '' && $now<=$specialPriceToDate)) {
-									if ($cfg("porto_settings/product_label/sale")) {
+									if (
+										(
+											$specialPriceToDate != ''
+											&& $specialPriceFromDate != ''
+											&& $now >= $specialPriceFromDate
+											&& $now<=$specialPriceToDate
+										)
+										|| ($specialPriceToDate == '' && $now >=$specialPriceFromDate)
+										|| ($specialPriceFromDate == '' && $now<=$specialPriceToDate)
+									) {
 										$sale_label = true;
-						?>
-									<div class="product-label" style="right: 10px;"><span class="sale-product-icon"><?php if ($cfg("porto_settings/product_label/sale_label_type")):?><?= "-".$save_percent."%"; ?><?php else: ?><?= $cfg("porto_settings/product_label/sale_label_text");?><?php endif; ?></span></div>
-						<?php
+							?>
+										<div class="product-label" style="right: 10px;"><span class="sale-product-icon"><?php if ($cfg("porto_settings/product_label/sale_label_type")):?><?= "-".$save_percent."%"; ?><?php else: ?><?= $cfg("porto_settings/product_label/sale_label_text");?><?php endif; ?></span></div>
+							<?php
 									}
 								}
-							}
 							}
 						?>
 						<?php
