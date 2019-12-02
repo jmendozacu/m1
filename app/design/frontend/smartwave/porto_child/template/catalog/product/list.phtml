@@ -172,6 +172,16 @@ if (!$pc->count()) { ?>
 				</li>
 			<?php } ?>
 		</ul>
+		<script type='text/javascript'>
+			var $j = jQuery;
+			var $g = $j('.col-main .products-grid');
+			var i;
+			var nth = 'nth-child';
+			for (i = 2; i < 9; i++) {
+				$j(`li:${nth}(${i}n)`, $g).addClass(`${nth}-${i}n`);
+				$j(`li:${nth}(${i}n+1)`, $g).addClass(`${nth}-${i}np1`);
+			}
+		</script>
 		<div class='toolbar-bottom'>
 			<?= $this->getToolbarHtml() ?>
 		</div>
