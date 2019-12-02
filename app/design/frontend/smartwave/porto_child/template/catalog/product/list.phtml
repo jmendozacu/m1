@@ -119,14 +119,12 @@ if (!$pc->count()) { ?>
 						?>
 					</div>
 					<div class="details-area">
-						<?php if (!$cfg("porto_settings/category_grid/move_title")):?>
-							<h2 class="product-name"><a href="<?= $p->getProductUrl() ?>" title="<?= $this->stripTags($p->getName(), null, true) ?>"><?= $hOutput->productAttribute($p, $p->getName(), 'name') ?></a></h2>
-						<?php endif;?>
 	<!-- 2019-12-01 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
 	"Disable the Mage_Review and Mage_Rating modules": https://github.com/repairzoom/m1/issues/43 -->
-						<?php if ($cfg("porto_settings/category_grid/move_title")):?>
-							<h2 class="product-name"><a href="<?= $p->getProductUrl() ?>" title="<?= $this->stripTags($p->getName(), null, true) ?>"><?= $hOutput->productAttribute($p, $p->getName(), 'name') ?></a></h2>
-						<?php endif;?>
+						<h2 class="product-name">
+							<a href="<?= $p->getProductUrl() ?>" title="<?= $this->stripTags($p->getName(), null, true) ?>"
+							><?= $hOutput->productAttribute($p, $p->getName(), 'name') ?></a>
+						</h2>
 						<?php
 							if ($this->getChild('name.after')) {
 								$_nameAfterChildren = $this->getChild('name.after')->getSortedChildren();
