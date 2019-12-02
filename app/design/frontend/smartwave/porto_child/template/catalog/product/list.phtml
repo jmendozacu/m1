@@ -68,55 +68,56 @@ if (!$pc->count()) { ?>
 								src="<?= $hImage->init($p, 'thumbnail')->constrainOnly(FALSE)->keepAspectRatio(TRUE)->keepFrame(FALSE)->resize($ratio_width);?>"
 								width="<?= $ratio_width; ?>"
 							/>
-						<?php
-							$sale_label = false;
-							$specialprice = $p->getFinalPrice();
-							$orgprice = $p->getPrice();
-							$now = date("Y-m-d");
-							$specialPriceFromDate = substr($p->getSpecialFromDate(),0,10);
-							$specialPriceToDate = substr($p->getSpecialToDate(),0,10);
-							if ($specialprice < $orgprice) {
-								if ($specialPriceToDate != '' || $specialPriceFromDate != '') {
+							<?php
+								$sale_label = false;
+								$specialprice = $p->getFinalPrice();
+								$orgprice = $p->getPrice();
+								$now = date("Y-m-d");
+								$specialPriceFromDate = substr($p->getSpecialFromDate(),0,10);
+								$specialPriceToDate = substr($p->getSpecialToDate(),0,10);
+								if ($specialprice < $orgprice) {
+									if ($specialPriceToDate != '' || $specialPriceFromDate != '') {
+										if (
+											(
+												$specialPriceToDate != ''
+												&& $specialPriceFromDate != ''
+												&& $now >= $specialPriceFromDate
+												&& $now<=$specialPriceToDate
+											)
+											|| ($specialPriceToDate == '' && $now >=$specialPriceFromDate)
+											|| ($specialPriceFromDate == '' && $now<=$specialPriceToDate)
+										) {
+											$sale_label = true;
+											?>
+												<div class="product-label" style="right: 10px;">
+													<span class="sale-product-icon">
+														<?= $cfg("porto_settings/product_label/sale_label_text") ?>
+													</span>
+												</div>
+											<?php
+										}
+									}
+								}
+								$now = date("Y-m-d");
+								$newsFrom = substr($p->getData('news_from_date'),0,10);
+								$newsTo = substr($p->getData('news_to_date'),0,10);
+								if ($newsTo != '' || $newsFrom != '') {
 									if (
-										(
-											$specialPriceToDate != ''
-											&& $specialPriceFromDate != ''
-											&& $now >= $specialPriceFromDate
-											&& $now<=$specialPriceToDate
-										)
-										|| ($specialPriceToDate == '' && $now >=$specialPriceFromDate)
-										|| ($specialPriceFromDate == '' && $now<=$specialPriceToDate)
+										($newsTo != '' && $newsFrom != '' && $now >= $newsFrom && $now <= $newsTo)
+										|| ($newsTo == '' && $now >=$newsFrom)
+										|| ($newsFrom == '' && $now<=$newsTo)
 									) {
-										$sale_label = true;
 										?>
-											<div class="product-label" style="right: 10px;">
-												<span class="sale-product-icon">
-													<?= $cfg("porto_settings/product_label/sale_label_text") ?>
-												</span>
-											</div>
+										<div class="product-label" style="right: 10px; <?= ($sale_label)?"top: 40px;":""; ?>">
+											<span class="new-product-icon">
+												<?= $cfg("porto_settings/product_label/new_label_text");?>
+											</span>
+										</div>
 										<?php
 									}
 								}
-							}
-							$now = date("Y-m-d");
-							$newsFrom = substr($p->getData('news_from_date'),0,10);
-							$newsTo = substr($p->getData('news_to_date'),0,10);
-							if ($newsTo != '' || $newsFrom != '') {
-								if (
-									($newsTo != '' && $newsFrom != '' && $now >= $newsFrom && $now <= $newsTo)
-									|| ($newsTo == '' && $now >=$newsFrom)
-									|| ($newsFrom == '' && $now<=$newsTo)
-								) {
-									?>
-									<div class="product-label" style="right: 10px; <?= ($sale_label)?"top: 40px;":""; ?>">
-										<span class="new-product-icon">
-											<?= $cfg("porto_settings/product_label/new_label_text");?>
-										</span>
-									</div>
-									<?php
-								}
-							}
-						?>
+							?>
+						</a>
 					</div>
 					<div class='details-area'>
 	<!-- 2019-12-01 Dmitry Fedyuk https://www.upwork.com/fl/mage2pro
