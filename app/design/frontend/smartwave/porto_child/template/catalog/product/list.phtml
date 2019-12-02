@@ -136,19 +136,34 @@ if (!$pc->count()) { ?>
 							echo $this->getPriceHtml($p, true);
 						?>
 						<div class='actions'>
-							<?php if ($p->isSaleable()): ?>
-								<?php  if ( !($p->getTypeInstance(true)->hasOptions($p)/*$p->getData('has_options')*/ || $p->isGrouped()) ) :  ?>
-									<a href="<?php if (!$cfg("ajaxcart/addtocart/enablecategory") && !$cfg("qty_field")): ?><?= $this->getAddToCartUrl($p) ?><?php else: ?>javascript:void(0)<?php endif; ?>" class="addtocart" title="<?= $this->__('Add to Cart') ?>" <?php if ($cfg("ajaxcart/addtocart/enablecategory")):?>onclick="setLocationAjax(this,'<?= $this->getAddToCartUrl($p) ?>','<?= $p->getId(); ?>')"<?php elseif ($cfg("qty_field")): ?>onclick="document.getElementById('addtocart_form_<?= $p->getId(); ?>').submit()"<?php endif; ?>><i class="icon-cart"></i><span>&nbsp;<?= $this->__('Add to Cart') ?></span></a>
-								<?php else : ?>
-									<a href="<?php if ($cfg("ajaxcart/addtocart/enablecategory")):?>javascript:showOptions('<?= $p->getId()?>')<?php else: ?><?= $this->getAddToCartUrl($p) ?><?php endif; ?>" class="addtocart" title="<?= $this->__('Add to Cart') ?>"><i class="icon-cart"></i><span>&nbsp;<?= $this->__('Add to Cart') ?></span></a>
-									<a href='<?= $this->getUrl('ajaxcart/index/options',array('product_id'=>$p->getId()));?>' class='fancybox' id='fancybox<?= $p->getId()?>' style='display:none'>Options</a>
-								<?php endif;?>
-							<?php else: ?>
-								<a href="javascript:void(0);" class="addtocart outofstock" title="<?= $this->__('Out of stock') ?>"><?= $this->__('Out of stock') ?></span></a>
-							<?php endif; ?>
-							<?php if ($cfg("compare") && $_compareUrl=$this->getAddToCompareUrl($p)): ?>
-								<a href="<?php if ($cfg("ajaxcart/addtolinks/enablecategory")):?>javascript:void(0)<?php else: ?><?= $_compareUrl ?><?php endif; ?>" <?php if ($cfg("ajaxcart/addtolinks/enablecategory")):?>onclick="ajaxCompare(this,'<?= $_compareUrl ?>','<?= $p->getId()?>');"<?php endif; ?> class="comparelink" title="<?= $this->__('Add to Compare') ?>"><i class="icon-compare"></i></a>
-							<?php endif; ?>
+							<?php if (!$p->isSaleable()) { ?>
+								<a
+									href='javascript:void(0);'
+									class='addtocart outofstock'
+									title="<?= $this->__('Out of stock') ?>"
+								><?= $this->__('Out of stock') ?></span></a>
+							<?php } else { ?>
+								<?php if (!($p->getTypeInstance(true)->hasOptions($p) || $p->isGrouped())) {  ?>
+									<a
+										class='addtocart'
+										href='javascript:void(0)'
+										onclick="setLocationAjax(this,'<?= $this->getAddToCartUrl($p) ?>','<?= $p->getId(); ?>')"
+										title="<?= $this->__('Add to Cart') ?>"
+									><i class='icon-cart'></i><span>&nbsp;<?= $this->__('Add to Cart') ?></span></a>
+								<?php } else { ?>
+									<a
+										class='addtocart'
+										href="javascript:showOptions('<?= $p->getId()?>')"
+										title="<?= $this->__('Add to Cart') ?>"
+									><i class='icon-cart'></i><span>&nbsp;<?= $this->__('Add to Cart') ?></span></a>
+									<a
+										class='fancybox'
+										href='<?= $this->getUrl('ajaxcart/index/options',['product_id'=>$p->getId()]);?>'
+										id='fancybox<?= $p->getId()?>'
+										style='display:none'
+									>Options</a>
+								<?php } ?>
+							<?php } ?>
 							<div class="clearer"></div>
 						</div>
 					</div>
