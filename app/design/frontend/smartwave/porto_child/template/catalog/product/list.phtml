@@ -76,7 +76,6 @@ if (!$pc->count()) { ?>
 							$specialPriceFromDate = substr($p->getSpecialFromDate(),0,10);
 							$specialPriceToDate = substr($p->getSpecialToDate(),0,10);
 							if ($specialprice < $orgprice) {
-								$save_percent = 100-round(($specialprice/$orgprice)*100);
 								if ($specialPriceToDate != '' || $specialPriceFromDate != '') {
 									if (
 										(
@@ -92,26 +91,29 @@ if (!$pc->count()) { ?>
 										?>
 											<div class="product-label" style="right: 10px;">
 												<span class="sale-product-icon">
-													<?= $cfg("porto_settings/product_label/sale_label_text");?>
+													<?= $cfg("porto_settings/product_label/sale_label_text") ?>
 												</span>
 											</div>
 										<?php
 									}
 								}
 							}
-						?>
-						<?php
 							$now = date("Y-m-d");
-							$newsFrom= substr($p->getData('news_from_date'),0,10);
-							$newsTo=  substr($p->getData('news_to_date'),0,10);
+							$newsFrom = substr($p->getData('news_from_date'),0,10);
+							$newsTo = substr($p->getData('news_to_date'),0,10);
 							if ($newsTo != '' || $newsFrom != '') {
-								if (($newsTo != '' && $newsFrom != '' && $now>=$newsFrom && $now<=$newsTo) || ($newsTo == '' && $now >=$newsFrom) || ($newsFrom == '' && $now<=$newsTo))
-								{
-									if ($cfg("porto_settings/product_label/new")) {
-							?>
-									<div class="product-label" style="right: 10px; <?= ($sale_label)?"top: 40px;":""; ?>"><span class="new-product-icon"><?= $cfg("porto_settings/product_label/new_label_text");?></span></div>
-							<?php
-									}
+								if (
+									($newsTo != '' && $newsFrom != '' && $now >= $newsFrom && $now <= $newsTo)
+									|| ($newsTo == '' && $now >=$newsFrom)
+									|| ($newsFrom == '' && $now<=$newsTo)
+								) {
+									?>
+									<div class="product-label" style="right: 10px; <?= ($sale_label)?"top: 40px;":""; ?>">
+										<span class="new-product-icon">
+											<?= $cfg("porto_settings/product_label/new_label_text");?>
+										</span>
+									</div>
+									<?php
 								}
 							}
 						?>
