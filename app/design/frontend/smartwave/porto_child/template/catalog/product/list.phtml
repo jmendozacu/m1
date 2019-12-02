@@ -28,7 +28,7 @@ if (!$pc->count()) { ?>
 	<div class='category-products'>
 		<?= $this->getToolbarHtml() ?>
 		<ul class='products-grid columns4 hide-addtolinks'>
-		<?php foreach ($pc as $p) {$product = $p; ?>
+		<?php foreach ($pc as $p) {$p = $p; ?>
 			<li class='item'>
 				<div class='item-area'>
 					<div class='product-image-area'>
@@ -61,13 +61,13 @@ if (!$pc->count()) { ?>
 						<?php
 							$sale_label = false;
 							// Get the Special Price
-							$specialprice = $product->getFinalPrice();
-							$orgprice = $product->getPrice();
+							$specialprice = $p->getFinalPrice();
+							$orgprice = $p->getPrice();
 							// Get the Special Price FROM date
 							$now = date("Y-m-d");
-							$specialPriceFromDate = substr($product->getSpecialFromDate(),0,10);
+							$specialPriceFromDate = substr($p->getSpecialFromDate(),0,10);
 							// Get the Special Price TO date
-							$specialPriceToDate = substr($product->getSpecialToDate(),0,10);
+							$specialPriceToDate = substr($p->getSpecialToDate(),0,10);
 							// Get Current date
 							$today =  time();
 
@@ -125,8 +125,8 @@ if (!$pc->count()) { ?>
 						<?php if ($cfg("actions")):?>
 						<div class="actions">
 							<?php if ($cfg("qty_field")):?>
-								<?php if ($product->isSaleable()): ?>
-									<?php  if ( !($product->getTypeInstance(true)->hasOptions($product) || $product->isGrouped()) ) :  ?>
+								<?php if ($p->isSaleable()): ?>
+									<?php  if ( !($p->getTypeInstance(true)->hasOptions($p) || $p->isGrouped()) ) :  ?>
 									<?php if (!$cfg("ajaxcart/addtocart/enablecategory")):?>
 									<form id="addtocart_form_<?= $p->getId(); ?>" action="<?= $this->getAddToCartUrl($p) ?>" method="post">
 										<input type="hidden" name="form_key" value="<?= Mage::getSingleton('core/session')->getFormKey(); ?>" />
@@ -134,7 +134,7 @@ if (!$pc->count()) { ?>
 									<div class="qty-field">
 										<label for="qty"><?= $this->__('Qty:') ?></label>
 										<div class="qty-holder">
-											<input type="text" name="qty" id="qty_<?= $p->getId(); ?>" maxlength="12" value="<?= $product->getProductDefaultQty() * 1 ?>" title="<?= $this->__('Qty') ?>" class="input-text qty" />
+											<input type="text" name="qty" id="qty_<?= $p->getId(); ?>" maxlength="12" value="<?= $p->getProductDefaultQty() * 1 ?>" title="<?= $this->__('Qty') ?>" class="input-text qty" />
 											<div class="qty-changer">
 												<a href="javascript:void(0)" class="qty_inc"><i class="icon-up-dir"></i></a>
 												<a href="javascript:void(0)" class="qty_dec"><i class="icon-down-dir"></i></a>
@@ -150,8 +150,8 @@ if (!$pc->count()) { ?>
 							<?php if ($this->helper('wishlist')->isAllow()) : ?>
 							<a href="<?php if ($cfg("ajaxcart/addtolinks/enablecategory")):?>javascript:void(0)<?php else: ?><?= $this->helper('wishlist')->getAddUrl($p) ?><?php endif; ?>" <?php if ($cfg("ajaxcart/addtolinks/enablecategory")):?>onclick="ajaxWishlist(this,'<?= $this->helper('wishlist')->getAddUrl($p) ?>','<?= $p->getId()?>');"<?php endif;?> class="addtowishlist" title="<?= $this->__('Add to Wishlist') ?>"><i class="icon-wishlist"></i></a>
 							<?php endif; ?>
-							<?php if ($product->isSaleable()): ?>
-								<?php  if ( !($product->getTypeInstance(true)->hasOptions($product)/*$p->getData('has_options')*/ || $product->isGrouped()) ) :  ?>
+							<?php if ($p->isSaleable()): ?>
+								<?php  if ( !($p->getTypeInstance(true)->hasOptions($p)/*$p->getData('has_options')*/ || $p->isGrouped()) ) :  ?>
 									<a href="<?php if (!$cfg("ajaxcart/addtocart/enablecategory") && !$cfg("qty_field")): ?><?= $this->getAddToCartUrl($p) ?><?php else: ?>javascript:void(0)<?php endif; ?>" class="addtocart" title="<?= $this->__('Add to Cart') ?>" <?php if ($cfg("ajaxcart/addtocart/enablecategory")):?>onclick="setLocationAjax(this,'<?= $this->getAddToCartUrl($p) ?>','<?= $p->getId(); ?>')"<?php elseif ($cfg("qty_field")): ?>onclick="document.getElementById('addtocart_form_<?= $p->getId(); ?>').submit()"<?php endif; ?>><i class="icon-cart"></i><span>&nbsp;<?= $this->__('Add to Cart') ?></span></a>
 								<?php else : ?>
 									<a href="<?php if ($cfg("ajaxcart/addtocart/enablecategory")):?>javascript:showOptions('<?= $p->getId()?>')<?php else: ?><?= $this->getAddToCartUrl($p) ?><?php endif; ?>" class="addtocart" title="<?= $this->__('Add to Cart') ?>"><i class="icon-cart"></i><span>&nbsp;<?= $this->__('Add to Cart') ?></span></a>
