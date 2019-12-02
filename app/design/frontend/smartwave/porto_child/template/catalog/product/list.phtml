@@ -28,7 +28,7 @@ if (!$pc->count()) { ?>
 	<div class='category-products'>
 		<?= $this->getToolbarHtml() ?>
 		<ul class='products-grid columns4 hide-addtolinks'>
-		<?php foreach ($pc as $p) {$p = $p; ?>
+		<?php foreach ($pc as $p) {?>
 			<li class='item'>
 				<div class='item-area'>
 					<div class='product-image-area'>
@@ -48,7 +48,11 @@ if (!$pc->count()) { ?>
 						?>
 						<a href='<?= $quickview_url; ?>' class='quickview-icon'
 						><i class='icon-export'></i><span><?= $this->__('Quick View'); ?></span></a>
-						<a href="<?= $p->getProductUrl() ?>" title="<?= $this->stripTags($this->getImageLabel($p, 'small_image'), null, true) ?>" class="product-image">
+						<a 
+							class='product-image'
+							href='<?= $p->getProductUrl() ?>' 
+							title="<?= $this->stripTags($this->getImageLabel($p, 'small_image'), null, true) ?>" 
+						>
 							<img
 								id="product-collection-image-<?= $p->getId(); ?>"
 								class="defaultImage"
